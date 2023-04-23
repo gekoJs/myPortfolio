@@ -1,11 +1,16 @@
 import Head from "next/head";
 import { ThemeButton } from "@/components";
-import { useState } from "react";
-import style from "./Home.module.scss";
+import { useState, useEffect } from "react";
+import style from "./Home.module.css";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export default function Home() {
-  const [theme, setTheme] = useState("light");
+  const { systemTheme, theme, setTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState();
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
 
   return (
     <>
@@ -16,13 +21,11 @@ export default function Home() {
         <link rel="icon" href="/jesusRoaLogo.svg" />
       </Head>
 
-      <div className={`${theme}-mode ${style.container}`}>
-        <ThemeButton/>
-        <h1 className={`${theme}-mode`}>Hola soy home</h1>
+      <div className={`${style.container}`} theme={currentTheme}>
+        <ThemeButton />
+        <h1>Hola soy home</h1>
 
-        <Link href={"/about"}>
-        About
-        </Link>
+        <Link href={"/about"}>About</Link>
       </div>
     </>
   );

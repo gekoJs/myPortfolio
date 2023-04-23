@@ -4,18 +4,20 @@ import { useTheme } from "next-themes";
 
 export default function ThemeButton() {
   const { systemTheme, theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [currentTheme, setCurrentTheme] = useState();
+  // const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // setMounted(true);
     setCurrentTheme(theme === "system" ? systemTheme : theme);
-  }, []);
-  if (!mounted) null;
+  }, [theme]);
 
   const handleClick = () => {
     currentTheme === "light" ? setTheme("dark") : setTheme("light");
   };
+
+  // if (!mounted) null;
+
 
   return (
     <div onClick={handleClick}>
