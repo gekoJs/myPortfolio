@@ -8,6 +8,12 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Jesús Roa</title>
+        <meta name="description" content="Home" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/jesusRoa-logo.svg" />
+      </Head>
       <div className={`${theme}-mode ${style.container}`}>
         <ThemeButton theme={theme} setTheme={setTheme} />
         <h1 className={`${theme}-mode`}>Hola soy home</h1>
