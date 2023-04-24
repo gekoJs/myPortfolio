@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import style from "./Home.module.css";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const themeDisplayed = useSelector(state=> state.themeDisplayed.theme)
   const { systemTheme, theme, setTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState();
+
   useEffect(() => {
-    setCurrentTheme(theme);
+    setCurrentTheme( theme === "system" ? systemTheme : theme);
   }, [theme]);
 
   return (
@@ -21,7 +24,7 @@ export default function Home() {
         <link rel="icon" href="/jesusRoaLogo.svg" />
       </Head>
 
-      <div className={`${style.container}`} theme={currentTheme}>
+      <div className={`${style.container}`} theme={themeDisplayed}>
         <ThemeButton />
         <h1>Hola soy home</h1>
 
