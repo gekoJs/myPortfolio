@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @layout{
+    
+} */
+:root{
+    --color: #1f1f1f
+}
+*[theme="dark"]{
+    --color:pink
+}
