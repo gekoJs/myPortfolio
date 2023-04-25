@@ -22,9 +22,9 @@ export default function ThemeButton() {
   return (
     <div onClick={handleClick}>
       {themeDisplayed === "light" ? (
-        <Image alt="a" src="/svg/light-mode.svg" width={40} height={40} />
+        <Image alt="a" src="/svg/light-mode.svg" width={28} height={28} />
       ) : (
-        <Image alt="a" src="/svg/dark-mode.svg" width={40} height={40} />
+        <Image alt="a" src="/svg/dark-mode.svg" width={28} height={28} />
       )}
     </div>
   );

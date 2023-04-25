@@ -1,0 +1,22 @@
+.cursor {
+  padding: 16px;
+  border-radius: 100px;
+  border: 2px solid black;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all .15s;
+  transition-property: top, left, opacity, padding;
+  overflow: hidden;
+}
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  background-color: black;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.06s linear;
+  transition-property: top, left, opacity;
+}
