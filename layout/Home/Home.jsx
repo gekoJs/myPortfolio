@@ -1,19 +1,12 @@
 import Head from "next/head";
-import { ThemeButton } from "@/components";
-import { useState, useEffect } from "react";
-import style from "./Home.module.css";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+
 import { useSelector } from "react-redux";
 
-export default function Home() {
-  const themeDisplayed = useSelector(state=> state.themeDisplayed.theme)
-  const { systemTheme, theme, setTheme } = useTheme();
-  const [currentTheme, setCurrentTheme] = useState();
+import style from "./Home.module.scss";
 
-  useEffect(() => {
-    setCurrentTheme( theme === "system" ? systemTheme : theme);
-  }, [theme]);
+export default function Home() {
+  const themeDisplayed = useSelector((state) => state.themeDisplayed.theme);
 
   return (
     <>
@@ -25,10 +18,20 @@ export default function Home() {
       </Head>
 
       <div className={`${style.container}`} theme={themeDisplayed}>
-        <ThemeButton />
-        <h1>Hola soy home</h1>
+        <div className={style.greeting}>
+          <h2>
+            Hey i'm&nbsp;<b>Jesús Roa</b>
+            <br />i build things for the web
+          </h2>
+        </div>
 
-        <Link href={"/about"}>About</Link>
+        <div className={style.description}>
+          <p>I'm a Full Stack Web Developer</p>
+        </div>
+
+        <div className={style.links}>
+          <Link href={"/about"}>About</Link>
+        </div>
       </div>
     </>
   );

@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layout{
-    
-} */
 :root{
-    --color: #1f1f1f
+    --color: #1f1f1f;
+    --fill: #1f1f1f;
 }
 *[theme="dark"]{
-    --color:pink
+    --color:pink;
+    --fill:pink;
+}
+.myLogo{
+    fill: var(--fill);
+    width: 100%;
+    max-width: 48px;
+    max-height: 48px;
 }
