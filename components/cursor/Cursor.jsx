@@ -1,8 +1,33 @@
-import { useState, useEffect } from "react";
 import style from "./Cursor.module.scss";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function Cursor({ dotPosition, dotLeave, dotClick }) {
+export default function Cursor() {
+  const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
+  const [dotLeave, setDotLeave] = useState(false);
+  const [dotClick, setDotClick] = useState(false);
+  
+  useEffect(() => {
+    window.addEventListener("mousemove", (e) =>
+      setDotPosition({ x: e.pageX, y: e.pageY })
+    );
+    document
+      .querySelector("body")
+      .addEventListener("mouseenter", () => setDotLeave(false));
+
+    document
+      .querySelector("body")
+      .addEventListener("mouseleave", () => setDotLeave(true));
+
+    document
+      .querySelector("body")
+      .addEventListener("mousedown", () => setDotClick(true));
+
+    document
+      .querySelector("body")
+      .addEventListener("mouseup", () => setDotClick(false));
+  }, []);
+
   return (
     <>
       <div
@@ -10,7 +35,7 @@ export default function Cursor({ dotPosition, dotLeave, dotClick }) {
           top: dotPosition.y,
           left: dotPosition.x,
           opacity: dotLeave ? 0 : 1,
-          padding: dotClick ? "26px" : "16px"
+          padding: dotClick ? "26px" : "12px",
         }}
         className={style.cursor}
       ></div>

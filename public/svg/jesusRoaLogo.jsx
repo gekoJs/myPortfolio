@@ -1,6 +1,30 @@
-export default function MyLogo({fill, changeHover}) {
+import { useSelector } from "react-redux";
+import { hoverOnOff } from "@/Redux/hoverSlice";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+
+export default function MyLogo() {
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state.isHover.hoverButton);
+
+  useEffect(() => {
+    console.log("soy el estado", state);
+  }, [dispatch]);
+
+  const [hover, setHover] = useState();
+
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469 600" className="myLogo" onMouseEnter={changeHover} onMouseLeave={changeHover}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 469 600"
+      className="myLogo"
+      onMouseEnter={() => dispatch(hoverOnOff(true))}
+      onMouseLeave={() => dispatch(hoverOnOff(false))}
+      style={{
+        fill: state ? "#fff" : "#f00"
+      }}
+    >
       <title>JesusRoa</title>
       <g id="Capa_2" data-name="Capa 2">
         <g id="Capa_1-2" data-name="Capa 1">
