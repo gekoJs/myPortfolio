@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeReducer from "./themeSlice";
-import hoverSlice from "./hoverSlice";
+import animateTrigger from "./animateTrigger";
+
 export const store = configureStore({
   reducer: {
-    themeDisplayed: themeReducer,
-    isHover: hoverSlice
+    animations: animateTrigger
   },
 });
