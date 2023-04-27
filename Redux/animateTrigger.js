@@ -4,6 +4,7 @@ const initialState = {
   hoverButtonLogo: false,
   hoverButtonMenu: false,
   hoverButtonTheme: false,
+  hoverWorkCard: false,
   hoverMenu: false,
   menu: false,
   theme: "",
@@ -24,6 +25,9 @@ export const animateTrigger = createSlice({
     hoverMenu: (state, action) => {
       state.hoverMenu = action.payload;
     },
+    hoverWorkCard: (state, action) => {
+      state.hoverWorkCard = action.payload;
+    },
     changeTheme: (state, action) => {
       state.theme = action.payload;
     },
@@ -37,6 +41,7 @@ export const {
   hoverOnOffMenu,
   hoverOnOffTheme,
   hoverMenu,
+  hoverWorkCard,
   changeTheme,
   showMenu,
 } = animateTrigger.actions;

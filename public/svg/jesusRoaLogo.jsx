@@ -15,7 +15,7 @@ export default function MyLogo() {
       onMouseEnter={() => dispatch(hoverOnOffLogo(true))}
       onMouseLeave={() => dispatch(hoverOnOffLogo(false))}
       style={{
-        fill: state ? "#fff" : "#f00"
+        fill: state ? "#fff" : "#f00",
       }}
     >
       <title>JesusRoa</title>

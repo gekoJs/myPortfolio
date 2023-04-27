@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999999;
+  z-index: var(--zIndexMenu);
   ul {
     height: 400px;
     display: flex;
