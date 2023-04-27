@@ -1,4 +1,5 @@
 .cursor {
+  z-index: var(--zIndexCursor);
   padding: 12px;
   border-radius: 100px;
   border: 2px solid black;
@@ -7,10 +8,12 @@
   pointer-events: none;
   transition: all .15s;
   transition-property: top, left, opacity, padding;
-  z-index: 99999;
+}
+.hover{
+  background: black;
 }
 .dot {
-  z-index: 99999;
+  z-index: calc(var(--zIndexCursor) + 1);
   position: absolute;
   width: 4px;
   height: 4px;

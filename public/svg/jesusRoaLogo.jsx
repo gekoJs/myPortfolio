@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { hoverOnOffLogo } from "@/Redux/animateTrigger";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 
 export default function MyLogo() {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ export default function MyLogo() {
       onMouseEnter={() => dispatch(hoverOnOffLogo(true))}
       onMouseLeave={() => dispatch(hoverOnOffLogo(false))}
       style={{
-        fill: state ? "#fff" : "#f00"
+        fill: state ? "#fff" : "#f00",
       }}
     >
       <title>JesusRoa</title>

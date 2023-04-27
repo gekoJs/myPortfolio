@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root{
+    --zIndexCursor: 10;
+    --zIndexNav: 100;
+    --zIndexMenu: 1000;
+    --zIndexWorkCard: 1000;
+    --borderRadius: 12px;
     --color: #1f1f1f;
     --fill: #1f1f1f;
 }

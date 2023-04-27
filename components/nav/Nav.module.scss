@@ -3,7 +3,7 @@
   padding: 0 80px;
   position: fixed;
   top: 96px;
-  z-index: 999999;
+  z-index: var(--zIndexNav);
   nav {
       width: inherit;
       display: flex;

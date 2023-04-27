@@ -7,7 +7,7 @@
     background-image: url("/noise.png");
     background-size: 200px;
     background-repeat: repeat;
-    z-index: 999;
+    z-index: 100000;
     pointer-events: none;
     animation: grain 7s steps(10) infinite;
 }
