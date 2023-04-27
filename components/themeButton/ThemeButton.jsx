@@ -2,12 +2,12 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useDispatch } from "react-redux";
-import { changeTheme } from "@/Redux/themeSlice";
+import { changeTheme } from "@/Redux/animateTrigger";
 import { useSelector } from "react-redux";
 
 export default function ThemeButton() {
   const dispatch = useDispatch();
-  const themeDisplayed = useSelector(state=> state.themeDisplayed.theme)
+  const themeDisplayed = useSelector(state=> state.animations.theme)
 
   const { systemTheme, theme, setTheme } = useTheme();
 

@@ -1,13 +1,15 @@
 import MyLogo from "@/public/svg/jesusRoaLogo";
-import ThemeButton from "../themeButton/ThemeButton";
 import style from "./Nav.module.scss";
-
+import { BurguerMenu, ThemeButton } from "..";
 export default function Nav() {
   return (
     <header className={style.container}>
       <nav>
         <MyLogo />
-        <ThemeButton/>
+        <div className={style.wrapper}>
+          <ThemeButton />
+          <BurguerMenu/>
+        </div>
       </nav>
     </header>
   );

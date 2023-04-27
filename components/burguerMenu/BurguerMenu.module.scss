@@ -1,0 +1,27 @@
+.container {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lineWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  transition: all 0.5s;
+  transition-property: width, transform, opacity;
+  border-radius: 100px;
+  border: 2px solid black;
+}
+.dotHover {
+  width: 34px;
+}
+.dotLeave {
+  opacity: 0;
+}

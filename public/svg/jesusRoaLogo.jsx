@@ -1,26 +1,20 @@
 import { useSelector } from "react-redux";
-import { hoverOnOff } from "@/Redux/hoverSlice";
+import { hoverOnOffLogo } from "@/Redux/animateTrigger";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function MyLogo() {
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.isHover.hoverButton);
-
-  useEffect(() => {
-    console.log("soy el estado", state);
-  }, [dispatch]);
-
-  const [hover, setHover] = useState();
+  const state = useSelector((state) => state.animations.hoverButtonLogo);
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 469 600"
       className="myLogo"
-      onMouseEnter={() => dispatch(hoverOnOff(true))}
-      onMouseLeave={() => dispatch(hoverOnOff(false))}
+      onMouseEnter={() => dispatch(hoverOnOffLogo(true))}
+      onMouseLeave={() => dispatch(hoverOnOffLogo(false))}
       style={{
         fill: state ? "#fff" : "#f00"
       }}
