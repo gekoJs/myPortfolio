@@ -1,17 +1,41 @@
 .container {
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-//   background-color: bisque;
-  z-index: 99999;
-  li {
-    overflow: hidden;
-    div {
-      transition: transform 0.5s;
+  z-index: 9999999;
+  ul {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+  }
+}
+.divLi {
+  overflow: hidden;
+}
+.li {
+  width: fit-content;
+  font-family: "Bebas Neue";
+  font-size: 80px;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: transform .2s;
+  div {
+    transition: transform 0.5s;
+
+    span {
+      font-size: 40px;
+      position: relative;
+      top: -10px;
     }
+  }
+  &:hover {
+    transform: translateY(0px);
+    color: #fff;
   }
 }

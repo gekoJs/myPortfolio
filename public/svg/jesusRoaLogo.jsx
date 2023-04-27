@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { hoverOnOffLogo } from "@/Redux/animateTrigger";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 
 export default function MyLogo() {
   const dispatch = useDispatch();

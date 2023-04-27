@@ -1,7 +1,7 @@
 import style from "./Menu.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { showMenu } from "@/Redux/animateTrigger";
+import { hoverMenu, showMenu } from "@/Redux/animateTrigger";
 
 export default function Menu() {
   const displayMenu = useSelector((state) => state.animations.menu);
@@ -18,19 +18,28 @@ export default function Menu() {
   return (
     <div className={style.container}>
       <ul>
-        {menuLinks.map((e) => {
+        {menuLinks.map((e, i) => {
           return (
-            <li>
-              <div
-                onClick={() => dispatch(showMenu(false))}
-                style={{
-                  transform: displayMenu ? "translateY(0)" : "translateY(110%)",
-                  transitionDelay: displayMenu ? ".3s" : "0s",
-                }}
-              >
-                <Link href={e.link}>{e.name}</Link>
-              </div>
-            </li>
+            <div className={`${style.divLi} menu`} key={i}>
+              <li className={style.li}>
+                <div
+                  onClick={() => dispatch(showMenu(false))}
+                  style={{
+                    transform: displayMenu
+                      ? "translateY(0)"
+                      : "translateY(110%)",
+                    transitionDelay: displayMenu ? ".3s" : "0s",
+                  }}
+                  onMouseEnter={()=> dispatch(hoverMenu(true))}
+                  onMouseLeave={()=> dispatch(hoverMenu(false))}
+                >
+                  <Link href={e.link}>
+                    <span>{i}. </span>
+                    {e.name}
+                  </Link>
+                </div>
+              </li>
+            </div>
           );
         })}
       </ul>

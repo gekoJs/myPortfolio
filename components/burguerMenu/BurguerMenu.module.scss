@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 .lineWrapper {
   height: 100%;
@@ -21,6 +22,7 @@
 }
 .dotHover {
   width: 34px;
+  border: 2px solid white;
 }
 .dotLeave {
   opacity: 0;
