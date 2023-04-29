@@ -18,11 +18,11 @@
   transition: all 0.5s;
   transition-property: width, transform, opacity;
   border-radius: 100px;
-  border: 2px solid black;
+  border: 2px solid var(--fill);
 }
 .dotHover {
   width: 34px;
-  border: 2px solid white;
+  border: 2px solid var(--fillHov);
 }
 .dotLeave {
   opacity: 0;
