@@ -2,7 +2,7 @@
   z-index: var(--zIndexCursor);
   padding: 12px;
   border-radius: 100px;
-  border: 2px solid black;
+  border: 2px solid var(--fill);
   position: absolute;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -10,7 +10,7 @@
   transition-property: top, left, opacity, padding;
 }
 .hover{
-  background: black;
+  background: var(--fill);
 }
 .dot {
   z-index: calc(var(--zIndexCursor) + 1);
@@ -18,7 +18,7 @@
   width: 4px;
   height: 4px;
   border-radius: 100px;
-  background-color: black;
+  background-color: var(--fill);
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: all 0.06s;

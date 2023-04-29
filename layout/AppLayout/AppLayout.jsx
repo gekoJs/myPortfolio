@@ -8,14 +8,13 @@ export default function AppLayout({ children }) {
   const themeDisplayed = useSelector((state) => state.animations.theme);
 
   return (
-    <div theme={themeDisplayed}>
+    <div theme={themeDisplayed} className={style.container}>
       <div>
         <Nav />
         <Menu />
         {children}
-        {/* <Noise /> */}
+        <Noise />
         <Cursor />
-        <Footer />
       </div>
     </div>
   );
