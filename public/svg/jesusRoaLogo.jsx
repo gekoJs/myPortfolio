@@ -2,29 +2,51 @@ import { useSelector } from "react-redux";
 import { hoverOnOffLogo } from "@/Redux/animateTrigger";
 import { useDispatch } from "react-redux";
 import { background, useMediaQuery } from "@chakra-ui/react";
+import { cursorHover } from "@/helpers";
+import { useState } from "react";
+
 export default function MyLogo() {
   const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.animations.hoverButtonLogo);
+  const themeDisplayed = useSelector((state) => state.animations.theme);
+
+  const [isHoverMenu, setisHoverMenu] = useState(true);
+  const handleHoverLogo = () => {
+    cursorHover({
+      padding: isHoverMenu ? "22px" : "12px",
+      background:
+        isHoverMenu && themeDisplayed === "light"
+          ? "var(--color)"
+          : isHoverMenu && themeDisplayed === "dark"
+          ? "var(--fill)"
+          : "transparent",
+      mixBlendMode: "difference",
+    });
+    setisHoverMenu(!isHoverMenu);
+  };
 
   return (
     <div
       style={{
         borderRadius: "100px",
         padding: "10px 15px",
+        zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 0,
       }}
-      onMouseEnter={() => dispatch(hoverOnOffLogo(true))}
-      onMouseLeave={() => dispatch(hoverOnOffLogo(false))}
+      onMouseEnter={() => {
+        dispatch(hoverOnOffLogo(true));
+        isLargerThan770 && handleHoverLogo();
+      }}
+      onMouseLeave={() => {
+        dispatch(hoverOnOffLogo(false));
+        isLargerThan770 && handleHoverLogo();
+      }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 469 600"
         className="myLogo"
-        style={{
-          fill: state && isLargerThan770 && "var(--fillHov)",
-        }}
       >
         <title>JesusRoa</title>
         <g id="Capa_2" data-name="Capa 2">

@@ -8,6 +8,7 @@
   pointer-events: none;
   transition: all .15s;
   transition-property: top, left, opacity, padding;
+  // mix-blend-mode: difference;
 }
 .hover{
   background: var(--fill);

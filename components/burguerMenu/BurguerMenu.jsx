@@ -5,10 +5,13 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
 
+import { cursorHover } from "@/helpers";
+
 export default function BurguerMenu() {
   const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
   const dispatch = useDispatch();
   const isClicked = useSelector((state) => state.animations.menu);
+  const themeDisplayed = useSelector((state) => state.animations.theme);
   const isHover = useSelector((state) => state.animations.hoverButtonMenu);
 
   const lengthening =
@@ -21,16 +24,41 @@ export default function BurguerMenu() {
       ? `${style.dot} ${style.dotLeave}`
       : `${style.dot}`;
 
+  const [isHoverMenu, setisHoverMenu] = useState(true);
+  const handleHoverMenu = () => {
+    cursorHover({
+      padding: isHoverMenu ? "22px" : "12px",
+      background:
+        isHoverMenu && themeDisplayed === "light"
+          ? "var(--color)"
+          : isHoverMenu && themeDisplayed === "dark"
+          ? "var(--fill)"
+          : "transparent",
+      mixBlendMode: "difference",
+    });
+    setisHoverMenu(!isHoverMenu);
+  };
+
   return (
     <div
-      onMouseEnter={() => dispatch(hoverOnOffMenu(true))}
-      onMouseLeave={() => dispatch(hoverOnOffMenu(false))}
+      onMouseEnter={() => {
+        isLargerThan770 && handleHoverMenu();
+        dispatch(hoverOnOffMenu(true));
+      }}
+      onMouseLeave={() => {
+        isLargerThan770 && handleHoverMenu();
+        dispatch(hoverOnOffMenu(false));
+      }}
       onClick={() => {
         isClicked === true
           ? dispatch(showMenu(false))
           : dispatch(showMenu(true));
       }}
-      style={{ padding: "20px", borderRadius: "100px",  }}
+      style={{
+        padding: "20px",
+        borderRadius: "100px",
+        zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 0,
+      }}
     >
       <div className={style.container}>
         <div className={style.lineWrapper}>
