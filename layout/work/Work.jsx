@@ -47,7 +47,7 @@ export default function Work() {
                   transform: textAnimation
                     ? "translateY(100%)"
                     : "translateY(0)",
-                  transitionDelay: !textAnimation ? ".3s" : "0s",
+                  transitionDelay: !textAnimation ? `${i*.1}s` : "0s",
                 }}
               >
                 <div className={style.imgWrapper}>

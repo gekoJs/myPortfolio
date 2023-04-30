@@ -11,8 +11,9 @@
 :root {
   --zIndexCursor: 10;
   --zIndexNav: 100;
-  --zIndexMenu: 1000;
-  --zIndexWorkCard: 1000;
+  --zIndexHome: 1000;
+  --zIndexMenu: 10000;
+  --zIndexWorkCard: 10000;
   --borderRadius: 12px;
   --background: #f1f6f9;
   --color: #394867;

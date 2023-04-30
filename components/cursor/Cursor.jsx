@@ -1,8 +1,10 @@
 import style from "./Cursor.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "@chakra-ui/react";
+
+export let refCursor;
 export default function Cursor() {
   const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
 
@@ -52,17 +54,23 @@ export default function Cursor() {
         .querySelector("body")
         .addEventListener("mouseup", () => setDotClick(false));
   }, []);
+  
+
+  const themeDisplayed = useSelector((state) => state.animations.theme);
+
+  refCursor = useRef();
 
   return (
     <>
       {isLargerThan770 && (
         <>
           <div
+            ref={refCursor}
             style={{
               top: dotPosition.y,
               left: dotPosition.x,
               opacity: dotLeave ? 0 : 1,
-              padding: dotClick || isTrue ? "36px" : "12px",
+              padding: dotClick  ? "36px" : "12px",
             }}
             className={changeClass}
           ></div>
