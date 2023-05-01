@@ -14,7 +14,7 @@ export default function Menu() {
     { name: "HOME", link: "/" },
     { name: "WORK", link: "/work" },
     { name: "ABOUT", link: "/about" },
-    { name: "CONTACT", link: "/" },
+    { name: "CONTACT", link: "/contact" },
   ];
   const [isLargerThan750] = useMediaQuery("(max-width: 750px)");
   const [isLargerThan450] = useMediaQuery("(max-width: 450px)");

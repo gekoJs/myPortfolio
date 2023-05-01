@@ -1,0 +1,105 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+.pillarWrapper {
+  position: absolute;
+  transition: transform 0.8s linear;
+  width: 500px;
+  height: 600px;
+}
+.pillarWrapperOne {
+  bottom: -10%;
+  left: -10%;
+}
+.pillarWrapperTwo {
+  bottom: -20%;
+  right: 12%;
+}
+.pillarWrapperThree {
+  top: -22%;
+  left: 22%;
+}
+.pillarWrapperFour {
+  top: -32%;
+  right: -4%;
+}
+.pillar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  transition: transform 0.8s ease-in-out;
+}
+.pillarOne {
+  background: url("/svg/PillarOne.svg") no-repeat center;
+  animation: PillarOne 80s infinite ease-in-out;
+}
+.pillarOneLight {
+  background: url("/svg/PillarOneLight.svg") no-repeat center;
+  animation: PillarOne 80s infinite ease-in-out;
+}
+.pillarTwo {
+  background: url("/svg/PillarTwo.svg") no-repeat center;
+  animation: PillarTwo 60s infinite ease-in-out;
+}
+.pillarTwoLight {
+  background: url("/svg/PillarTwoLight.svg") no-repeat center;
+  animation: PillarTwo 60s infinite ease-in-out;
+}
+.pillarThree {
+  background: url("/svg/PillarThree.svg") no-repeat center;
+  animation: PillarThree 50s infinite ease-in-out;
+}
+.pillarThreeLight {
+  background: url("/svg/PillarThreeLight.svg") no-repeat center;
+  animation: PillarThree 50s infinite ease-in-out;
+}
+.pillarFour {
+  background: url("/svg/PillarFour.svg") no-repeat center;
+  animation: PillarFour 30s infinite ease-in-out;
+}
+.pillarFourLight {
+  background: url("/svg/PillarFourLight.svg") no-repeat center;
+  animation: PillarFour 30s infinite ease-in-out;
+}
+
+@keyframes PillarOne {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+}
+@keyframes PillarTwo {
+  0%,
+  100% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+@keyframes PillarThree {
+  0%,
+  100% {
+    transform: rotate(16deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+@keyframes PillarFour {
+  0%,
+  100% {
+    transform: rotate(16deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
