@@ -1,4 +1,4 @@
-import { Nav, Footer, Cursor } from "../../components/index";
+import { Nav, Footer, Cursor, AnimatedPillar } from "../../components/index";
 import { Menu } from "..";
 import Noise from "@/styles/noise/Noise";
 import { useSelector } from "react-redux";
@@ -13,7 +13,8 @@ export default function AppLayout({ children }) {
         <Nav />
         <Menu />
         {children}
-        {/* <Noise /> */}
+        <Noise />
+        <AnimatedPillar/>
         <Cursor />
       </div>
     </div>

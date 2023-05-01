@@ -82,7 +82,7 @@ export default function Home() {
             style={{
               fontSize:
                 (isSmallerThan370 && "35px") || (isSmallerThan560 && "40px"),
-              zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 0,
+              zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 2,
               position: "relative",
             }}
           >
@@ -98,7 +98,7 @@ export default function Home() {
                 handleHoverWave();
               }}
             >
-              <h1>JESUS ROA</h1>
+              <h1 className={style.homeName}>JESUS ROA</h1>
               <div className={style.waveWrapper}>
                 <div
                   className={classWave}
@@ -109,7 +109,7 @@ export default function Home() {
           </m.div>
         </div>
 
-        <div className={style.overflow}>
+        <div className={style.overflow} style={{zIndex: 2}}>
           <m.div
             variants={variants}
             initial="close"
@@ -142,7 +142,7 @@ export default function Home() {
             className={style.degree}
             style={{
               fontSize: isSmallerThan560 && "25px",
-              zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 0,
+              zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 2,
               position: "relative",
             }}
           >
@@ -158,7 +158,7 @@ export default function Home() {
                 handleHoverWave();
               }}
             >
-              <h3>WEB DEVELOPER</h3>
+              <h3 className={style.homeDegree}>WEB DEVELOPER</h3>
               <div className={style.waveWrapper}>
                 <div
                   className={classWave}
