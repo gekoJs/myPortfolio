@@ -1,8 +1,9 @@
 import style from "./Cursor.module.scss";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "@chakra-ui/react";
+import { changePosition } from "@/Redux/animateTrigger";
 
 export let refCursor;
 export default function Cursor() {
@@ -21,22 +22,27 @@ export default function Cursor() {
   const isHoverWorkCard = useSelector(
     (state) => state.animations.hoverWorkCard
   );
+  const hoverCursor = useSelector((state) => state.animations.hoverCursor);
 
   const isTrue =
     isHoverLogo ||
     isHoverMenu ||
     isHoverTheme ||
     isHoverMenu2 ||
-    isHoverWorkCard;
+    isHoverWorkCard ||
+    hoverCursor;
+
   const changeClass =
     isHoverLogo ||
     isHoverMenu ||
     isHoverTheme ||
     isHoverMenu2 ||
-    isHoverWorkCard
+    isHoverWorkCard ||
+    hoverCursor
       ? `${style.cursor} ${style.hover}`
       : `${style.cursor}`;
 
+  const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener("mousemove", (e) =>
       setDotPosition({ x: e.pageX, y: e.pageY })
@@ -54,7 +60,9 @@ export default function Cursor() {
         .querySelector("body")
         .addEventListener("mouseup", () => setDotClick(false));
   }, []);
-  
+  useEffect(() => {
+    dispatch(changePosition(dotPosition));
+  }, [dotPosition]);
 
   const themeDisplayed = useSelector((state) => state.animations.theme);
 
@@ -70,7 +78,7 @@ export default function Cursor() {
               top: dotPosition.y,
               left: dotPosition.x,
               opacity: dotLeave ? 0 : 1,
-              padding: dotClick  ? "36px" : "12px",
+              padding: dotClick ? "36px" : "12px",
             }}
             className={changeClass}
           ></div>

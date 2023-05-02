@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Router from "next/router"
+import * as Layout from "@/layout";
 export default function About() {
   return (
     <>
@@ -9,8 +10,7 @@ export default function About() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/vercel.svg" />
       </Head>
-      <h1>Hi im About</h1>
-      <button onClick={()=> Router.back()}>Back</button>
+      <Layout.About/>
     </>
   );
 }

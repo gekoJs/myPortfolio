@@ -7,7 +7,9 @@ const initialState = {
   hoverWorkCard: false,
   hoverMenu: false,
   menu: false,
+  position: {x: 0, y:0},
   theme: "",
+  hoverCursor: false,
 };
 export const animateTrigger = createSlice({
   name: "animations",
@@ -33,6 +35,12 @@ export const animateTrigger = createSlice({
     },
     showMenu: (state, action) => {
       state.menu = action.payload;
+    },
+    changePosition: (state, action) => {
+      state.position = action.payload;
+    },
+    hoverCursor: (state, action) => {
+      state.hoverCursor = action.payload;
     }
   },
 });
@@ -44,5 +52,7 @@ export const {
   hoverWorkCard,
   changeTheme,
   showMenu,
+  changePosition,
+  hoverCursor
 } = animateTrigger.actions;
 export default animateTrigger.reducer;
