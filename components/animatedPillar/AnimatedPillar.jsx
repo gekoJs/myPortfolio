@@ -3,10 +3,11 @@ import style from "./AnimatedPillar.module.scss";
 import { useState } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
 export default function AnimatedPillar() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const handleMouseMove = (e) => {
-    setPosition({ x: e.clientX, y: e.clientY });
-  };
+  // const [position, setPosition] = useState({ x: 0, y: 0 });
+  const position = useSelector(state=> state.animations.position)
+  // const handleMouseMove = (e) => {
+  //   setPosition({ x: e.clientX, y: e.clientY });
+  // };
 
   const theme = useSelector((state) => state.animations.theme);
 
@@ -23,7 +24,7 @@ export default function AnimatedPillar() {
   const [isLarguerThan750] = useMediaQuery("(max-width: 750px)");
   const [isLarguerThan550] = useMediaQuery("(max-width: 550px)");
   return (
-    <div className={style.container} onMouseMove={(e) => handleMouseMove(e)}>
+    <div className={style.container} >
       <div
         className={`${style.pillarWrapper} ${style.pillarWrapperOne}`}
         style={{

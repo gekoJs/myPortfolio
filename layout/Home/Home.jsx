@@ -59,14 +59,6 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Jesús Roa</title>
-        <meta name="description" content="Home" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/jesusRoaLogo.svg" />
-      </Head>
-
       <div className={style.container} theme={themeDisplayed}>
         <div className={style.overflow}>
           <m.div
@@ -169,77 +161,5 @@ export default function Home() {
           </m.div>
         </div>
       </div>
-    </>
   );
-}
-
-{
-  /* <div className={`${style.container}`} theme={themeDisplayed}>
-        <div className={style.greeting}>
-          <h2
-            className={`${style.text} ${style.textName}`}
-            style={{
-              transform: textAnimation ? "translateY(100%)" : "translateY(0)",
-              transitionDelay: !textAnimation ? ".3s" : "0s",
-              fontSize: isLargerThan520 ? "32px" : isLargerThan930 ? "40px" :  "inherit"
-            }}
-          >
-            Hey i'm&nbsp;
-            <div
-              className={style.name}
-              onMouseEnter={handleHover}
-              onMouseLeave={handleHover}
-            >
-              JESUS ROA{" "}
-              <div className={style.wabeContainer}>
-                <div
-                  className={classWave}
-                  ref={referense}
-                  style={{ backgroundPositionX: position ,bottom: isLargerThan520 ? "15px": isLargerThan930 ? "20px" : "32px" }}
-                ></div>
-              </div>
-            </div>
-          </h2>
-        </div>
-        <div className={style.greeting}>
-          <h3
-            className={`${style.text} ${style.textName}`}
-            style={{
-              transform: textAnimation ? "translateY(100%)" : "translateY(0)",
-              transitionDelay: !textAnimation ? ".3s" : "0s",
-              fontSize: isLargerThan400 ? "24px" : isLargerThan520 ? "32px" : isLargerThan930 ? "40px" :  "inherit"
-            }}
-          >
-            i build things for the web
-          </h3>
-        </div>
-
-        <div className={style.description}>
-          <div
-            className={style.text}
-            style={{
-              transform: textAnimation ? "translateY(100%)" : "translateY(0)",
-              transitionDelay: !textAnimation ? ".3s" : "0s",
-              fontSize: isLargerThan520 ? "18px" : isLargerThan930 ? "20px" :  "inherit"
-            }}
-          >
-            i'm a&nbsp;
-            <div
-              className={style.name}
-              onMouseEnter={handleHover}
-              onMouseLeave={handleHover}
-            >
-              DEVELOPER
-              <div className={style.wabeContainer}>
-                <div
-                  className={classWaveTwo}
-                  ref={referense}
-                  style={{ backgroundPositionX: position  ,bottom: isLargerThan520 ? "8px": isLargerThan930 ? "10px" : "16px" }}
-                ></div>
-              </div>{" "}
-            </div>{" "}
-            &nbsp;full stack
-          </div>
-        </div>
-      </div> */
 }

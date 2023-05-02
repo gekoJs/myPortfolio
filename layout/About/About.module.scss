@@ -1,0 +1,113 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row-reverse;
+  z-index: 2;
+}
+.wrapper {
+  padding: 0 20px 0 90px;
+  width: 100%;
+  min-width: 700px;
+  margin:  160px auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+  
+.contentWrapper {
+  .title {
+    font-family: "inzdeco";
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .description {
+    font-family: "Montserrat";
+    font-size: 20px;
+    min-width: 320px;
+    width: 75%;
+  }
+}
+}
+.hr {
+  width: 100%;
+  border: 1px solid var(--fill);
+  margin-left: 24px;
+}
+.imgContainer {
+  width: 100%;
+  z-index: 2;
+  max-width: 500px;
+  min-width: 300px;
+  height: 600px;
+  display: flex;
+  align-self: flex-start;
+  border-radius: 0 0 0 40px;
+  overflow: hidden;
+  background-color: var(--background);
+  justify-content: center;
+  &:hover .imgLeft {
+    transform: translate(1px, -20px);
+  }
+  &:hover .imgRight {
+    transform: translate(-1px, -20px);
+  }
+  &:hover .img {
+    opacity: 1;
+  }
+  .img {
+    height: 105%;
+    transition: all 0.4s;
+    transition-property: transform opacity;
+    object-fit: cover;
+    opacity: 0.4;
+  }
+  .imgRight {
+    transform: translate(0px, -40px);
+  }
+  .imgLeft {
+    transform: translate(1px, 0px);
+  }
+}
+.tecnologiesContainer{
+    margin-top: 40px;
+    .titleTec{
+        display: flex;
+        align-items: center;
+        font-family: "inzdeco";
+        font-size: 40px;
+    }
+}
+.iconContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 20px auto;
+}
+.iconWrapper {
+    background-color: var(--fillOp);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 800px;
+    transition: transform .2s;
+    transition-property: transform, background;
+    cursor: pointer;
+  .icon {
+    width: 50px;
+  }
+  &:hover{
+    transform: translateY(-4px);
+    background-color: var(--fill);
+  }
+}
