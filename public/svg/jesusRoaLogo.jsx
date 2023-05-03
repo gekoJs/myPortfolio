@@ -4,21 +4,21 @@ import { useDispatch } from "react-redux";
 import { useMediaQuery } from "@chakra-ui/react";
 
 export default function MyLogo() {
-//----------------------------
-//----------------------------
-const dispatch = useDispatch();
-const themeDisplayed = useSelector((state) => state.animations.theme);
-//----------------------------
-//----------------------------
-const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
-//----------------------------
-//----------------------------
+  //----------------------------
+  //----------------------------
+  const dispatch = useDispatch();
+  const themeDisplayed = useSelector((state) => state.animations.theme);
+  //----------------------------
+  //----------------------------
+  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //----------------------------
+  //----------------------------
   return (
     <div
       style={{
         borderRadius: "100px",
         padding: "10px 15px",
-        zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 0,
+        zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 3,
       }}
       onMouseEnter={() => {
         isLargerThan770 && dispatch(hoverCursor(true));

@@ -126,6 +126,7 @@ export default function About() {
                   duration: 0.8,
                   delay: isMenuOpen ? 0 : 0.4,
                 }}
+                style={{zIndex: 2}}
               >
                 <img
                   className={`${style.imgLeft} ${style.img}`}
@@ -142,6 +143,7 @@ export default function About() {
                   duration: 0.8,
                   delay: isMenuOpen ? 0 : 0.4,
                 }}
+                style={{zIndex: 2}}
               >
                 <img
                   className={`${style.imgRight} ${style.img}`}

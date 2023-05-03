@@ -18,6 +18,7 @@
   --background: #f1f6f9;
   --color: #394867;
   --fill: #212a3e;
+  --backgroundOp: #212a3e93;
   --fillHov: #f1f6f9;
   --colorHov: #f1f6f9;
   --input: #f1f6f941;
@@ -38,4 +39,7 @@
 }
 .myLogo:focus{
     fill: var(--color);
+}
+body{
+  overflow-x: hidden;
 }
