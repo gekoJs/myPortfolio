@@ -9,11 +9,14 @@ export default function Nav() {
   return (
     <header
       className={style.container}
-      style={{ top: isLargerThan990 && "48px" }}
+      style={{ top: isLargerThan990 && "48px", mixBlendMode: "difference" }}
     >
-      <nav style={{
-        padding: isLargerThan990 && "0 40px"
-      }}>
+      <nav
+        style={{
+          padding: isLargerThan990 && "0 40px",
+          mixBlendMode: "difference",
+        }}
+      >
         <Link href={"/"}>
           <MyLogo />
         </Link>
