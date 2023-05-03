@@ -1,48 +1,22 @@
 import style from "./Cursor.module.scss";
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { changePosition } from "@/Redux/animateTrigger";
+//******************************************************
+//******************************************************
 
-export let refCursor;
 export default function Cursor() {
-  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //---------------------------
+  //---------------------------
+  const dispatch = useDispatch();
+  const hoverCursor = useSelector((state) => state.animations.hoverCursor);
 
   const [dotPosition, setDotPosition] = useState({ x: "50%", y: "50%" });
   const [dotLeave, setDotLeave] = useState(true);
   const [dotClick, setDotClick] = useState(false);
-
-  const isHoverLogo = useSelector((state) => state.animations.hoverButtonLogo);
-  const isHoverMenu = useSelector((state) => state.animations.hoverButtonMenu);
-  const isHoverTheme = useSelector(
-    (state) => state.animations.hoverButtonTheme
-  );
-  const isHoverMenu2 = useSelector((state) => state.animations.hoverMenu);
-  const isHoverWorkCard = useSelector(
-    (state) => state.animations.hoverWorkCard
-  );
-  const hoverCursor = useSelector((state) => state.animations.hoverCursor);
-
-  const isTrue =
-    isHoverLogo ||
-    isHoverMenu ||
-    isHoverTheme ||
-    isHoverMenu2 ||
-    isHoverWorkCard ||
-    hoverCursor;
-
-  const changeClass =
-    isHoverLogo ||
-    isHoverMenu ||
-    isHoverTheme ||
-    isHoverMenu2 ||
-    isHoverWorkCard ||
-    hoverCursor
-      ? `${style.cursor} ${style.hover}`
-      : `${style.cursor}`;
-
-  const dispatch = useDispatch();
+  //---------------------------
+  //---------------------------
   useEffect(() => {
     window.addEventListener("mousemove", (e) =>
       setDotPosition({ x: e.pageX, y: e.pageY })
@@ -60,25 +34,30 @@ export default function Cursor() {
         .querySelector("body")
         .addEventListener("mouseup", () => setDotClick(false));
   }, []);
+
   useEffect(() => {
     dispatch(changePosition(dotPosition));
   }, [dotPosition]);
-
-  const themeDisplayed = useSelector((state) => state.animations.theme);
-
-  refCursor = useRef();
-
+  //---------------------------
+  //---------------------------
+  const changeClass = hoverCursor
+    ? `${style.cursor} ${style.hover}`
+    : `${style.cursor}`;
+  //---------------------------
+  //---------------------------
+  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //---------------------------
+  //---------------------------
   return (
     <>
       {isLargerThan770 && (
         <>
           <div
-            ref={refCursor}
             style={{
               top: dotPosition.y,
               left: dotPosition.x,
               opacity: dotLeave ? 0 : 1,
-              padding: dotClick ? "36px" : "12px",
+              padding: dotClick && "36px",
             }}
             className={changeClass}
           ></div>
@@ -87,7 +66,7 @@ export default function Cursor() {
               top: dotPosition.y,
               left: dotPosition.x,
               opacity: dotLeave ? 0 : 1,
-              background: isTrue && "var(--fillHov)",
+              background: hoverCursor && "var(--fillHov)",
             }}
             className={style.dot}
           ></div>

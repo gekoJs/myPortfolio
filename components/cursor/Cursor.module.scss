@@ -8,10 +8,11 @@
   pointer-events: none;
   transition: all .15s;
   transition-property: top, left, opacity, padding;
-  // mix-blend-mode: difference;
+  mix-blend-mode: difference;
 }
 .hover{
   background: var(--fill);
+  padding: 20px;
 }
 .dot {
   z-index: calc(var(--zIndexCursor) + 1);

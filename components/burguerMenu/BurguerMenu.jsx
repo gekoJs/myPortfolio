@@ -1,59 +1,43 @@
-import { hoverOnOffMenu, showMenu, showMenuOff } from "@/Redux/animateTrigger";
 import style from "./BurguerMenu.module.scss";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
-
-import { cursorHover } from "@/helpers";
+import { useDispatch, useSelector } from "react-redux";
+import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 
 export default function BurguerMenu() {
-  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //--------------------------------
+  //--------------------------------
   const dispatch = useDispatch();
   const isClicked = useSelector((state) => state.animations.menu);
   const themeDisplayed = useSelector((state) => state.animations.theme);
-  const isHover = useSelector((state) => state.animations.hoverButtonMenu);
-
-  const lengthening =
-    isHover && isLargerThan770
-      ? `${style.dot} ${style.dotHover}`
-      : `${style.dot}`;
+  //--------------------------------
+  //--------------------------------
+  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //--------------------------------
+  //--------------------------------
+  const lengthening = isLargerThan770
+    ? `${style.dot} ${style.dotHover}`
+    : `${style.dot}`;
 
   const displayed =
-    (isLargerThan770 && isHover) || isClicked
-      ? `${style.dot} ${style.dotLeave}`
-      : `${style.dot}`;
-
-  const [isHoverMenu, setisHoverMenu] = useState(true);
-  const handleHoverMenu = () => {
-    cursorHover({
-      padding: isHoverMenu ? "22px" : "12px",
-      background:
-        isHoverMenu && themeDisplayed === "light"
-          ? "var(--color)"
-          : isHoverMenu && themeDisplayed === "dark"
-          ? "var(--fill)"
-          : "transparent",
-      mixBlendMode: "difference",
-    });
-    setisHoverMenu(!isHoverMenu);
-  };
-
+    isLargerThan770 && isClicked
+      ? `${style.dot} ${style.dotHov} ${style.dotLeave}`
+      : `${style.dot} ${style.dotHov}`;
+  //--------------------------------
+  //--------------------------------
   return (
     <div
       onMouseEnter={() => {
-        isLargerThan770 && handleHoverMenu();
-        dispatch(hoverOnOffMenu(true));
+        isLargerThan770 && dispatch(hoverCursor(true));
       }}
       onMouseLeave={() => {
-        isLargerThan770 && handleHoverMenu();
-        dispatch(hoverOnOffMenu(false));
+        isLargerThan770 && dispatch(hoverCursor(false));
       }}
       onClick={() => {
         isClicked === true
           ? dispatch(showMenu(false))
           : dispatch(showMenu(true));
       }}
+      className={style.mainContainer}
       style={{
         padding: "20px",
         borderRadius: "100px",

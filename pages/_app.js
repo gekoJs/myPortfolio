@@ -17,11 +17,11 @@ export default function App({ Component, pageProps }) {
         attribute="class"
         disableTransitionOnChange
       >
-        <div className={`${font.className}`}>
-          <AppLayout>
-            <Component {...pageProps} />
-          </AppLayout>
-        </div>
+          <div className={`${font.className}`}>
+            <AppLayout>
+              <Component {...pageProps} />
+            </AppLayout>
+          </div>
       </ThemeProvider>
     </Provider>
   );

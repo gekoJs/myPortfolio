@@ -1,29 +1,34 @@
 import style from "./Menu.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
-import { hoverMenu, showMenu } from "@/Redux/animateTrigger";
-import { useEffect, useState } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
+import Link from "next/link";
+
 export default function Menu() {
-  const displayMenu = useSelector((state) => state.animations.menu);
-
+  //----------------------------
+  //----------------------------
   const dispatch = useDispatch();
-
+  const displayMenu = useSelector((state) => state.animations.menu);
+  //----------------------------
+  //----------------------------
   const menuLinks = [
     { name: "HOME", link: "/" },
     { name: "WORK", link: "/work" },
     { name: "ABOUT", link: "/about" },
     { name: "CONTACT", link: "/contact" },
   ];
-  const [isLargerThan750] = useMediaQuery("(max-width: 750px)");
-  const [isLargerThan450] = useMediaQuery("(max-width: 450px)");
 
   const variants = {
     open: { opacity: 1, y: "0" },
     close: { opacity: 0, y: "100%" },
   };
-
+  //----------------------------
+  //----------------------------
+  const [isLargerThan750] = useMediaQuery("(max-width: 750px)");
+  const [isLargerThan450] = useMediaQuery("(max-width: 450px)");
+  //----------------------------
+  //----------------------------
   return (
     <div
       className={style.container}
@@ -48,14 +53,8 @@ export default function Menu() {
                   }}
                   delay={2}
                   onClick={() => dispatch(showMenu(false))}
-                  // style={{
-                  //   transform: displayMenu
-                  //     ? "translateY(0)"
-                  //     : "translateY(110%)",
-                  //   transitionDelay: displayMenu ? ".3s" : "0s",
-                  // }}
-                  onMouseEnter={() => dispatch(hoverMenu(true))}
-                  onMouseLeave={() => dispatch(hoverMenu(false))}
+                  onMouseEnter={() => dispatch(hoverCursor(true))}
+                  onMouseLeave={() => dispatch(hoverCursor(false))}
                 >
                   <Link href={e.link}>
                     <p
