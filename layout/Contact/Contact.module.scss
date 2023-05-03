@@ -1,0 +1,140 @@
+.container {
+  padding: 140px 12px 80px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.titleContainer {
+  z-index: 4;
+  width: 75%;
+  margin: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  font-family: "inzdeco";
+  font-size: 80px;
+}
+.formWrapper {
+  z-index: 4;
+  width: 100%;
+  max-width: 800px;
+  min-width: 320px;
+  border: 2px solid white;
+  border-radius: 12px;
+  position: relative;
+  margin: 48px auto;
+  padding: 24px 24px 48px 24px;
+  .h2 {
+    width: fit-content;
+    margin: 0 0 0 48px;
+    padding: 0 12px;
+    position: absolute;
+    top: -10%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    font-family: "inzdeco";
+    font-size: 40px;
+  }
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat";
+    label {
+      font-size: 20px;
+      margin: 24px 12px 0;
+    }
+    input {
+      background: var(--input);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .buttonSend {
+      font-family: "Montserrat";
+      font-weight: 600;
+      width: 75%;
+      margin: 48px auto 0;
+      border-radius: 12px;
+      background: var(--color);
+      padding: 12px;
+      transition: all 0.4s ease;
+      transition-property: background, color, transform;
+      &:hover {
+        background: var(--fill);
+        color: var(--color);
+        transform: translateY(-4px);
+      }
+    }
+  }
+}
+.otherMethodsWrapper {
+  z-index: 4;
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  margin: auto;
+  border-radius: 12px;
+  border: 2px solid var(--fill);
+  padding: 12px;
+  position: relative;
+  .h2 {
+    width: fit-content;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -38px;
+    font-family: "inzdeco";
+    font-size: 30px;
+    background-color: var(--background);
+    img {
+      transition: transform 0.8s ease;
+      margin: 0 12px 0 0;
+      animation: ClickMe 1s ease infinite;
+      cursor: pointer;
+    }
+  }
+  .otherWrapper {
+    position: relative;
+    top: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .socialMediaIcons {
+      &:hover {
+        transform: translateY(-4px);
+      }
+    }
+  }
+}
+.hr {
+  width: 100%;
+  margin-left: 24px;
+}
+.img {
+  width: 50px;
+  height: 50px;
+  margin: 12px;
+}
+
+@keyframes ClickMe {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(16deg);
+  }
+  50% {
+    transform: rotate(-16deg);
+  }
+  60% {
+    transform: rotate(16deg);
+  }
+  70% {
+    transform: rotate(-16deg);
+  }
+}

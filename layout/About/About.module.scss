@@ -18,6 +18,7 @@
   z-index: 2;
   
 .contentWrapper {
+  overflow: hidden;
   .title {
     font-family: "inzdeco";
     font-size: 80px;
@@ -39,13 +40,9 @@
   margin-left: 24px;
 }
 .imgContainer {
-  width: 100%;
   z-index: 2;
-  max-width: 500px;
-  min-width: 300px;
   height: 600px;
   display: flex;
-  align-self: flex-start;
   border-radius: 0 0 0 40px;
   overflow: hidden;
   background-color: var(--background);
@@ -68,8 +65,10 @@
   }
   .imgRight {
     transform: translate(0px, -40px);
+    object-position: left;
   }
   .imgLeft {
+    object-position: right;
     transform: translate(1px, 0px);
   }
 }

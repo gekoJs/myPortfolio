@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useDispatch } from "react-redux";
-import { changeTheme, hoverOnOffTheme } from "@/Redux/animateTrigger";
+import { changeTheme, hoverCursor } from "@/Redux/animateTrigger";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "@chakra-ui/react";
-import { cursorHover } from "@/helpers";
+
 export default function ThemeButton() {
-  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //----------------------------------
   const dispatch = useDispatch();
   const themeDisplayed = useSelector((state) => state.animations.theme);
-  const isHover = useSelector((state) => state.animations.hoverButtonTheme);
-
+  //----------------------------------
+  //----------------------------------
   const { systemTheme, theme, setTheme } = useTheme();
-
   useEffect(() => {
     dispatch(changeTheme(theme === "system" ? systemTheme : theme));
   }, [theme]);
@@ -20,32 +19,19 @@ export default function ThemeButton() {
   const handleClick = () => {
     themeDisplayed === "light" ? setTheme("dark") : setTheme("light");
   };
-
-  const [isHoverMenu, setisHoverMenu] = useState(true);
-  const handleHoverTheme = () => {
-    cursorHover({
-      padding: isHoverMenu ? "22px" : "12px",
-      background:
-        isHoverMenu && themeDisplayed === "light"
-          ? "var(--color)"
-          : isHoverMenu && themeDisplayed === "dark"
-          ? "var(--fill)"
-          : "transparent",
-      mixBlendMode: "difference",
-    });
-    setisHoverMenu(!isHoverMenu);
-  };
-
+  //----------------------------------
+  //----------------------------------
+  const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
+  //----------------------------------
+  //----------------------------------
   return (
     <div
       onClick={handleClick}
       onMouseEnter={() => {
-        dispatch(hoverOnOffTheme(true));
-        isLargerThan770 && handleHoverTheme();
+        isLargerThan770 && dispatch(hoverCursor(true));
       }}
       onMouseLeave={() => {
-        dispatch(hoverOnOffTheme(false));
-        isLargerThan770 && handleHoverTheme();
+        isLargerThan770 && dispatch(hoverCursor(false));
       }}
       style={{
         padding: "10px 20px",
@@ -59,7 +45,7 @@ export default function ThemeButton() {
           viewBox="0 96 960 960"
           width="28"
           style={{
-            fill: isHover && isLargerThan770 ? "var(--fill)" : "var(--fill)",
+            fill: isLargerThan770 ? "var(--fill)" : "var(--fill)",
             cursor: "pointer",
           }}
         >
@@ -72,7 +58,7 @@ export default function ThemeButton() {
           viewBox="0 96 960 960"
           width="28"
           style={{
-            fill: isHover && isLargerThan770 ? "var(--fill)" : "var(--fill)",
+            fill: isLargerThan770 ? "var(--fill)" : "var(--fill)",
             cursor: "pointer",
           }}
         >

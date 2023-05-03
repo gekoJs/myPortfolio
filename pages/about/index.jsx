@@ -8,7 +8,7 @@ export default function About() {
         <title>Jesús Roa | About</title>
         <meta name="description" content="Home" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/vercel.svg" />
+        <link rel="icon" href="/jesusRoaLogo.svg" />
       </Head>
       <Layout.About/>
     </>
