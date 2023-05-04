@@ -42,6 +42,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     font-family: "Montserrat";
     label {
       font-size: 20px;
@@ -103,6 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    overflow: hidden;
     .socialMediaIcons {
       &:hover {
         transform: translateY(-4px);
@@ -137,4 +139,9 @@
   70% {
     transform: rotate(-16deg);
   }
+}
+
+.error{
+  margin-left: 12px;
+  color: #e04242;
 }
