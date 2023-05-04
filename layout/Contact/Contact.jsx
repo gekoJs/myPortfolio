@@ -1,12 +1,29 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Contact.module.scss";
 import { useEffect, useState } from "react";
-import { hoverCursor } from "@/Redux/animateTrigger";
+import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import { useMediaQuery } from "@chakra-ui/react";
-export default function Contact() {
-  const [isClicked, setIsClicked] = useState(false);
-  const dispatch = useDispatch();
+import { motion as m } from "framer-motion";
+import { validatingInput } from "@/helpers";
+////////////////////////////////////////////////
 
+export default function Contact() {
+  //-----------------------------
+  //-----------------------------
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector((state) => state.animations.menu);
+  const [isClicked, setIsClicked] = useState(false);
+  const [inputValues, setInputValues] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [inputErrors, setInputErrors] = useState({});
+  useEffect(() => {
+    dispatch(showMenu(false));
+  }, []);
+  //-----------------------------
+  //-----------------------------
   const contactPlatforms = [
     {
       name: "Whatsapp",
@@ -24,19 +41,98 @@ export default function Contact() {
       href: "https://www.instagram.com/jdanielroa/",
     },
   ];
-
+  const variants = {
+    hide: {
+      width: 0,
+      opacity: 0,
+      pointerEvents: "none",
+    },
+    showTitle: {
+      width: "75%",
+      opacity: 1,
+      pointerEvents: "auto",
+    },
+    hideInputLabel: {
+      x: "100px",
+      opacity: 0,
+      pointerEvents: "none",
+    },
+    showInputLabel: {
+      x: "0",
+      opacity: 1,
+      pointerEvents: "auto",
+    },
+    hideSMI: {
+      y: "100px",
+      opacity: 0,
+      pointerEvents: "none",
+    },
+    showSMI: {
+      y: "0",
+      opacity: isClicked ? 1 : 0,
+      pointerEvents: "auto",
+    },
+    showInput: {
+      opacity: 1,
+      width: "100%",
+      pointerEvents: "auto",
+    },
+    opacityOff: {
+      opacity: 0,
+      pointerEvents: "none",
+    },
+    opacityOn: {
+      opacity: 1,
+      pointerEvents: "auto",
+    },
+  };
+  //-----------------------------
+  //-----------------------------
+  const handleInputChange = (e) => {
+    setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+    setInputErrors(
+      validatingInput({ ...inputValues, [e.target.name]: e.target.value })
+    );
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (Object.keys(inputErrors).length) {
+      return console.log("sorry");
+    }
+    setInputValues({
+      name: "",
+      email: "",
+      message: "",
+    });
+    setInputErrors({});
+    console.log("enviado");
+  };
+  //-----------------------------
+  //-----------------------------
   const [isSmallerThan1000] = useMediaQuery("(max-width: 1000px)");
   const [isSmallerThan505] = useMediaQuery("(max-width: 505px)");
   const [isSmallerThan400] = useMediaQuery("(max-width: 400px)");
+  //-----------------------------
+  //-----------------------------
   return (
-    <div className={style.container}>
-      <h1
+    <main className={style.container}>
+      <m.h1
+        variants={variants}
+        animate={isMenuOpen ? "hide" : "showTitle"}
+        initial="showTitle"
+        exit={"hide"}
+        transition={{
+          type: "spring",
+          duration: 0.8,
+          delay: isMenuOpen ? 0 : 0.2,
+        }}
         className={style.titleContainer}
         style={{
           fontSize:
             (isSmallerThan505 && "40px") || (isSmallerThan1000 && "50px"),
-            width: isSmallerThan505 && "100%",
-            justifyContent: isSmallerThan505 && "center",
+          width: isSmallerThan505 && "100%",
+          justifyContent: isSmallerThan505 && "center",
+          overflow: "hidden",
         }}
       >
         KEEP IN TOUCH{" "}
@@ -46,12 +142,26 @@ export default function Contact() {
           }}
           className={style.hr}
         />
-      </h1>
+      </m.h1>
 
-      <div className={style.formWrapper}>
+      <m.div
+        variants={variants}
+        animate={isMenuOpen ? "opacityOff" : "opacityOn"}
+        initial="opacityOn"
+        exit={"opacityOff"}
+        transition={{
+          type: "spring",
+          duration: 0.8,
+          delay: isMenuOpen ? 0.8 : 0.2,
+        }}
+        className={style.formWrapper}
+      >
         <h2
           className={style.h2}
-          style={{ fontSize: isSmallerThan505 && "28px", margin: isSmallerThan400 && "0" }}
+          style={{
+            fontSize: isSmallerThan505 && "28px",
+            margin: isSmallerThan400 && "0",
+          }}
         >
           <img
             className={style.img}
@@ -61,28 +171,145 @@ export default function Contact() {
           />
           SAY HELLO!
         </h2>
-        <form action="" className={style.form}>
-          <label>Whats your name?</label>
-          <input
+        <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
+          <m.label
+            variants={variants}
+            animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+            initial="showInputLabel"
+            exit={"hideInputLabel"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0.6 : 0.2,
+            }}
+          >
+            Whats your name?
+          </m.label>
+          <m.input
+            variants={variants}
+            animate={isMenuOpen ? "hide" : "showInput"}
+            initial="showInput"
+            exit={"hide"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0.6 : 0.2,
+            }}
             type="text"
+            name="name"
             onMouseEnter={() => dispatch(hoverCursor(true))}
             onMouseLeave={() => dispatch(hoverCursor(false))}
+            onChange={(e) => handleInputChange(e)}
             placeholder="Ramon Carlos Boyer Garcia Sanchez Santa Maria..."
           />
-          <label>Write your email</label>
-          <input
+          {inputErrors.name && (
+            <m.p
+              variants={variants}
+              animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+              initial="showInputLabel"
+              exit={"hideInputLabel"}
+              transition={{
+                type: "spring",
+                duration: 0.8,
+                delay: isMenuOpen ? 0.6 : 0.2,
+              }}
+              className={style.error}
+            >
+              {inputErrors.name}
+            </m.p>
+          )}
+          <m.label
+            variants={variants}
+            animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+            initial="showInputLabel"
+            exit={"hideInputLabel"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0.6 : 0.4,
+            }}
+          >
+            Write your email
+          </m.label>
+          <m.input
+            variants={variants}
+            animate={isMenuOpen ? "hide" : "showInput"}
+            initial="showInput"
+            exit={"hide"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0.6 : 0.4,
+            }}
             type="text"
+            name="email"
+            onChange={(e) => handleInputChange(e)}
             onMouseEnter={() => dispatch(hoverCursor(true))}
             onMouseLeave={() => dispatch(hoverCursor(false))}
             placeholder="ramoncarlos@gmail.com"
           />
-          <label>What do you want to tell me?</label>
-          <input
+          {inputErrors.email && (
+            <m.p
+              variants={variants}
+              animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+              initial="showInputLabel"
+              exit={"hideInputLabel"}
+              transition={{
+                type: "spring",
+                duration: 0.8,
+                delay: isMenuOpen ? 0.6 : 0.2,
+              }}
+              className={style.error}
+            >
+              {inputErrors.email}
+            </m.p>
+          )}
+          <m.label
+            variants={variants}
+            animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+            initial="showInputLabel"
+            exit={"hideInputLabel"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0.6 : 0.6,
+            }}
+          >
+            What do you want to tell me?
+          </m.label>
+          <m.input
+            variants={variants}
+            animate={isMenuOpen ? "hide" : "showInput"}
+            initial="showInput"
+            exit={"hide"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0.6 : 0.6,
+            }}
             type="text"
+            name="message"
+            onChange={(e) => handleInputChange(e)}
             onMouseEnter={() => dispatch(hoverCursor(true))}
             onMouseLeave={() => dispatch(hoverCursor(false))}
             placeholder="CAAARMEEEEN"
           />
+          {inputErrors.message && (
+            <m.p
+              variants={variants}
+              animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+              initial="showInputLabel"
+              exit={"hideInputLabel"}
+              transition={{
+                type: "spring",
+                duration: 0.8,
+                delay: isMenuOpen ? 0.6 : 0.2,
+              }}
+              className={style.error}
+            >
+              {inputErrors.message}
+            </m.p>
+          )}
           <button
             className={style.buttonSend}
             type="submit"
@@ -92,9 +319,20 @@ export default function Contact() {
             Send email
           </button>
         </form>
-      </div>
+      </m.div>
 
-      <div className={style.otherMethodsWrapper}>
+      <m.div
+        variants={variants}
+        animate={isMenuOpen ? "opacityOff" : "opacityOn"}
+        initial="opacityOn"
+        exit={"opacityOff"}
+        transition={{
+          type: "spring",
+          duration: 0.8,
+          delay: isMenuOpen ? 0.8 : 0.2,
+        }}
+        className={style.otherMethodsWrapper}
+      >
         <h2
           className={style.h2}
           style={{ fontSize: isSmallerThan505 && "28px" }}
@@ -124,7 +362,16 @@ export default function Contact() {
         >
           {contactPlatforms.map((e, i) => {
             return (
-              <a
+              <m.a
+                variants={variants}
+                animate={isMenuOpen ? "hideSMI" : "showSMI"}
+                initial="showSMI"
+                exit={"hideSMI"}
+                transition={{
+                  type: "spring",
+                  duration: 0.8,
+                  delay: isMenuOpen ? 0 : i * 0.1,
+                }}
                 href={e.href}
                 target="_blank"
                 onMouseEnter={() => dispatch(hoverCursor(true))}
@@ -133,6 +380,7 @@ export default function Contact() {
                 style={{
                   transition: "opacity .2s ease, transform .2s ease",
                   opacity: isClicked ? 1 : 0,
+                  pointerEvents: !isClicked && "none",
                   cursor: "pointer",
                 }}
                 className={style.socialMediaIcons}
@@ -143,11 +391,11 @@ export default function Contact() {
                   src={e.src}
                   alt={e.name}
                 />
-              </a>
+              </m.a>
             );
           })}
         </div>
-      </div>
-    </div>
+      </m.div>
+    </main>
   );
 }

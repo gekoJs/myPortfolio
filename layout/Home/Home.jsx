@@ -3,7 +3,7 @@ import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { hoverCursor } from "@/Redux/animateTrigger";
+import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 
 export default function Home() {
   //--------------------------
@@ -25,6 +25,9 @@ export default function Home() {
       return () => clearInterval(intervalId);
     }
   }, [isHoverWave]);
+  useEffect(() => {
+    dispatch(showMenu(false));
+  }, []);
   //--------------------------
   //--------------------------
   const [isSmallerThan560] = useMediaQuery("(max-width: 560px)");

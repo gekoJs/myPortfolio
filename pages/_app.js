@@ -4,25 +4,34 @@ import { ThemeProvider } from "next-themes";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 import { AppLayout } from "@/layout";
-const font = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
+import { QueryClientProvider, QueryClient } from "react-query";
+// const font = Poppins({
+//   subsets: ["latin"],
+//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+// });
 
 export default function App({ Component, pageProps }) {
+  const queryClient = new QueryClient();
+  const router = useRouter();
   return (
     <Provider store={store}>
-      <ThemeProvider
-        enableSystem={true}
-        attribute="class"
-        disableTransitionOnChange
-      >
-          <div className={`${font.className}`}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider
+          enableSystem={true}
+          attribute="class"
+          disableTransitionOnChange
+        >
+          {/* <div className={`${font.className}`}> */}
+          <AnimatePresence mode="wait" key={router.route}>
             <AppLayout>
               <Component {...pageProps} />
             </AppLayout>
-          </div>
-      </ThemeProvider>
+          </AnimatePresence>
+          {/* </div> */}
+        </ThemeProvider>
+      </QueryClientProvider>
     </Provider>
   );
 }

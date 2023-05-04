@@ -1,14 +1,22 @@
 import Image from "next/image";
 import style from "./Work.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { hoverCursor } from "@/Redux/animateTrigger";
+import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
+import { useEffect } from "react";
+//////////////////////////////////
 
 export default function Work() {
+  //----------------------------
+  //----------------------------
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.animations.menu);
-
+  useEffect(() => {
+    dispatch(showMenu(false));
+  }, []);
+  //----------------------------
+  //----------------------------
   const works = [
     {
       name: "PI-Dogs",
@@ -32,7 +40,6 @@ export default function Work() {
         "El perro (Canis familiaris o Canis lupus familiaris, dependiendo de si se lo considera una especie por derecho propio o una subespecie del lobo llamado perro doméstico o can y en algunos lugares coloquialmente llamado chucho,5 tuso,6 choco,7 entre otros; es un mamífero carnívoro de la familia de los cánidos, que constituye una especie del género Canis.",
     },
   ];
-  const [isSmallerThan570px] = useMediaQuery("(max-width: 570px)");
   const variants = {
     showCard: {
       opacity: 1,
@@ -43,15 +50,20 @@ export default function Work() {
       y: "100%",
     },
   };
+  //----------------------------
+  //----------------------------
+  const [isSmallerThan570px] = useMediaQuery("(max-width: 570px)");
+  //----------------------------
+  //----------------------------
   return (
     <main className={style.mainContainer}>
       <div className={`${style.overflow} ${style.mainOverflow}`}>
         <m.div
           className={style.mainWrapper}
           variants={variants}
-          animate={isMenuOpen ? {opacity: 0} : {opacity: 1}}
-          initial={{opacity: 1}}
-          exit={{opacity: 0}}
+          animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{
             type: "spring",
             duration: 0.4,
@@ -67,7 +79,7 @@ export default function Work() {
           <div className={style.cardsContainer}>
             {works.map((e, i) => {
               return (
-                <div className={style.overflow}>
+                <div className={style.overflow} key={i}>
                   <m.div
                     variants={variants}
                     animate={isMenuOpen ? "hideCard" : "showCard"}
@@ -81,7 +93,6 @@ export default function Work() {
                     onMouseEnter={() => dispatch(hoverCursor(true))}
                     onMouseLeave={() => dispatch(hoverCursor(false))}
                     className={style.cardWrapper}
-                    key={i}
                   >
                     <img src={e.image} alt={e.name} className={style.img} />
                     <div className={style.cardTitleWrapper}>

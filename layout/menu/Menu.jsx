@@ -52,7 +52,7 @@ export default function Menu() {
                     delay: 0.1 * i,
                   }}
                   delay={2}
-                  onClick={() => dispatch(showMenu(false))}
+                  // onClick={() => dispatch(showMenu(false))}
                   onMouseEnter={() => dispatch(hoverCursor(true))}
                   onMouseLeave={() => dispatch(hoverCursor(false))}
                 >
