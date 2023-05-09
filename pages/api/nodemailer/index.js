@@ -7,6 +7,7 @@ export default async function mailHandler(req, res) {
   switch (method) {
     case POST:
       return await handleSendMail(req, res);
+      
     default:
       return res.status(400).json({
         message: "400 Bad Request: invalid method",

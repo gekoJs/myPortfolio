@@ -6,7 +6,7 @@ export default function About() {
     <>
       <Head>
         <title>Jesús Roa | About</title>
-        <meta name="description" content="Home" />
+        <meta name="description" content="About me" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/jesusRoaLogo.svg" />
       </Head>

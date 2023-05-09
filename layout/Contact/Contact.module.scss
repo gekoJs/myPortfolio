@@ -52,6 +52,10 @@
       background: var(--input);
       border-radius: 12px;
       padding: 12px;
+      &:focus-visible{
+        outline: none;
+        background: var(--inputFocus);
+      }
     }
     .buttonSend {
       font-family: "Montserrat";

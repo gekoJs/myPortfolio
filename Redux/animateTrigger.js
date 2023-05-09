@@ -5,6 +5,7 @@ const initialState = {
   position: {x: 0, y:0},
   theme: "",
   hoverCursor: false,
+  displayPilarAnimation: false,
 };
 export const animateTrigger = createSlice({
   name: "animations",
@@ -21,6 +22,9 @@ export const animateTrigger = createSlice({
     },
     hoverCursor: (state, action) => {
       state.hoverCursor = action.payload;
+    },
+    displayPilarAnimation: (state, action) => {
+      state.displayPilarAnimation = action.payload;
     }
   },
 });
@@ -28,6 +32,7 @@ export const {
   changeTheme,
   showMenu,
   changePosition,
-  hoverCursor
+  hoverCursor,
+  displayPilarAnimation
 } = animateTrigger.actions;
 export default animateTrigger.reducer;

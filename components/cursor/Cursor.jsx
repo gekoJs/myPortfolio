@@ -18,9 +18,10 @@ export default function Cursor() {
   //---------------------------
   //---------------------------
   useEffect(() => {
-    window.addEventListener("mousemove", (e) =>
-      setDotPosition({ x: e.pageX, y: e.pageY })
-    ),
+    window.addEventListener("mousemove", (e) => {
+      setDotPosition({ x: e.pageX, y: e.pageY });
+      setDotLeave(false);
+    }),
       document
         .querySelector("body")
         .addEventListener("mouseenter", () => setDotLeave(false)),

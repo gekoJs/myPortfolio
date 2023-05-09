@@ -5,4 +5,5 @@ export {
   PUT as PUT,
   DELETE as DELETE,
 } from "./api_helpers/crud_methods/index";
-export {default as contactFormTemplate} from "./email_templates/contactFormTemplate"
+export { default as contactFormTemplate } from "./email_templates/contactFormTemplate";
+export { postEmail } from "./axios/index";

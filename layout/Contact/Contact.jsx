@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import style from "./Contact.module.scss";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
-import { validatingInput } from "@/helpers";
+import { contactFormTemplate, postEmail, validatingInput } from "@/helpers";
+import { useMutation } from "react-query";
 ////////////////////////////////////////////////
 
 export default function Contact() {
@@ -86,6 +87,38 @@ export default function Contact() {
       pointerEvents: "auto",
     },
   };
+  const inputs = [
+    {
+      inputTitle: "Write your email adress",
+      inputPlaceHolder: "ramoncarlos@gmail.com",
+      inputName: "email",
+      inputErr: inputErrors.email,
+    },
+    {
+      inputTitle: "Whats your name?",
+      inputPlaceHolder: "Ramon Carlos Boyer Garcia Sanchez Santa Maria...",
+      inputName: "name",
+      inputErr: inputErrors.name,
+    },
+    {
+      inputTitle: "What do you want to tell me?",
+      inputPlaceHolder: "CAAARMEEEEN",
+      inputName: "message",
+      inputErr: inputErrors.message,
+    },
+  ];
+  const emailData = {
+    to: "daniroa.js@gmail.com",
+    from: `${inputValues.name} <${inputValues.email}>`,
+    subject: `Hola, soy ${inputValues.name} y me gustaria comunicarme contigo!`,
+    text: "Quisiera comunicarme contigo",
+    html: contactFormTemplate(
+      inputValues.name,
+      inputValues.email,
+      inputValues.message
+    ),
+  };
+  const existError = !!Object.keys(inputErrors).length;
   //-----------------------------
   //-----------------------------
   const handleInputChange = (e) => {
@@ -96,17 +129,30 @@ export default function Contact() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Object.keys(inputErrors).length) {
-      return console.log("sorry");
+    if (!Object.values(inputValues).every((e) => e.length)) {
+      setInputErrors({
+        ...inputErrors,
+        inputLength: "All spaces need to be completed",
+      });
+      return;
     }
+    if (Object.keys(inputErrors).length) {
+      return;
+    }
+    emailMutation.mutate(emailData);
     setInputValues({
       name: "",
       email: "",
       message: "",
     });
     setInputErrors({});
-    console.log("enviado");
   };
+
+  const emailMutation = useMutation({
+    mutationFn: postEmail,
+    onSuccess: () => console.log("email send"),
+  });
+  const { isLoading: emailLoading, isError: emailError } = emailMutation;
   //-----------------------------
   //-----------------------------
   const [isSmallerThan1000] = useMediaQuery("(max-width: 1000px)");
@@ -155,168 +201,104 @@ export default function Contact() {
           delay: isMenuOpen ? 0.8 : 0.2,
         }}
         className={style.formWrapper}
+        style={{ borderColor: existError && "#e04242" }}
       >
         <h2
           className={style.h2}
           style={{
             fontSize: isSmallerThan505 && "28px",
             margin: isSmallerThan400 && "0",
+            color: existError && "#e04242",
           }}
         >
-          <img
+          <svg
+            style={{
+              width: isSmallerThan505 && "40px",
+              fill: existError ? "#e04242" : "var(--fill)",
+            }}
             className={style.img}
-            style={{ width: isSmallerThan505 && "40px" }}
-            src="/svg/icons/gmail.svg"
-            alt=""
-          />
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            height="30mm"
+            image-rendering="optimizeQuality"
+            shape-rendering="geometricPrecision"
+            text-rendering="geometricPrecision"
+            viewBox="0 0 3000 3000"
+            width="30mm"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M1500 0c828 0 1500 672 1500 1500s-672 1500-1500 1500S0 2328 0 1500 672 0 1500 0zm751 902l-1456-4 728 578zm-900 735l-636-500v950h1573v-930l-590 482c-200 163-140 160-347-2zM723 716h1569c127 0 230 104 230 230v1100c0 127-104 230-230 230H723c-127 0-230-104-230-230V946c0-127 104-230 230-230z" />
+          </svg>
           SAY HELLO!
         </h2>
+
         <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
-          <m.label
-            variants={variants}
-            animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-            initial="showInputLabel"
-            exit={"hideInputLabel"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0.6 : 0.2,
-            }}
-          >
-            Whats your name?
-          </m.label>
-          <m.input
-            variants={variants}
-            animate={isMenuOpen ? "hide" : "showInput"}
-            initial="showInput"
-            exit={"hide"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0.6 : 0.2,
-            }}
-            type="text"
-            name="name"
-            onMouseEnter={() => dispatch(hoverCursor(true))}
-            onMouseLeave={() => dispatch(hoverCursor(false))}
-            onChange={(e) => handleInputChange(e)}
-            placeholder="Ramon Carlos Boyer Garcia Sanchez Santa Maria..."
-          />
-          {inputErrors.name && (
-            <m.p
-              variants={variants}
-              animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-              initial="showInputLabel"
-              exit={"hideInputLabel"}
-              transition={{
-                type: "spring",
-                duration: 0.8,
-                delay: isMenuOpen ? 0.6 : 0.2,
-              }}
-              className={style.error}
-            >
-              {inputErrors.name}
-            </m.p>
-          )}
-          <m.label
-            variants={variants}
-            animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-            initial="showInputLabel"
-            exit={"hideInputLabel"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0.6 : 0.4,
-            }}
-          >
-            Write your email
-          </m.label>
-          <m.input
-            variants={variants}
-            animate={isMenuOpen ? "hide" : "showInput"}
-            initial="showInput"
-            exit={"hide"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0.6 : 0.4,
-            }}
-            type="text"
-            name="email"
-            onChange={(e) => handleInputChange(e)}
-            onMouseEnter={() => dispatch(hoverCursor(true))}
-            onMouseLeave={() => dispatch(hoverCursor(false))}
-            placeholder="ramoncarlos@gmail.com"
-          />
-          {inputErrors.email && (
-            <m.p
-              variants={variants}
-              animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-              initial="showInputLabel"
-              exit={"hideInputLabel"}
-              transition={{
-                type: "spring",
-                duration: 0.8,
-                delay: isMenuOpen ? 0.6 : 0.2,
-              }}
-              className={style.error}
-            >
-              {inputErrors.email}
-            </m.p>
-          )}
-          <m.label
-            variants={variants}
-            animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-            initial="showInputLabel"
-            exit={"hideInputLabel"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0.6 : 0.6,
-            }}
-          >
-            What do you want to tell me?
-          </m.label>
-          <m.input
-            variants={variants}
-            animate={isMenuOpen ? "hide" : "showInput"}
-            initial="showInput"
-            exit={"hide"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0.6 : 0.6,
-            }}
-            type="text"
-            name="message"
-            onChange={(e) => handleInputChange(e)}
-            onMouseEnter={() => dispatch(hoverCursor(true))}
-            onMouseLeave={() => dispatch(hoverCursor(false))}
-            placeholder="CAAARMEEEEN"
-          />
-          {inputErrors.message && (
-            <m.p
-              variants={variants}
-              animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-              initial="showInputLabel"
-              exit={"hideInputLabel"}
-              transition={{
-                type: "spring",
-                duration: 0.8,
-                delay: isMenuOpen ? 0.6 : 0.2,
-              }}
-              className={style.error}
-            >
-              {inputErrors.message}
-            </m.p>
-          )}
+          {inputs.map((e, i) => (
+            <Fragment key={i}>
+              <m.label
+                variants={variants}
+                animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+                initial="showInputLabel"
+                exit={"hideInputLabel"}
+                transition={{
+                  type: "spring",
+                  duration: 0.8,
+                  delay: isMenuOpen && i * 0.2,
+                }}
+              >
+                {e.inputTitle}
+              </m.label>
+              <m.input
+                variants={variants}
+                animate={isMenuOpen ? "hide" : "showInput"}
+                initial="showInput"
+                exit={"hide"}
+                transition={{
+                  type: "spring",
+                  duration: 0.8,
+                  delay: isMenuOpen ? 0.6 : i * 0.2,
+                }}
+                type="text"
+                name={e.inputName}
+                value={inputValues[e.inputName]}
+                onMouseEnter={() => dispatch(hoverCursor(true))}
+                onMouseLeave={() => dispatch(hoverCursor(false))}
+                onChange={(e) => handleInputChange(e)}
+                placeholder={e.inputPlaceHolder}
+                autocomplete="off"
+              />
+              {e.inputErr && (
+                <m.p
+                  variants={variants}
+                  animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
+                  initial="showInputLabel"
+                  exit={"hideInputLabel"}
+                  transition={{
+                    type: "spring",
+                    duration: 0.8,
+                    delay: isMenuOpen ? 0.6 : i * 0.2,
+                  }}
+                  className={style.error}
+                >
+                  {e.inputErr}
+                </m.p>
+              )}
+            </Fragment>
+          ))}
           <button
             className={style.buttonSend}
             type="submit"
+            style={{ background: existError && "#e04242" }}
             onMouseEnter={() => dispatch(hoverCursor(true))}
             onMouseLeave={() => dispatch(hoverCursor(false))}
           >
-            Send email
+            {emailLoading
+              ? "LOADING"
+              : emailError
+              ? "ERROR"
+              : existError
+              ? "Complete all inputs"
+              : "Send email"}
           </button>
         </form>
       </m.div>
