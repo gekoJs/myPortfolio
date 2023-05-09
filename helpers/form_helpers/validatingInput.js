@@ -6,6 +6,8 @@ export default function validatingInput(input) {
     err.name = "What? your name has numbers??? .-.";
 
   if (!input.email) err.email = "I need your email so i can reach you";
+  else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.email))
+    err.email = "Write a valid email please c:";
 
   if (!input.message) err.message = "Come on dont be shy, i dont bite :D";
   return err;

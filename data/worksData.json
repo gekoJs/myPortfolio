@@ -1,0 +1,69 @@
+[
+  {
+    "id": 1,
+    "title": "LOTUS",
+    "mainImage": "/png/lotus/lotusLogo.svg",
+    "year": "2023",
+    "team": [
+      "Jorge Mathez",
+      "Maximiliano Pogonza",
+      "Armando Isaac Garcia Del Rincon",
+      "Maria del Rocio Barrios",
+      "Marina Lopez",
+      "Jesús Daniel Roa Morales"
+    ],
+    "client": "Soy Henry",
+    "url": "https://lotus-git-development-armax7.vercel.app/",
+    "pageImages": [
+      {
+        "pageTitle": "Home",
+        "images": ["/png/lotus/homeLotus.jpg"]
+      },
+      {
+        "pageTitle": "Filters",
+        "images":["/png/lotus/filtersLotus.jpg"]
+      },
+      {
+        "pageTitle": "Car",
+        "images":["/png/lotus/carLotus.jpg","/png/lotus/carLotus2.jpg"]
+      },
+      {
+        "pageTitle": "Favorites",
+        "images":["/png/lotus/favoritesLotus.jpg"]
+      },
+      {
+        "pageTitle": "Details",
+        "images":["/png/lotus/detailLotus.jpg"]
+      },
+      {
+        "pageTitle": "Sign In & Sign Up",
+        "images":["/png/lotus/signInLotus.jpg","/png/lotus/signUpLotus.jpg"]
+      },
+      {
+        "pageTitle": "Footer",
+        "images":["/png/lotus/aboutUsLotus.jpg","/png/lotus/contactUsLotus.jpg"]
+      }
+    ],
+    "bgColor": "#ffd9d4",
+    "description": "Lotus tiene como objetivo ser un puente entre los artistas y sus compradores haciendo de la compra de arte en línea una experiencia fácil y agradable. Nuestra galería se compone de obras de todo tipo de artistas emergentes y consagrados, de diferentes estilos y en diferentes soportes. Cualquier usuario puede completar el formulario de solicitud de publicación de obra y comercializar con nosotros su creación. Nos esforzamos por brindar un excelente servicio al cliente y hacer que su experiencia de compra sea lo más satisfactoria posible."
+  },
+  {
+    "id": 2,
+    "title": "PAWIS",
+    "mainImage": "/png/pawis/pawisLogo.svg",
+    "year": "2022",
+    "team": [
+      "Jesús Daniel Roa Morales"
+    ],
+    "client": "Soy Henry",
+    "url": "https://lotus-git-development-armax7.vercel.app/",
+    "pageImages": [
+      {
+        "pageTitle": "Landing Page",
+        "images": ["/png/pawis/landingPage.jpeg"]
+      }
+    ],
+    "bgColor": "#ffd9d4",
+    "description": "Pawis es el nombre que decidi para el proyecto individual, fue la culminacion de una etapa en el bootcamp de Soy Henry, puse en practica tecnologias como React, Redux, SQL, Express, etc... Tuvo una duracion de 30 dias"
+  }
+]
