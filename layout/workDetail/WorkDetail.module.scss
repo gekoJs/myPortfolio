@@ -24,7 +24,7 @@
     width: 70%;
     height: 60%;
     border-radius: 0 80px 0 80px;
-    opacity: .6;
+    opacity: 0.6;
   }
 }
 .imgMainContainer {
@@ -48,6 +48,7 @@
   width: 100%;
   max-width: 1700px;
   margin: auto;
+  overflow: hidden;
   h1 {
     font-size: 80px;
     font-family: var(--fontFaTitles);
@@ -60,17 +61,12 @@
 .aboutPageContainer {
   display: grid;
   gap: 24px;
-  // justify-content: center;
-  // margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  // display: flex;
-  // flex-wrap: wrap;
-  // align-items: center;
-  // justify-content: center;
   margin-bottom: 40px;
   max-width: 1600px;
   margin: auto;
   .aboutSectionDescrip {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -110,15 +106,12 @@
       min-width: 200px;
       max-width: 202px;
     }
-    .aboutElementTitle620{
+    .aboutElementTitle620 {
       font-size: 32px;
       min-width: 120px;
     }
     .aboutElementDesc {
-      // min-width: 280px;
-
       width: 100%;
-
       font-size: 20px;
       align-self: center;
     }
@@ -143,10 +136,14 @@
     margin: 12px 0;
     background-color: var(--fill);
     border-radius: 12px;
-    img{
+    img {
       border-radius: 12px;
       object-fit: cover;
       object-position: top;
     }
   }
+}
+
+.overflow{
+  overflow: hidden;
 }

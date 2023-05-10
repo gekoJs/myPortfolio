@@ -20,6 +20,7 @@ export default function Contact() {
     message: "",
   });
   const [inputErrors, setInputErrors] = useState({});
+
   useEffect(() => {
     dispatch(showMenu(false));
   }, []);
@@ -140,19 +141,25 @@ export default function Contact() {
       return;
     }
     emailMutation.mutate(emailData);
-    setInputValues({
-      name: "",
-      email: "",
-      message: "",
-    });
-    setInputErrors({});
   };
 
   const emailMutation = useMutation({
     mutationFn: postEmail,
-    onSuccess: () => console.log("email send"),
+    onSuccess: () => {
+      setInputValues({
+        name: "",
+        email: "",
+        message: "",
+      });
+      setInputErrors({});
+    },
   });
-  const { isLoading: emailLoading, isError: emailError } = emailMutation;
+  const {
+    isLoading: emailLoading,
+    isError: emailError,
+    error,
+    isSuccess,
+  } = emailMutation;
   //-----------------------------
   //-----------------------------
   const [isSmallerThan1000] = useMediaQuery("(max-width: 1000px)");
@@ -201,20 +208,26 @@ export default function Contact() {
           delay: isMenuOpen ? 0.8 : 0.2,
         }}
         className={style.formWrapper}
-        style={{ borderColor: existError && "#e04242" }}
+        style={{
+          borderColor: (existError && "#e04242") || (isSuccess && "#49a049"),
+        }}
       >
         <h2
           className={style.h2}
           style={{
             fontSize: isSmallerThan505 && "28px",
             margin: isSmallerThan400 && "0",
-            color: existError && "#e04242",
+            color: (existError && "#e04242") || (isSuccess && "#49a049"),
           }}
         >
           <svg
             style={{
               width: isSmallerThan505 && "40px",
-              fill: existError ? "#e04242" : "var(--fill)",
+              fill: existError
+                ? "#e04242"
+                : isSuccess
+                ? "#49a049"
+                : "var(--fill)",
             }}
             className={style.img}
             clip-rule="evenodd"
@@ -288,7 +301,10 @@ export default function Contact() {
           <button
             className={style.buttonSend}
             type="submit"
-            style={{ background: existError && "#e04242" }}
+            style={{
+              background: (existError && "#e04242") || (isSuccess && "#49a049"),
+              pointerEvents: isSuccess && "none",
+            }}
             onMouseEnter={() => dispatch(hoverCursor(true))}
             onMouseLeave={() => dispatch(hoverCursor(false))}
           >
@@ -298,6 +314,8 @@ export default function Contact() {
               ? "ERROR"
               : existError
               ? "Complete all inputs"
+              : isSuccess
+              ? "Email Sent"
               : "Send email"}
           </button>
         </form>

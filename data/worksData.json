@@ -63,7 +63,7 @@
         "images": ["/png/pawis/landingPage.jpeg"]
       }
     ],
-    "bgColor": "#ffd9d4",
+    "bgColor": "#9e5cbd",
     "description": "Pawis es el nombre que decidi para el proyecto individual, fue la culminacion de una etapa en el bootcamp de Soy Henry, puse en practica tecnologias como React, Redux, SQL, Express, etc... Tuvo una duracion de 30 dias"
   }
 ]
