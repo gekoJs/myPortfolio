@@ -14,12 +14,8 @@ export default function BurguerMenu() {
   const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
   //--------------------------------
   //--------------------------------
-  const lengthening = isLargerThan770
-    ? `${style.dot} ${style.dotHover}`
-    : `${style.dot}`;
-
   const displayed =
-    isLargerThan770 && isClicked
+    isClicked
       ? `${style.dot} ${style.dotHov} ${style.dotLeave}`
       : `${style.dot} ${style.dotHov}`;
   //--------------------------------
@@ -47,7 +43,7 @@ export default function BurguerMenu() {
       <div className={style.container}>
         <div className={style.lineWrapper}>
           <div
-            className={lengthening}
+            className={`${style.dot} ${style.dotHover}`}
             style={{
               width: isClicked ? "34px" : "inherit",
               transform: isClicked
@@ -56,11 +52,11 @@ export default function BurguerMenu() {
             }}
           ></div>
           <div
-            className={lengthening}
+            className={`${style.dot} ${style.dotHover}`}
             style={{ opacity: isClicked ? 0 : 1 }}
           ></div>
           <div
-            className={lengthening}
+            className={`${style.dot} ${style.dotHover}`}
             style={{
               width: isClicked ? "34px" : "inherit",
               transform: isClicked
