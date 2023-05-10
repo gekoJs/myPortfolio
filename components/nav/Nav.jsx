@@ -3,9 +3,11 @@ import Link from "next/link";
 import style from "./Nav.module.scss";
 import { BurguerMenu, ThemeButton } from "..";
 import { useMediaQuery } from "@chakra-ui/react";
-export default function Nav() {
+
+export default function Nav(props) {
   const [isLargerThan600] = useMediaQuery("(max-width: 600px)");
   const [isLargerThan990] = useMediaQuery("(max-width: 990px)");
+
   return (
     <header
       className={style.container}

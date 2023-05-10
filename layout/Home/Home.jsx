@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 
-export default function Home() {
+export default function Home(props) {
   //--------------------------
   //--------------------------
   const dispatch = useDispatch();
@@ -45,6 +45,7 @@ export default function Home() {
   };
   //--------------------------
   //--------------------------
+
   return (
     <div className={style.container} theme={themeDisplayed}>
       <div className={style.overflow}>
