@@ -2,10 +2,12 @@ import style from "./Menu.module.scss";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
+import { hoverCursor } from "@/Redux/animateTrigger";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Menu() {
+  const router = useRouter();
   //----------------------------
   //----------------------------
   const dispatch = useDispatch();
@@ -25,8 +27,7 @@ export default function Menu() {
   };
   //----------------------------
   //----------------------------
-  const [isLargerThan750] = useMediaQuery("(max-width: 750px)");
-  const [isLargerThan450] = useMediaQuery("(max-width: 450px)");
+  const [isSmallerThan900] = useMediaQuery("(max-width: 900px)");
   //----------------------------
   //----------------------------
   return (
@@ -34,14 +35,11 @@ export default function Menu() {
       className={style.container}
       style={{ pointerEvents: displayMenu ? "auto" : "none" }}
     >
-      <ul>
+      <ul style={{ marginLeft: isSmallerThan900 && "8%" }}>
         {menuLinks.map((e, i) => {
           return (
             <div className={`${style.divLi}`} key={i}>
-              <li
-                className={style.li}
-                style={{ transform: isLargerThan450 && "translateY(0)" }}
-              >
+              <li className={style.li}>
                 <m.div
                   variants={variants}
                   initial="close"
@@ -53,28 +51,32 @@ export default function Menu() {
                   }}
                   onMouseEnter={() => dispatch(hoverCursor(true))}
                   onMouseLeave={() => dispatch(hoverCursor(false))}
+                  style={{ display: "flex" }}
                 >
                   <Link href={e.link}>
-                    <p
-                      className={style.p}
-                      style={{
-                        fontSize: isLargerThan450
-                          ? "46px"
-                          : isLargerThan750 && "50px",
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: isLargerThan450
-                            ? "24px"
-                            : isLargerThan750 && "32px",
-                        }}
-                      >
-                        {`0${i + 1}`}{" "}
-                      </span>
+                    <p className={style.p}>
+                      <span>{`0${i + 1}`} </span>
                       {e.name}
                     </p>
                   </Link>
+                  <span className={style.yourehere}>
+                    {router.pathname === e.link && (
+                      <p>&nbsp;
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 245.33 192.05"
+                        >
+                          <title>Recurso 1</title>
+                          <g id="Capa_2" data-name="Capa 2">
+                            <g id="Capa_1-2" data-name="Capa 1">
+                              <path d="M245.33,186c0,5.87-7.83,8.33-10.86,3.3a4.88,4.88,0,0,1-.52-1.14c-19.75-60.3-67.64-75.43-126.13-79.89a1.41,1.41,0,0,0-1.52,1.4v44.23a3,3,0,0,1-4.75,2.37L1.07,80.34a2.71,2.71,0,0,1,0-4.31L101,.5a2.48,2.48,0,0,1,4,1.87c.68,15.49,1.26,28.69,1.87,42.45a3.22,3.22,0,0,0,2.91,3.06c44.35,4.14,83.86,17.83,108.15,56.9,9,14.45,16.61,30.28,21.09,47,3.07,11.49,6.07,22.49,6.35,34.23Zm-147-87.72c46.75-.58,86.83,10.31,120.84,39.56a1.75,1.75,0,0,0,2.76-1.95c-21-56.19-65.72-77-123.9-78.65a2.49,2.49,0,0,1-2.43-2.48V21.54a2.13,2.13,0,0,0-3.41-1.69l-73.06,55a4.16,4.16,0,0,0,0,6.62L94,138a1.29,1.29,0,0,0,2.07-1V100.59A2.28,2.28,0,0,1,98.29,98.32Z" />
+                            </g>
+                          </g>
+                        </svg>
+                        &nbsp;&nbsp;You're here
+                      </p>
+                    )}
+                  </span>
                 </m.div>
               </li>
             </div>

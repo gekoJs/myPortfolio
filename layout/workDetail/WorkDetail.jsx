@@ -32,6 +32,7 @@ export default function DetailWork() {
   const [isSmaller900] = useMediaQuery("(max-width: 900px)");
   const [isSmaller700] = useMediaQuery("(max-width: 700px)");
   const [isSmaller620] = useMediaQuery("(max-width: 620px)");
+  const [isSmaller500] = useMediaQuery("(max-width: 500px)");
 
   const variants = {
     toBottom: {
@@ -132,7 +133,10 @@ export default function DetailWork() {
               <div className={style.overflow}>
                 <m.div
                   className={style.imgMainContainer}
-                  style={{ height: isSmaller900 && "320px" }}
+                  style={{
+                    height:
+                      (isSmaller500 && "240px") || (isSmaller900 && "320px"),
+                  }}
                   variants={variants}
                   animate={menuOpen ? "toTop" : "toBottom"}
                   initial={"toTop"}
@@ -193,7 +197,9 @@ export default function DetailWork() {
                       </h2>
                       <ul>
                         {team.map((e, i) => (
-                          <li className={style.aboutElementDesc}>
+                          <li
+                            className={`${style.aboutElementDesc} ${style.aboutElementDesc_2}`}
+                          >
                             {i + 1}. {e}
                           </li>
                         ))}
@@ -275,7 +281,9 @@ export default function DetailWork() {
                         }}
                         variants={variants}
                         animate={
-                          menuOpen ? i % 2 === 0 ? "toRightInitial"
+                          menuOpen
+                            ? i % 2 === 0
+                              ? "toRightInitial"
                               : "toLeft"
                             : i % 2 === 0
                             ? "toLeftInitial"

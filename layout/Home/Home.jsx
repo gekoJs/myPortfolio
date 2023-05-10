@@ -30,8 +30,6 @@ export default function Home(props) {
   }, []);
   //--------------------------
   //--------------------------
-  const [isSmallerThan560] = useMediaQuery("(max-width: 560px)");
-  const [isSmallerThan370] = useMediaQuery("(max-width: 370px)");
   const [isLargerThan770] = useMediaQuery("(min-width: 770px)");
   //--------------------------
   //--------------------------
@@ -60,8 +58,6 @@ export default function Home(props) {
           }}
           className={style.greeting}
           style={{
-            fontSize:
-              (isSmallerThan370 && "35px") || (isSmallerThan560 && "40px"),
             zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 2,
             position: "relative",
           }}
@@ -99,11 +95,7 @@ export default function Home(props) {
             duration: 0.5,
             delay: textAnimation ? 0.3 : 0.9,
           }}
-          className={style.greeting}
-          style={{
-            fontSize:
-              (isSmallerThan370 && "35px") || (isSmallerThan560 && "40px"),
-          }}
+          className={`${style.greeting} ${style.greeting_2}`}
         >
           <h2>I build things for the web</h2>
         </m.div>
@@ -121,7 +113,6 @@ export default function Home(props) {
           }}
           className={style.degree}
           style={{
-            fontSize: isSmallerThan560 && "25px",
             zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 2,
             position: "relative",
           }}

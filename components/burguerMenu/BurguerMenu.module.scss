@@ -1,10 +1,12 @@
-.mainContainer {
-  &:hover .dotHover {
-    width: 34px;
-    border: 2px solid var(--fill);
-  }
-  &:hover .dotHov {
-    opacity: 0;
+@media only screen and (min-width: 770px) {
+  .mainContainer {
+    &:hover .dotHover {
+      width: 34px;
+      border: 2px solid var(--fill);
+    }
+    &:hover .dotHov {
+      opacity: 0;
+    }
   }
 }
 .container {

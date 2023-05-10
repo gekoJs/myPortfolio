@@ -6,23 +6,30 @@
   align-items: center;
   justify-content: center;
   color: var(--color);
+  font-size: 16px;
 }
 .overflow{
   overflow: hidden;
 }
 .greeting {
   display: flex;
-  font-size: 60px;
-  font-family: "Montserrat";
+  font-size: 3.8em;
+  font-family: var(--fontTitles);
   text-align: center;
+}
+.greeting_2{
+font-size: 3.4em;
+margin-bottom: .2em;
 }
 .nameWrapper {
   position: relative;
-  font-family: "inzdeco";
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
 }
 .degree {
+  font-family: var(--fontTitles);
   display: flex;
-  font-size: 30px;
+  font-size: 1.8em;
 }
 .waveWrapper {
   width: 100%;
@@ -50,4 +57,25 @@
 }
 .homeName, .homeDegree{
   color: var(--fill);
+}
+
+@media screen and (max-width: 650px){
+  .container {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 600px){
+  .container {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 510px){
+  .container {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 410px){
+  .container {
+    font-size: 8px;
+  }
 }

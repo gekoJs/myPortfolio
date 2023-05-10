@@ -1,48 +1,80 @@
 .container {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // top: 50%;
+  // left: 40%;
+  // transform: translate(-50%, -50%);
+  width: 100%;
+  min-height: 100vh;
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: var(--zIndexMenu);
+  justify-content: left;
+  z-index: 4;
+  font-size: 16px;
   ul {
-    height: 400px;
+    margin-left: 22%;
+    // height: 400px;
     display: flex;
     flex-direction: column;
     align-items: left;
-    justify-content: center;
+    // justify-content: center;
     white-space: nowrap;
   }
 }
 .divLi {
   overflow: hidden;
+  height: fit-content;
 }
 .li {
   width: fit-content;
-  font-family: "inzdeco";
+  font-family: var(--fontTitles);
   overflow: hidden;
-  transform: translateY(20px);
-  transition: transform .2s;
+  transform: translateY(32%);
+  transition: transform 0.2s;
   color: var(--color);
   div {
     transition: transform 0.5s;
-    
-    span {
-      font-size: 40px;
-      position: relative;
-      top: -10px;
+    .p {
+      transition: color 0.2s;
+      font-size: 4.8em;
+      &:hover {
+        color: var(--fill);
+      }
+      span {
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 1px;
+        font-size: .4em;
+        position: relative;
+        top: -10px;
+      }
     }
   }
   &:hover {
-    transform: translateY(0px);
+    transform: translateY(12%);
   }
 }
-.p{
-  transition: color .2s;
-  font-size: 80px;
-  &:hover{
-    color: var(--fill);
+.yourehere{
+  p{
+    display: flex;
+    svg{
+      width: 2em;
+      transform: rotate(-32deg);
+      fill: var(--fill);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container{
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .container{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .container{
+    font-size: 8px;
   }
 }
