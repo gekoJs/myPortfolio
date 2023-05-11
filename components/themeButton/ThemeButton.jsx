@@ -36,7 +36,7 @@ export default function ThemeButton() {
       style={{
         padding: "10px 20px",
         borderRadius: "100px",
-        zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 0,
+        zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 20,
       }}
     >
       {themeDisplayed === "light" ? (
@@ -45,7 +45,7 @@ export default function ThemeButton() {
           viewBox="0 96 960 960"
           width="28"
           style={{
-            fill: isLargerThan770 ? "var(--fill)" : "var(--fill)",
+            fill: "var(--fill)",
             cursor: "pointer",
           }}
         >
@@ -58,7 +58,7 @@ export default function ThemeButton() {
           viewBox="0 96 960 960"
           width="28"
           style={{
-            fill: isLargerThan770 ? "var(--fill)" : "var(--fill)",
+            fill: "var(--fill)",
             cursor: "pointer",
           }}
         >

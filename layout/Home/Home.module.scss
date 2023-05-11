@@ -8,7 +8,7 @@
   color: var(--color);
   font-size: 16px;
 }
-.overflow{
+.overflow {
   overflow: hidden;
 }
 .greeting {
@@ -17,9 +17,9 @@
   font-family: var(--fontTitles);
   text-align: center;
 }
-.greeting_2{
-font-size: 3.4em;
-margin-bottom: .2em;
+.greeting_2 {
+  font-size: 3.4em;
+  margin-bottom: 0.2em;
 }
 .nameWrapper {
   position: relative;
@@ -55,45 +55,73 @@ margin-bottom: .2em;
     background-repeat: repeat-x;
   }
 }
-.homeName, .homeDegree{
+.homeName,
+.homeDegree {
   color: var(--fill);
 }
 
-.largeLetter{
+.largeLetter {
   display: inline-block;
   transform: scaleX(2);
-  margin: 0 .27em;
+  margin: 0 0.27em;
 }
-.largeLetter_2{
+.largeLetter_2 {
   display: inline-block;
   transform: scaleX(1.7);
-  margin: 0 .27em;
+  margin: 0 0.65em;
 }
-@media screen and (max-width: 770px){
+@media screen and (max-width: 770px) {
   .greeting {
     font-size: 3.4em;
   }
 }
-@media screen and (max-width: 660px){
-  .container {
-    font-size: 14px;
-  }
+@media screen and (max-width: 690px) {
   .greeting_2 {
     font-size: 3em;
   }
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 620px) {
+  .container {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .container {
+    font-size: 14px;
+  }
+  .greeting_2 {
+    font-size: 2.8em;
+  }
+}
+@media screen and (max-width: 520px) {
   .container {
     font-size: 12px;
   }
 }
-@media screen and (max-width: 510px){
+@media screen and (max-width: 450px) {
+  .container {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .greeting {
+    font-size: 3.2em;
+  }
+  .greeting_2 {
+    font-size: 2.6em;
+  }
+  .degree {
+    font-size: 1.6em;
+  }
+}
+@media screen and (max-width: 385px) {
   .container {
     font-size: 10px;
   }
 }
-@media screen and (max-width: 410px){
+@media screen and (max-width: 350px) {
   .container {
-    font-size: 8px;
+    font-size: 9px;
   }
 }

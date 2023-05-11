@@ -7,7 +7,6 @@ import { motion as m } from "framer-motion";
 import { contactFormTemplate, postEmail, validatingInput } from "@/helpers";
 import { useMutation } from "react-query";
 ////////////////////////////////////////////////
-
 export default function Contact() {
   //-----------------------------
   //-----------------------------
@@ -185,7 +184,7 @@ export default function Contact() {
           overflow: "hidden",
         }}
       >
-        KEEP IN TOUCH{" "}
+        KEEP IN TOUCH
         <hr
           style={{
             display: isSmallerThan505 && "none",
@@ -237,7 +236,7 @@ export default function Contact() {
           >
             <path d="M1500 0c828 0 1500 672 1500 1500s-672 1500-1500 1500S0 2328 0 1500 672 0 1500 0zm751 902l-1456-4 728 578zm-900 735l-636-500v950h1573v-930l-590 482c-200 163-140 160-347-2zM723 716h1569c127 0 230 104 230 230v1100c0 127-104 230-230 230H723c-127 0-230-104-230-230V946c0-127 104-230 230-230z" />
           </svg>
-          SAY HELLO!
+          SAY HELLO<span className={style.letterStyled}>!</span>
         </h2>
 
         <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
@@ -342,7 +341,7 @@ export default function Contact() {
             src="/svg/icons/arrow.svg"
             alt=""
           />
-          Or write me by:
+          Or write me by<span className={style.letterStyled}>:</span>
         </h2>
         <div
           className={style.otherWrapper}

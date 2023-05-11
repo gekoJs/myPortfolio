@@ -1,22 +1,39 @@
 .container {
-  width: 100%;
-  position: fixed;
-  top: 96px;
   z-index: 20;
-  nav {
-    padding: 0 102px;
-    width: 100%;
-    min-width: 270px;
-    margin: auto;
-    width: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  position: relative;
 }
 .wrapper {
+  right: 4em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 1em;
+}
+
+.logo{
+  left: 4em;
+}
+.wrapper, .logo{
+  position: fixed;
+  top: 4em;
+}
+@media screen and (max-width: 570px) {
+  .logo{
+    top: 2em;
+    left: 2em;
+  }
+  .wrapper{
+    top: 2em;
+    right: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  .logo{
+    top: 1em;
+    left: 1em;
+  }
+  .wrapper{
+    top: 1em;
+    right: 1em;
+  }
 }
