@@ -6,6 +6,7 @@
   justify-content: left;
   flex-direction: row-reverse;
   font-size: 16px;
+  position: relative;
   z-index: 2;
 }
 .wrapper {
@@ -18,7 +19,8 @@
   justify-content: center;
   z-index: 2;
   
-.contentWrapper {
+  .contentWrapper {
+  z-index: 2;
   overflow: hidden;
   .title {
     font-family: var(--fontTitles);

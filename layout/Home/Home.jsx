@@ -74,7 +74,7 @@ export default function Home(props) {
               handleHoverWave();
             }}
           >
-            <h1 className={style.homeName}>JES<div className={style.largeLetter_2}>U</div>S R<div className={style.largeLetter_2}>O</div>A</h1>
+            <h1 className={style.homeName}>Jes<div className={style.largeLetter}>u</div>s R<div className={style.largeLetter}>o</div>a</h1>
             <div className={style.waveWrapper}>
               <div
                 className={classWave}
@@ -117,7 +117,7 @@ export default function Home(props) {
             position: "relative",
           }}
         >
-          <h3>Full stack&nbsp;</h3>
+          <h3>Ful<div className={style.largeLetter}>l</div> s<div className={style.largeLetter}>t</div>ack&nbsp;</h3>
           <div
             className={style.nameWrapper}
             onMouseEnter={() => {
@@ -129,7 +129,7 @@ export default function Home(props) {
               handleHoverWave();
             }}
           >
-            <h3 className={style.homeDegree}>WEB DEVELOPER</h3>
+            <h3 className={style.homeDegree}><div className={style.largeLetter_2}>W</div>EB D<div className={style.largeLetter}>E</div>VELO<div className={style.largeLetter}>P</div>ER</h3>
             <div className={style.waveWrapper}>
               <div
                 className={classWave}
