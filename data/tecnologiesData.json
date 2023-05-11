@@ -1,0 +1,57 @@
+[
+  {
+    "name": "HTML",
+    "icon": "/svg/icons/html.svg",
+    "link": "https://developer.mozilla.org/es/docs/Web/HTML"
+  },
+  {
+    "name": "css",
+    "icon": "/svg/icons/css.svg",
+    "link": "https://developer.mozilla.org/es/docs/Web/CSS"
+  },
+  {
+    "name": "javaScript",
+    "icon": "/svg/icons/javaScript.svg",
+    "link": "https://developer.mozilla.org/es/docs/Web/JavaScript"
+  },
+  {
+    "name": "react",
+    "icon": "/svg/icons/react.svg",
+    "link": "https://es.react.dev/"
+  },
+  {
+    "name": "nodeJs",
+    "icon": "/svg/icons/nodeJs.svg",
+    "link": "https://nodejs.org/es"
+  },
+  {
+    "name": "postgreSQL",
+    "icon": "/svg/icons/postgreSQL.svg",
+    "link": "https://www.postgresql.org/"
+  },
+  {
+    "name": "reactQuery",
+    "icon": "/svg/icons/reactQuery.svg",
+    "link": "https://tanstack.com/query/v3/"
+  },
+  {
+    "name": "nextJs",
+    "icon": "/svg/icons/nextJs.svg",
+    "link": "https://nextjs.org/"
+  },
+  {
+    "name": "sass",
+    "icon": "/svg/icons/sass.svg",
+    "link": "https://sass-lang.com/"
+  },
+  {
+    "name": "typeScript",
+    "icon": "/svg/icons/typeScript.svg",
+    "link": "https://www.typescriptlang.org/"
+  },
+  {
+    "name": "github",
+    "icon": "/svg/icons/github.svg",
+    "link": "https://github.com/"
+  }
+]

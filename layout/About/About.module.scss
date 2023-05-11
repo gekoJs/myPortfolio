@@ -5,13 +5,14 @@
   align-items: center;
   justify-content: left;
   flex-direction: row-reverse;
+  font-size: 16px;
   z-index: 2;
 }
 .wrapper {
-  padding: 0 20px 0 90px;
+  padding: 0 1.25em 0 5.6em;
   width: 100%;
-  min-width: 700px;
-  margin:  160px auto 0;
+  min-width: 43.8em;
+  margin:  10em auto 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,16 +21,20 @@
 .contentWrapper {
   overflow: hidden;
   .title {
-    font-family: "inzdeco";
-    font-size: 80px;
+    font-family: var(--fontTitles);
+    font-size: 4em;
     display: flex;
     align-items: center;
     white-space: nowrap;
+    span{
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 1px;
+    }
   }
   .description {
     font-family: "Montserrat";
-    font-size: 20px;
-    min-width: 320px;
+    font-size: 1.25em;
+    min-width: 20em;
     width: 75%;
   }
 }
@@ -37,76 +42,108 @@
 .hr {
   width: 100%;
   border: 1px solid var(--fill);
-  margin-left: 24px;
-}
-.imgContainer {
-  z-index: 2;
-  height: 600px;
-  display: flex;
-  border-radius: 0 0 0 40px;
-  overflow: hidden;
-  background-color: var(--background);
-  justify-content: center;
-  &:hover .imgLeft {
-    transform: translate(1px, -20px);
-  }
-  &:hover .imgRight {
-    transform: translate(-1px, -20px);
-  }
-  &:hover .img {
-    opacity: 1;
-  }
-  .img {
-    height: 105%;
-    transition: all 0.4s;
-    transition-property: transform opacity;
-    object-fit: cover;
-    opacity: 0.4;
-  }
-  .imgRight {
-    transform: translate(0px, -40px);
-    object-position: left;
-  }
-  .imgLeft {
-    object-position: right;
-    transform: translate(1px, 0px);
-  }
+  margin-left: 0.6em;
 }
 .tecnologiesContainer{
-    margin-top: 40px;
+    margin-top: 2.5em;
     .titleTec{
         display: flex;
         align-items: center;
-        font-family: "inzdeco";
-        font-size: 40px;
+        font-family: var(--fontTitles);
+        font-size: 2.5em;
     }
 }
 .iconContainer{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 1.25em;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 600px;
-    min-width: 300px;
-    margin: 20px auto;
+    max-width: 37.5em;
+    min-width: 18.75em;
+    margin: 1.25em auto;
 }
 .iconWrapper {
     background-color: var(--fillOp);
-    width: 80px;
-    height: 80px;
+    width: 5em;
+    height: 5em;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 800px;
+    border-radius: 50em;
     transition: transform .2s;
     transition-property: transform, background;
     cursor: pointer;
   .icon {
-    width: 50px;
+    width: 3.125em;
   }
   &:hover{
     transform: translateY(-4px);
     background-color: var(--fill);
+  }
+}
+
+.overflow{
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 0 0 0 2em;
+  .imgContainer{
+    height: 36em;
+    display: flex;
+    transition: opacity .4s ease;
+    opacity: .6;
+    &:hover .imgLeftContainer{
+      transform: translate(1px, -1.5em);
+    }
+    &:hover .imgRightContainer{
+      transform: translate(-1px, -1.5em);
+    }
+    &:hover{
+      opacity: 1;
+    }
+    .imgLeftContainer{
+      transform: translate(1px, 0em);
+      height: 39em;
+      img{
+        object-position: right center;
+      }
+    }
+    .imgRightContainer{
+      transform: translate(-1px, -3em);
+      height: 39em;
+      img{
+        object-position: left center;
+      }
+    }
+    .imgLeftContainer, .imgRightContainer{
+      transition: transform .4s ease;
+      width: 100%;
+      position: relative;
+      img{
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container{
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container{
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 550px) {
+  .container{
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .container{
+    font-size: 9px;
   }
 }

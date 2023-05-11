@@ -1,10 +1,11 @@
 .container {
-  padding: 140px 12px 80px;
+  padding: 140px 0.75em 80px;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  font-size: 16px;
 }
 .titleContainer {
   z-index: 4;
@@ -13,46 +14,55 @@
   white-space: nowrap;
   display: flex;
   align-items: center;
-  font-family: "inzdeco";
-  font-size: 80px;
+  font-family: var(--fontTitles);
+  font-size: 4em;
+  .hr {
+    width: 100%;
+    margin-left: 0.4em;
+  }
 }
 .formWrapper {
   z-index: 4;
   width: 100%;
-  max-width: 800px;
-  min-width: 320px;
+  max-width: 50em;
+  min-width: 20em;
   border: 2px solid white;
-  border-radius: 12px;
+  border-radius: 0.75em;
   position: relative;
-  margin: 48px auto;
-  padding: 24px 24px 48px 24px;
+  margin: 3em auto;
+  padding: 1.5em 1.5em 3em 1.5em;
   .h2 {
     width: fit-content;
-    margin: 0 0 0 48px;
-    padding: 0 12px;
+    margin: 0 0 0 1em;
+    padding: 0 0.4em 0 0;
     position: absolute;
     top: -10%;
     background-color: var(--background);
     display: flex;
     align-items: center;
-    font-family: "inzdeco";
-    font-size: 40px;
+    font-family: var(--fontTitles);
+    font-size: 2.5em;
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+      margin: 0.5em 0.4em;
+    }
   }
   .form {
     width: 100%;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    font-family: "Montserrat";
+    font-family: var(--fontNormal);
     label {
-      font-size: 20px;
-      margin: 24px 12px 0;
+      font-size: 1.25em;
+      margin: 1.5em 0.75em 0;
     }
     input {
       background: var(--input);
-      border-radius: 12px;
-      padding: 12px;
-      &:focus-visible{
+      border-radius: 0.75em;
+      padding: 0.75em;
+      &:focus-visible {
         outline: none;
         background: var(--inputFocus);
       }
@@ -61,16 +71,17 @@
       font-family: "Montserrat";
       font-weight: 600;
       width: 75%;
-      margin: 48px auto 0;
-      border-radius: 12px;
+      margin: 3em auto 0;
+      border-radius: 0.75em;
       background: var(--color);
-      padding: 12px;
+      padding: 0.75em;
+      color: var(--background);
       transition: all 0.4s ease;
       transition-property: background, color, transform;
       &:hover {
         background: var(--fill);
         color: var(--color);
-        transform: translateY(-4px);
+        transform: translateY(-0.25em);
       }
     }
   }
@@ -78,33 +89,36 @@
 .otherMethodsWrapper {
   z-index: 4;
   width: 100%;
-  max-width: 640px;
-  min-width: 320px;
+  max-width: 40em;
+  min-width: 20em;
   margin: auto;
-  border-radius: 12px;
+  border-radius: 0.75em;
   border: 2px solid var(--fill);
-  padding: 12px;
+  padding: 0.75em;
   position: relative;
   .h2 {
     width: fit-content;
-    padding: 0 12px;
+    padding: 0 0.4em;
     display: flex;
     align-items: center;
     position: relative;
-    top: -38px;
-    font-family: "inzdeco";
-    font-size: 30px;
+    top: -1.3em;
+    font-family: var(--fontTitles);
+    font-size: 1.9em;
     background-color: var(--background);
+    margin-left: 1em;
     img {
+      width: 1.4em;
+      height: 1.4em;
       transition: transform 0.8s ease;
-      margin: 0 12px 0 0;
+      margin: 0 0.2em 0 0;
       animation: ClickMe 1s ease infinite;
       cursor: pointer;
     }
   }
   .otherWrapper {
     position: relative;
-    top: -25px;
+    top: -1.6em;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -116,14 +130,10 @@
     }
   }
 }
-.hr {
-  width: 100%;
-  margin-left: 24px;
-}
 .img {
-  width: 50px;
-  height: 50px;
-  margin: 12px;
+  width: 3.1em;
+  height: 3.1em;
+  margin: 0.75em;
 }
 
 @keyframes ClickMe {
@@ -145,7 +155,38 @@
   }
 }
 
-.error{
-  margin-left: 12px;
+.error {
+  margin-left: 0.75em;
   color: #e04242;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 770px) {
+  .container {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .container {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .titleContainer {
+    font-size: 3.4em;
+  }
+}
+@media screen and (max-width: 390px) {
+  .titleContainer {
+    font-size: 3.2em;
+  }
+}
+@media screen and (max-width: 360px) {
+  .titleContainer {
+    font-size: 3em;
+  }
 }
