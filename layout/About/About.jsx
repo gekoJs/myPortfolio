@@ -4,8 +4,9 @@ import { motion as m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
-import Image from "next/image";
 import { useRouter } from "next/router";
+import tecnologiesData from "../../data/tecnologiesData.json";
+import Image from "next/image";
 
 export default function About() {
   //-----------------------------
@@ -14,69 +15,10 @@ export default function About() {
   const isMenuOpen = useSelector((state) => state.animations.menu);
   //-----------------------------
   //-----------------------------
-  const tecnologies = [
-    {
-      name: "HTML",
-      icon: "/svg/icons/html.svg",
-      link: "https://developer.mozilla.org/es/docs/Web/HTML",
-    },
-    {
-      name: "css",
-      icon: "/svg/icons/css.svg",
-      link: "https://developer.mozilla.org/es/docs/Web/CSS",
-    },
-    {
-      name: "javaScript",
-      icon: "/svg/icons/javaScript.svg",
-      link: "https://developer.mozilla.org/es/docs/Web/JavaScript",
-    },
-    {
-      name: "react",
-      icon: "/svg/icons/react.svg",
-      link: "https://es.react.dev/",
-    },
-    {
-      name: "nodeJs",
-      icon: "/svg/icons/nodeJs.svg",
-      link: "https://nodejs.org/es",
-    },
-    {
-      name: "postgreSQL",
-      icon: "/svg/icons/postgreSQL.svg",
-      link: "https://www.postgresql.org/",
-    },
-    {
-      name: "reactQuery",
-      icon: "/svg/icons/reactQuery.svg",
-      link: "https://tanstack.com/query/v3/",
-    },
-    {
-      name: "nextJs",
-      icon: "/svg/icons/nextJs.svg",
-      link: "https://nextjs.org/",
-    },
-    {
-      name: "sass",
-      icon: "/svg/icons/sass.svg",
-      link: "https://sass-lang.com/",
-    },
-    {
-      name: "typeScript",
-      icon: "/svg/icons/typeScript.svg",
-      link: "https://www.typescriptlang.org/",
-    },
-    {
-      name: "github",
-      icon: "/svg/icons/github.svg",
-      link: "https://github.com/",
-    },
-  ];
-  //-----------------------------
-  //-----------------------------
   const [loader, setLoader] = useState(false);
   useEffect(() => {
     setLoader(true);
-    dispatch(showMenu(false))
+    dispatch(showMenu(false));
   }, []);
   //-----------------------------
   //-----------------------------
@@ -97,29 +39,23 @@ export default function About() {
   };
   //-----------------------------
   //-----------------------------
-  const router = useRouter();
   return (
     <div
       className={style.container}
       style={{
-        flexDirection: isShorterThan700 && "column",
-        justifyContent: isShorterThan700 && "center",
-        padding: isShorterThan700 && "20px",
+        flexDirection: isShorterThan700 && "column"
       }}
     >
       <div
+        className={style.overflow}
         style={{
-          overflow: "hidden",
           alignSelf: isShorterThan700 ? "center" : "flex-start",
-          borderRadius: isShorterThan700 && "12px",
-          marginTop: isShorterThan700 && "140px",
-          width: "100%",
-          maxWidth: "500px",
-          minWidth: "300px",
+          borderRadius: isShorterThan700 && "0 0 2em 2em"
         }}
       >
         <div className={style.imgContainer}>
           <m.div
+            style={{ width: "50%" }}
             variants={variants}
             animate={isMenuOpen ? "closeImgL" : "openImgL"}
             initial="openImgL"
@@ -129,31 +65,28 @@ export default function About() {
               duration: 0.8,
               delay: isMenuOpen ? 0 : 0.4,
             }}
-            style={{ zIndex: 2 }}
           >
-            <img
-              className={`${style.imgLeft} ${style.img}`}
-              src="/png/AboutMeLeft.png"
-              alt=""
-            />
+            <div className={style.imgLeftContainer}>
+              <Image src={"/png/AboutMeLeft.png"} fill={true} />
+            </div>
           </m.div>
+
           <m.div
-            variants={variants}
-            animate={isMenuOpen ? "closeImgR" : "openImgR"}
-            initial="openImgR"
-            exit={"closeImgR"}
-            transition={{
-              type: "spring",
-              duration: 0.8,
-              delay: isMenuOpen ? 0 : 0.4,
-            }}
-            style={{ zIndex: 2 }}
-          >
-            <img
-              className={`${style.imgRight} ${style.img}`}
-              src="/png/AboutMeRight.png"
-              alt=""
-            />
+          style={{width: "50%"}}
+              variants={variants}
+              animate={isMenuOpen ? "closeImgR" : "openImgR"}
+              initial="openImgR"
+              exit={"closeImgR"}
+              transition={{
+                type: "spring",
+                duration: 0.8,
+                delay: isMenuOpen ? 0 : 0.4,
+              }}>
+            <div
+              className={style.imgRightContainer}
+            >
+              <Image src={"/png/AboutMeRight.png"} fill={true} />
+            </div>
           </m.div>
         </div>
       </div>
@@ -180,11 +113,8 @@ export default function About() {
               delay: isMenuOpen ? 0 : 0.4,
             }}
             className={style.title}
-            style={{
-              fontSize: isShorterThan1050 && "40px",
-            }}
           >
-            ABOUT ME
+            ABOUT&nbsp;<span>ME</span>
             <hr className={style.hr} />
           </m.h1>
           <m.p
@@ -198,9 +128,6 @@ export default function About() {
               delay: isMenuOpen ? 0 : 0.4,
             }}
             className={style.description}
-            style={{
-              fontSize: isShorterThan1050 && "18px",
-            }}
           >
             Hello! my name is Jesús Daniel Roa Morales, im a full Stack Web
             developer from Venezuela. I'm always curious to learn more when it
@@ -227,7 +154,7 @@ export default function About() {
             TECNOLOGIES <hr className={style.hr} />
           </m.h2>
           <div className={style.iconContainer}>
-            {tecnologies.map((e, i) => {
+            {tecnologiesData.map((e, i) => {
               return (
                 <m.div
                   variants={variants}

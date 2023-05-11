@@ -26,6 +26,11 @@ export default function Contact() {
   }, []);
   //-----------------------------
   //-----------------------------
+  const [isSmallerThan650] = useMediaQuery("(max-width: 650px)");
+  const [isSmallerThan505] = useMediaQuery("(max-width: 505px)");
+  const [isSmallerThan400] = useMediaQuery("(max-width: 400px)");
+  //-----------------------------
+  //-----------------------------
   const contactPlatforms = [
     {
       name: "Whatsapp",
@@ -50,7 +55,7 @@ export default function Contact() {
       pointerEvents: "none",
     },
     showTitle: {
-      width: "75%",
+      width: isSmallerThan650 ? "90%" : "75%",
       opacity: 1,
       pointerEvents: "auto",
     },
@@ -162,11 +167,6 @@ export default function Contact() {
   } = emailMutation;
   //-----------------------------
   //-----------------------------
-  const [isSmallerThan1000] = useMediaQuery("(max-width: 1000px)");
-  const [isSmallerThan505] = useMediaQuery("(max-width: 505px)");
-  const [isSmallerThan400] = useMediaQuery("(max-width: 400px)");
-  //-----------------------------
-  //-----------------------------
   return (
     <main className={style.container}>
       <m.h1
@@ -181,9 +181,6 @@ export default function Contact() {
         }}
         className={style.titleContainer}
         style={{
-          fontSize:
-            (isSmallerThan505 && "40px") || (isSmallerThan1000 && "50px"),
-          width: isSmallerThan505 && "100%",
           justifyContent: isSmallerThan505 && "center",
           overflow: "hidden",
         }}
@@ -215,7 +212,6 @@ export default function Contact() {
         <h2
           className={style.h2}
           style={{
-            fontSize: isSmallerThan505 && "28px",
             margin: isSmallerThan400 && "0",
             color: (existError && "#e04242") || (isSuccess && "#49a049"),
           }}
@@ -229,7 +225,6 @@ export default function Contact() {
                 ? "#49a049"
                 : "var(--fill)",
             }}
-            className={style.img}
             clip-rule="evenodd"
             fill-rule="evenodd"
             height="30mm"
@@ -335,9 +330,7 @@ export default function Contact() {
       >
         <h2
           className={style.h2}
-          style={{ fontSize: isSmallerThan505 && "28px" }}
         >
-          {" "}
           <img
             onClick={() => setIsClicked(!isClicked)}
             onMouseEnter={() => dispatch(hoverCursor(true))}
@@ -345,12 +338,10 @@ export default function Contact() {
             style={{
               transform: isClicked && "rotate(180deg)",
               animation: isClicked && "ClickMe 1s ease infinite",
-              width: isSmallerThan505 && "40px",
             }}
-            className={style.img}
             src="/svg/icons/arrow.svg"
             alt=""
-          />{" "}
+          />
           Or write me by:
         </h2>
         <div

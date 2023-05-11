@@ -61,7 +61,7 @@ export default function Work() {
       <div className={style.cardsContainer}>
         {worksData.map((e, i) => {
           return (
-            <div className={style.overflow} key={i}>
+            <div className={style.overflow} key={i}style={{pointerEvents: isMenuOpen && "none"}}>
               <Link href={`/work/${e.id}`}>
                 <m.div
                   className={style.cardWrapper}

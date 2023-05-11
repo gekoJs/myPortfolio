@@ -54,14 +54,23 @@ export default function Menu() {
                   style={{ display: "flex" }}
                 >
                   <Link href={e.link}>
-                    <p className={style.p}>
-                      <span>{`0${i + 1}`} </span>
-                      {e.name}
-                    </p>
+                    <div className={style.p}>
+                      <span className={style.number}>{`0${i + 1}`} </span>
+                      {e.name
+                        .split("")
+                        .map((letter, i) =>
+                          letter === "H" ||letter === "R" ||letter === "B"||letter === "N"? (
+                            <div className={style.largeLetter} key={i}>{letter}</div>
+                          ) : (
+                            letter
+                          )
+                        )}
+                    </div>
                   </Link>
                   <span className={style.yourehere}>
                     {router.pathname === e.link && (
-                      <p>&nbsp;
+                      <p>
+                        &nbsp;
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 245.33 192.05"

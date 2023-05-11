@@ -59,9 +59,27 @@ margin-bottom: .2em;
   color: var(--fill);
 }
 
-@media screen and (max-width: 650px){
+.largeLetter{
+  display: inline-block;
+  transform: scaleX(2);
+  margin: 0 .27em;
+}
+.largeLetter_2{
+  display: inline-block;
+  transform: scaleX(1.7);
+  margin: 0 .27em;
+}
+@media screen and (max-width: 770px){
+  .greeting {
+    font-size: 3.4em;
+  }
+}
+@media screen and (max-width: 660px){
   .container {
     font-size: 14px;
+  }
+  .greeting_2 {
+    font-size: 3em;
   }
 }
 @media screen and (max-width: 600px){
