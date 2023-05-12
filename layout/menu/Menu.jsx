@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import en from "../../data/locales/en/menu.json";
 import es from "../../data/locales/es/menu.json";
 
-
 export default function Menu() {
   const { locale, pathname } = useRouter();
 
@@ -82,13 +81,19 @@ export default function Menu() {
                 >
                   <Link href={e.link}>
                     <div className={style.p}>
-                      <span className={style.number}>{`0${i + 1}`} </span>
+                      <span className={`transitionColor ${style.number}`}>
+                        {`0${i + 1}`}{" "}
+                      </span>
                       {e.name.split("").map((letter, i) =>
                         letter === "H" ||
                         letter === "R" ||
                         letter === "B" ||
                         letter === "N" ? (
-                          <div className={style.largeLetter} key={i}>
+                          <div
+                            className={style.largeLetter}
+                            key={i}
+                            style={{ transition: "color 1s ease" }}
+                          >
                             {letter}
                           </div>
                         ) : (
@@ -104,6 +109,9 @@ export default function Menu() {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 245.33 192.05"
+                          style={{
+                            transition: "fill 1s ease",
+                          }}
                         >
                           <title>Recurso 1</title>
                           <g id="Capa_2" data-name="Capa 2">

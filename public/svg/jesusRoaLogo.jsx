@@ -26,11 +26,12 @@ export default function MyLogo() {
       onMouseLeave={() => {
         isLargerThan770 && dispatch(hoverCursor(false));
       }}
+      className="myLogoContainer"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 469 600"
-        className="myLogo"
+        className="myLogo transitionColor"
       >
         <title>JesusRoa</title>
         <g id="Capa_2" data-name="Capa 2">

@@ -7,12 +7,13 @@ import { motion as m } from "framer-motion";
 import { contactFormTemplate, postEmail, validatingInput } from "@/helpers";
 import { useMutation } from "react-query";
 import { useRouter } from "next/router";
-import en from "../../data/locales/en/contact.json"
-import es from "../../data/locales/es/contact.json"
+import en from "../../data/locales/en/contact.json";
+import es from "../../data/locales/es/contact.json";
 ////////////////////////////////////////////////
 export default function Contact() {
-  const {locale} = useRouter()
-  const lang = locale === "en" ? en : es
+  const theme = useSelector((state) => state.animations.theme);
+  const { locale } = useRouter();
+  const lang = locale === "en" ? en : es;
   //-----------------------------
   //-----------------------------
   const dispatch = useDispatch();
@@ -241,7 +242,8 @@ export default function Contact() {
           >
             <path d="M1500 0c828 0 1500 672 1500 1500s-672 1500-1500 1500S0 2328 0 1500 672 0 1500 0zm751 902l-1456-4 728 578zm-900 735l-636-500v950h1573v-930l-590 482c-200 163-140 160-347-2zM723 716h1569c127 0 230 104 230 230v1100c0 127-104 230-230 230H723c-127 0-230-104-230-230V946c0-127 104-230 230-230z" />
           </svg>
-          {lang.hello}<span className={style.letterStyled}>!</span>
+          {lang.hello}
+          <span className={style.letterStyled}>!</span>
         </h2>
 
         <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
@@ -332,9 +334,7 @@ export default function Contact() {
         }}
         className={style.otherMethodsWrapper}
       >
-        <h2
-          className={style.h2}
-        >
+        <h2 className={style.h2}>
           <img
             onClick={() => setIsClicked(!isClicked)}
             onMouseEnter={() => dispatch(hoverCursor(true))}
@@ -343,10 +343,15 @@ export default function Contact() {
               transform: isClicked && "rotate(180deg)",
               animation: isClicked && "ClickMe 1s ease infinite",
             }}
-            src="/svg/icons/arrow.svg"
+            src={
+              theme === "dark"
+                ? "/svg/icons/arrow.svg"
+                : "/svg/icons/arrowLight.svg"
+            }
             alt=""
           />
-          {lang.or}<span className={style.letterStyled}>:</span>
+          {lang.or}
+          <span className={style.letterStyled}>&nbsp;:</span>
         </h2>
         <div
           className={style.otherWrapper}

@@ -241,7 +241,7 @@ export default function DetailWork() {
                             height="48"
                             viewBox="0 96 960 960"
                             width="48"
-                            fill={bgColor}
+                            fill={"var(--highlight)"}
                           >
                             <path d="m248 810-42-42 412-412H240v-60h480v480h-60V398L248 810Z" />
                           </svg>

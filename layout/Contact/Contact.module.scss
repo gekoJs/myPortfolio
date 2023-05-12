@@ -15,8 +15,11 @@
   display: flex;
   align-items: center;
   font-family: var(--fontTitles);
+  color:var(--color);
   font-size: 4em;
   .hr {
+    transition: border 1s ease;
+    border: 1px solid var(--highlight);
     width: 100%;
     margin-left: 0.4em;
   }
@@ -26,7 +29,8 @@
   width: 100%;
   max-width: 50em;
   min-width: 20em;
-  border: 2px solid white;
+  transition: border 1s ease;
+  border: 2px solid var(--highlight);
   border-radius: 0.75em;
   position: relative;
   margin: 3em auto;
@@ -37,6 +41,7 @@
     padding: 0 0.4em 0 0;
     position: absolute;
     top: -10%;
+    color: var(--color);
     background-color: var(--background);
     display: flex;
     align-items: center;
@@ -56,16 +61,21 @@
     overflow-x: hidden;
     font-family: var(--fontNormal);
     label {
+      color: var(--color);
       font-size: 1.25em;
       margin: 1.5em 0.75em 0;
     }
     input {
+      color: var(--background);
       background: var(--input);
       border-radius: 0.75em;
       padding: 0.75em;
       &:focus-visible {
         outline: none;
         background: var(--inputFocus);
+      }
+      &::placeholder{
+        color: var(--background);
       }
     }
     .buttonSend {
@@ -77,11 +87,10 @@
       background: var(--color);
       padding: 0.75em;
       color: var(--background);
-      transition: all 0.4s ease;
+      transition: all 0.2s ease;
       transition-property: background, color, transform;
       &:hover {
-        background: var(--fill);
-        // color: var(--color);
+        background: var(--highlight);
         transform: translateY(-0.25em);
       }
     }
@@ -94,7 +103,8 @@
   min-width: 20em;
   margin: auto;
   border-radius: 0.75em;
-  border: 2px solid var(--fill);
+  transition: border 1s ease;
+  border: 2px solid var(--highlight);
   padding: 0.75em;
   position: relative;
   .h2 {
@@ -105,6 +115,7 @@
     position: relative;
     top: -1.3em;
     font-family: var(--fontTitles);
+    color: var(--color);
     font-size: 1.9em;
     background-color: var(--background);
     margin-left: 1em;
@@ -137,8 +148,10 @@
   margin: 0.75em;
 }
 .letterStyled{
+  color: var(--highlight);
+  transition: color 1s ease;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 2px;
 }
 @keyframes ClickMe {
   0%,

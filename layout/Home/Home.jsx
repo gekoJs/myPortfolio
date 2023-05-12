@@ -1,10 +1,11 @@
 import style from "./Home.module.scss";
-import { useMediaQuery } from "@chakra-ui/react";
+import { transition, useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import en from "../../data/locales/en/home.json";
 import es from "../../data/locales/es/home.json";
 export default function Home() {
@@ -17,18 +18,29 @@ export default function Home() {
   const themeDisplayed = useSelector((state) => state.animations.theme);
   //--------------------------
   //--------------------------
-  const [isHoverWave, setIsHoverWave] = useState(false);
-  const [position, setPosition] = useState(0);
-  const handleHoverWave = () => setIsHoverWave(!isHoverWave);
+  const [isHoverWave1, setIsHoverWave1] = useState(false);
+  const [isHoverWave2, setIsHoverWave2] = useState(false);
+  const [position1, setPosition1] = useState(0);
+  const [position2, setPosition2] = useState(0);
+
+  const handleHoverWave1 = () => setIsHoverWave1(!isHoverWave1);
+  const handleHoverWave2 = () => setIsHoverWave2(!isHoverWave2);
+
   useEffect(() => {
     let intervalId;
-    if (isHoverWave) {
+    if (isHoverWave1) {
       intervalId = setInterval(() => {
-        setPosition((prev) => prev + 1);
+        setPosition1((prev) => prev + 1);
       }, 10);
       return () => clearInterval(intervalId);
     }
-  }, [isHoverWave]);
+    if (isHoverWave2) {
+      intervalId = setInterval(() => {
+        setPosition2((prev) => prev + 1);
+      }, 10);
+      return () => clearInterval(intervalId);
+    }
+  }, [isHoverWave1, isHoverWave2]);
   useEffect(() => {
     dispatch(showMenu(false));
   }, []);
@@ -44,6 +56,22 @@ export default function Home() {
   const variants = {
     open: { opacity: 1, y: "0" },
     close: { opacity: 0, y: "100%" },
+    openWidth: {
+      opacity: 1,
+      x: "0",
+      transition: {
+        delay: 0.8,
+        type: "spring",
+      },
+    },
+    offWidth: {
+      opacity: 0,
+      x: "-50%",
+    },
+    offWidthR: {
+      opacity: 0,
+      x: "50%",
+    },
   };
   //--------------------------
   //--------------------------
@@ -66,33 +94,25 @@ export default function Home() {
             position: "relative",
           }}
         >
-          <h1>
-            {t.greeting_1.h}
-            <div className={style.largeLetter}>{t.greeting_1.e}</div>
-            {t.greeting_1.y} {t.greeting_1.im}&nbsp;
-          </h1>
+          <h1>{t.greeting_1}&nbsp;</h1>
           <div
             className={style.nameWrapper}
             onMouseEnter={() => {
               isLargerThan770 && dispatch(hoverCursor(true));
-              handleHoverWave();
+              handleHoverWave1();
             }}
             onMouseLeave={() => {
               isLargerThan770 && dispatch(hoverCursor(false));
-              handleHoverWave();
+              handleHoverWave1();
             }}
           >
-            <h1 className={style.homeName}>
-              {t.greeting_1_name.jes}
-              <div className={style.largeLetter}>{t.greeting_1_name.u}</div>
-              {t.greeting_1_name.s} {t.greeting_1_name.r}
-              <div className={style.largeLetter}>{t.greeting_1_name.o}</div>
-              {t.greeting_1_name.a}
+            <h1 className={`transitionColor ${style.homeName}`}>
+              {t.greeting_1_name}
             </h1>
             <div className={style.waveWrapper}>
               <div
                 className={classWave}
-                style={{ backgroundPositionX: position }}
+                style={{ backgroundPositionX: position1 }}
               ></div>
             </div>
           </div>
@@ -111,11 +131,7 @@ export default function Home() {
           }}
           className={`${style.greeting} ${style.greeting_2}`}
         >
-          <h2>
-            {t.greeting_2.i_buil}<div className={style.largeLetter}>{t.greeting_2.d}</div> {t.greeting_2.thi}
-            <div className={style.largeLetter}>{t.greeting_2.n}</div>{t.greeting_2.gs} {t.greeting_2.for_t}
-            <div className={style.largeLetter}>{t.greeting_2.h}</div>{t.greeting_2.e} {t.greeting_2.web}
-          </h2>
+          <h2>{t.greeting_2}</h2>
         </m.div>
       </div>
 
@@ -135,34 +151,80 @@ export default function Home() {
             position: "relative",
           }}
         >
-          <h3>
-            {t.degree.ful}<div className={style.largeLetter}>{t.degree.l}</div> {t.degree.s}
-            <div className={style.largeLetter}>{t.degree.t}</div>{t.degree.ack}&nbsp;
-          </h3>
+          <h3>{t.degree._1}&nbsp;</h3>
           <div
             className={style.nameWrapper}
             onMouseEnter={() => {
               isLargerThan770 && dispatch(hoverCursor(true));
-              handleHoverWave();
+              handleHoverWave2();
             }}
             onMouseLeave={() => {
               isLargerThan770 && dispatch(hoverCursor(false));
-              handleHoverWave();
+              handleHoverWave2();
             }}
           >
-            <h3 className={style.homeDegree}>
-              <div className={style.largeLetter_2}>{t.degree.w}</div>{t.degree.eb_d}
-              <div className={style.largeLetter}>{t.degree.e}</div>{t.degree.velo}
-              <div className={style.largeLetter}>{t.degree.p}</div>{t.degree.er}
+            <h3 className={`transitionColor ${style.homeDegree}`}>
+              {t.degree._2}
             </h3>
             <div className={style.waveWrapper}>
               <div
                 className={classWave}
-                style={{ backgroundPositionX: position }}
+                style={{ backgroundPositionX: position2 }}
               ></div>
             </div>
           </div>
         </m.div>
+      </div>
+
+      <div className={style.links}>
+        <div className={style.link}>
+          <Link href={"/about"}>
+            <m.div
+              className={style.link}
+              variants={variants}
+              animate={textAnimation ? "offWidth" : "openWidth"}
+              onMouseEnter={() => dispatch(hoverCursor(true))}
+              onMouseLeave={() => dispatch(hoverCursor(false))}
+            >
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="48"
+                  viewBox="0 96 960 960"
+                  width="48"
+                >
+                  <path d="m248 810-42-42 412-412H240v-60h480v480h-60V398L248 810Z" />
+                </svg>
+                {t.link_1}
+              </p>
+              <hr />
+            </m.div>
+          </Link>
+        </div>
+        
+        <div className={style.link}>
+          <Link href={"/work"}>
+            <m.div
+              variants={variants}
+              animate={textAnimation ? "offWidthR" : "openWidth"}
+              onMouseEnter={() => dispatch(hoverCursor(true))}
+              onMouseLeave={() => dispatch(hoverCursor(false))}
+            >
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="48"
+                  viewBox="0 96 960 960"
+                  width="48"
+                >
+                  <path d="m248 810-42-42 412-412H240v-60h480v480h-60V398L248 810Z" />
+                </svg>
+                {t.link_2}
+              </p>
+              <hr />
+            </m.div>
+          </Link>
+        </div>
       </div>
     </div>
   );

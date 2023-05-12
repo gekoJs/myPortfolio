@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 export default function Nav() {
-  const {locale, locales, pathname} = useRouter()
+  const { locale, locales, pathname } = useRouter();
   const [isLargerThan600] = useMediaQuery("(max-width: 600px)");
   const [isLargerThan990] = useMediaQuery("(max-width: 990px)");
   const isMenuOpen = useSelector((state) => state.animations.menu);
@@ -33,13 +33,12 @@ export default function Nav() {
   return (
     <header
       className={style.container}
-      style={{ top: isLargerThan990 && "48px", mixBlendMode: "difference" }}
+      style={{
+        top: isLargerThan990 && "48px",
+        // mixBlendMode: "difference", //just works with the container father
+      }}
     >
-      <nav
-        style={{
-          mixBlendMode: "difference",
-        }}
-      >
+      <nav>
         <m.div
           className={style.logo}
           variants={variants}
@@ -50,14 +49,13 @@ export default function Nav() {
           </Link>
         </m.div>
         <div className={style.wrapper} style={{ gap: isLargerThan600 && "0" }}>
-
-          <Translate/>
+          <Translate />
 
           <m.div
             variants={variants}
             animate={isMenuOpen ? "toTop" : "toBottom"}
           >
-            <ThemeButton/>
+            <ThemeButton />
           </m.div>
           <BurguerMenu />
         </div>
