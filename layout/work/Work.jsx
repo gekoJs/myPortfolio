@@ -58,7 +58,7 @@ export default function Work() {
         animate={isMenuOpen ? "widthNull" : "widthLarge"}
       >
         <div>
-          {lang.work}<label>{lang.s}</label>
+          {lang.work}<label className={"transitionColor"}>{lang.s}</label>
         </div>
         <hr />
       </m.h1>

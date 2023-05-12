@@ -1,40 +1,8 @@
 {
-  "greeting_1": {
-    "h":"H",
-    "e":"e",
-    "y":"y",
-    "im": "i'm"
-  },
-  "greeting_1_name":{
-    "jes":"Jes",
-    "u":"u",
-    "s":"s",
-    "r":"R",
-    "o":"o",
-    "a": "a"
-  },
-  "greeting_2":{
-    "i_buil": "I buil",
-    "d": "d",
-    "thi": "thi",
-    "n":"n",
-    "gs": "gs",
-    "for_t": "for t",
-    "h": "h",
-    "e" :"e",
-    "web": "web"
-  } ,
-  "degree": {
-      "ful": "Ful",
-      "l": "l",
-      "s":"s",
-      "t":"t",
-      "ack": "ack",
-      "w": "W",
-      "eb_d": "EB D",
-      "e": "E",
-      "velo": "VELO",
-      "p": "P",
-      "er": "ER"
-  }
+  "greeting_1": "Hey i'm",
+  "greeting_1_name": "Jesus Roa",
+  "greeting_2": "I build things for the web",
+  "degree": { "_1": "FULL STACK", "_2": " WEB DEVELOPER" },
+  "link_1": "Know more about me",
+  "link_2": "Watch my projects"
 }

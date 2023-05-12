@@ -19,9 +19,7 @@ export default function About() {
   const isMenuOpen = useSelector((state) => state.animations.menu);
   //-----------------------------
   //-----------------------------
-  const [loader, setLoader] = useState(false);
   useEffect(() => {
-    setLoader(true);
     dispatch(showMenu(false));
   }, []);
   //-----------------------------
@@ -118,7 +116,7 @@ export default function About() {
             }}
             className={style.title}
           >
-            {lang.about}&nbsp;<span>{lang.me}</span>
+            {lang.about}&nbsp;<span className="transitionColor">{lang.me}</span>
             <hr className={style.hr} />
           </m.h1>
           <m.p

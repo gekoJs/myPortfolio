@@ -11,6 +11,7 @@ export default function Cursor() {
   //---------------------------
   const dispatch = useDispatch();
   const hoverCursor = useSelector((state) => state.animations.hoverCursor);
+  const theme = useSelector((state) => state.animations.theme);
 
   const [dotPosition, setDotPosition] = useState({ x: "50%", y: "50%" });
   const [dotLeave, setDotLeave] = useState(true);
@@ -60,8 +61,10 @@ export default function Cursor() {
               opacity: dotLeave ? 0 : 1,
               padding: dotClick && "36px",
             }}
-            className={changeClass}
-          ></div>
+            className={style.cursorContainer}
+          >
+            <div className={changeClass}></div>
+          </div>
           <div
             style={{
               top: dotPosition.y,

@@ -15,7 +15,6 @@ export default function Translate() {
   const handleClick = () => {
     lang === "en" ? setLang("es") : setLang("en");
   };
-  const p = lang;
   return (
     <div
       className={style.container}

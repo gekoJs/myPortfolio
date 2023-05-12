@@ -1,18 +1,24 @@
-.cursor {
+.cursorContainer {
   z-index: var(--zIndexCursor);
-  padding: 12px;
-  border-radius: 100px;
-  border: 2px solid var(--fill);
   position: absolute;
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: all .15s;
   transition-property: top, left, opacity, padding;
   mix-blend-mode: difference;
-}
-.hover{
-  background: var(--fill);
-  padding: 20px;
+  
+  .cursor{
+    transition: border-color 1s ease , padding .2s ease;
+    border-radius: 100px;
+    border: 2px solid;
+    border-color: var(--highlight);
+    padding: 12px;
+  }
+  .hover{
+    border: none;
+    background: var(--fill);
+    padding: 20px;
+  }
 }
 .dot {
   z-index: calc(var(--zIndexCursor) + 1);

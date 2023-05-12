@@ -16,6 +16,7 @@
   font-size: 3.8em;
   font-family: var(--fontTitles);
   text-align: center;
+  line-height: 1.3em;
 }
 .greeting_2 {
   font-size: 3.4em;
@@ -24,11 +25,16 @@
 .nameWrapper {
   position: relative;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 2px;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: translateY(-4px);
+  }
 }
 .degree {
-  font-family: var(--fontTitles);
+  font-family: var(--fontNormal);
   display: flex;
+  font-weight: 800;
   font-size: 1.8em;
 }
 .waveWrapper {
@@ -57,7 +63,7 @@
 }
 .homeName,
 .homeDegree {
-  color: var(--fill);
+  color: var(--highlight);
 }
 
 .largeLetter {
@@ -70,6 +76,40 @@
   transform: scaleX(1.7);
   margin: 0 0.65em;
 }
+
+.links {
+  width: 33em;
+  max-width: 40em;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  .link {
+    width: 100%;
+    min-width: 15.6em;
+    &:hover hr {
+      width: 100%;
+    }
+  }
+  p {
+    color: var(--color);
+    font-family: var(--fontNormal);
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 2em;
+      transition: fill 1s ease;
+      fill: var(--highlight);
+    }
+  }
+  hr {
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+}
+
 @media screen and (max-width: 770px) {
   .greeting {
     font-size: 3.4em;

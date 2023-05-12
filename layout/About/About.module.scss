@@ -23,18 +23,21 @@
   z-index: 2;
   overflow: hidden;
   .title {
+    color: var(--color);
     font-family: var(--fontTitles);
     font-size: 4em;
     display: flex;
     align-items: center;
     white-space: nowrap;
     span{
+      color: var(--highlight);
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke-width: 1px;
     }
   }
   .description {
-    font-family: "Montserrat";
+    color: var(--color);
+    font-family: var(--fontNormal);
     font-size: 1.25em;
     min-width: 20em;
     width: 75%;
@@ -43,12 +46,15 @@
 }
 .hr {
   width: 100%;
-  border: 1px solid var(--fill);
+  border-radius: 100px;
+  transition: border 1s ease;
+  border: 1px solid var(--highlight);
   margin-left: 0.6em;
 }
 .tecnologiesContainer{
     margin-top: 2.5em;
     .titleTec{
+      color: var(--color);
         display: flex;
         align-items: center;
         font-family: var(--fontTitles);

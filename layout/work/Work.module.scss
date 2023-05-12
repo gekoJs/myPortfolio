@@ -12,15 +12,18 @@
     width: calc(100% - 2em);
     margin-left: 1em;
     font-size: 3.8em;
-  z-index: 4;
-  font-family: var(--fontTitles);
+    z-index: 4;
+    font-family: var(--fontTitles);
+    color: var(--color);
     label {
+      color: var(--highlight);
       -webkit-text-fill-color: transparent;
-      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-width: 2px;
     }
     hr {
+      transition: border 1s ease;
       border-radius: 1em;
-      border: 2px solid var(--fill);
+      border: 2px solid var(--highlight);
     }
   }
 }

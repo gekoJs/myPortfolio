@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { changeTheme, hoverCursor } from "@/Redux/animateTrigger";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "@chakra-ui/react";
-
+import style from "./ThemeButton.module.scss"
 export default function ThemeButton() {
   //----------------------------------
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ export default function ThemeButton() {
   //----------------------------------
   return (
     <div
+    className={style.container}
       onClick={handleClick}
       onMouseEnter={() => {
         isLargerThan770 && dispatch(hoverCursor(true));
