@@ -176,7 +176,13 @@ export default function Home() {
         </m.div>
       </div>
 
-      <div className={style.links}>
+      <div
+        className={style.links}
+        style={{
+          zIndex: themeDisplayed === "light" ? "var(--zIndexHome)" : 2,
+          position: "relative",
+        }}
+      >
         <div className={style.link}>
           <Link href={"/about"}>
             <m.div
@@ -201,7 +207,7 @@ export default function Home() {
             </m.div>
           </Link>
         </div>
-        
+
         <div className={style.link}>
           <Link href={"/work"}>
             <m.div
