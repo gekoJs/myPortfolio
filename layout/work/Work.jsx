@@ -7,9 +7,14 @@ import { motion as m } from "framer-motion";
 import { useEffect } from "react";
 import Link from "next/link";
 import worksData from "../../data/worksData.json";
+import { useRouter } from "next/router";
+import en from "../../data/locales/en/work.json"
+import es from "../../data/locales/es/work.json"
 //////////////////////////////////
 
 export default function Work() {
+  const { locale } = useRouter();
+  const lang = locale ==="en" ? en : es
   //----------------------------
   //----------------------------
   const dispatch = useDispatch();
@@ -33,7 +38,7 @@ export default function Work() {
     },
     widthLarge: {
       opacity: 1,
-      width: isSmaller420 && "calc(100% - 1em)" || "calc(100% - 2em)",
+      width: (isSmaller420 && "calc(100% - 1em)") || "calc(100% - 2em)",
       transition: {
         type: "spring",
         delay: 0.6,
@@ -53,7 +58,7 @@ export default function Work() {
         animate={isMenuOpen ? "widthNull" : "widthLarge"}
       >
         <div>
-          WORK<label>S</label>
+          {lang.work}<label>{lang.s}</label>
         </div>
         <hr />
       </m.h1>
@@ -61,7 +66,11 @@ export default function Work() {
       <div className={style.cardsContainer}>
         {worksData.map((e, i) => {
           return (
-            <div className={style.overflow} key={i}style={{pointerEvents: isMenuOpen && "none"}}>
+            <div
+              className={style.overflow}
+              key={i}
+              style={{ pointerEvents: isMenuOpen && "none" }}
+            >
               <Link href={`/work/${e.id}`}>
                 <m.div
                   className={style.cardWrapper}

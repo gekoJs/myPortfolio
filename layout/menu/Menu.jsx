@@ -5,9 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { hoverCursor } from "@/Redux/animateTrigger";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import en from "../../data/locales/en/menu.json";
+import es from "../../data/locales/es/menu.json";
+
 
 export default function Menu() {
-  const router = useRouter();
+  const { locale, pathname } = useRouter();
+
+  const lang = locale === "en" ? en : es;
   //----------------------------
   //----------------------------
   const dispatch = useDispatch();
@@ -15,10 +20,10 @@ export default function Menu() {
   //----------------------------
   //----------------------------
   const menuLinks = [
-    { name: "HOME", link: "/" },
-    { name: "WORK", link: "/work" },
-    { name: "ABOUT", link: "/about" },
-    { name: "CONTACT", link: "/contact" },
+    { name: lang.home, link: "/" },
+    { name: lang.work, link: "/work" },
+    { name: lang.about, link: "/about" },
+    { name: lang.contact, link: "/contact" },
   ];
 
   const variants = {
@@ -28,14 +33,36 @@ export default function Menu() {
   //----------------------------
   //----------------------------
   const [isSmallerThan900] = useMediaQuery("(max-width: 900px)");
+  const [isSmaller1000] = useMediaQuery("(max-width: 1000px)");
+  const [isSmaller850] = useMediaQuery("(max-width: 850px)");
+  const [isSmaller730] = useMediaQuery("(max-width: 730px)");
+  const [isSmaller570] = useMediaQuery("(max-width: 570px)");
+  const [isSmaller470] = useMediaQuery("(max-width: 470px)");
+  const [isSmaller400] = useMediaQuery("(max-width: 400px)");
   //----------------------------
   //----------------------------
   return (
     <div
       className={style.container}
-      style={{ pointerEvents: displayMenu ? "auto" : "none" }}
+      style={{
+        pointerEvents: displayMenu ? "auto" : "none",
+        fontSize:
+          (locale === "es" && isSmaller400 && "6.5px") ||
+          (locale === "es" && isSmaller470 && "8px") ||
+          (locale === "es" && isSmaller570 && "9px") ||
+          (locale === "es" && isSmaller730 && "10px") ||
+          (locale === "es" && isSmaller850 && "12px") ||
+          (locale === "es" && isSmaller1000 && "14px"),
+      }}
     >
-      <ul style={{ marginLeft: isSmallerThan900 && "8%" }}>
+      <ul
+        style={{
+          marginLeft:
+            (isSmallerThan900 && "8%") ||
+            (locale === "es" && "18%") ||
+            (locale === "es" && isSmaller570 && "10%"),
+        }}
+      >
         {menuLinks.map((e, i) => {
           return (
             <div className={`${style.divLi}`} key={i}>
@@ -56,19 +83,22 @@ export default function Menu() {
                   <Link href={e.link}>
                     <div className={style.p}>
                       <span className={style.number}>{`0${i + 1}`} </span>
-                      {e.name
-                        .split("")
-                        .map((letter, i) =>
-                          letter === "H" ||letter === "R" ||letter === "B"||letter === "N"? (
-                            <div className={style.largeLetter} key={i}>{letter}</div>
-                          ) : (
-                            letter
-                          )
-                        )}
+                      {e.name.split("").map((letter, i) =>
+                        letter === "H" ||
+                        letter === "R" ||
+                        letter === "B" ||
+                        letter === "N" ? (
+                          <div className={style.largeLetter} key={i}>
+                            {letter}
+                          </div>
+                        ) : (
+                          letter
+                        )
+                      )}
                     </div>
                   </Link>
                   <span className={style.yourehere}>
-                    {router.pathname === e.link && (
+                    {pathname === e.link && (
                       <p>
                         &nbsp;
                         <svg
@@ -82,7 +112,7 @@ export default function Menu() {
                             </g>
                           </g>
                         </svg>
-                        &nbsp;&nbsp;You're here
+                        &nbsp;&nbsp;{lang.here}
                       </p>
                     )}
                   </span>

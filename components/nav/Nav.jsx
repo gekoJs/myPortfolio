@@ -5,8 +5,11 @@ import { BurguerMenu, ThemeButton } from "..";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 export default function Nav() {
+  const {locale, locales, pathname} = useRouter()
+  console.log(locales)
   const [isLargerThan600] = useMediaQuery("(max-width: 600px)");
   const [isLargerThan990] = useMediaQuery("(max-width: 990px)");
   const isMenuOpen = useSelector((state) => state.animations.menu);
@@ -49,6 +52,15 @@ export default function Nav() {
           </Link>
         </m.div>
         <div className={style.wrapper} style={{ gap: isLargerThan600 && "0" }}>
+
+          <div>
+            {locales.map(e=> (
+              <Link href={pathname} locale={e}>
+                <button>{e}&nbsp;</button>
+              </Link>
+            ))}
+          </div>
+
           <m.div
             variants={variants}
             animate={isMenuOpen ? "toTop" : "toBottom"}

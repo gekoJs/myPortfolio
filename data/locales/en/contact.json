@@ -1,0 +1,19 @@
+{
+  "contact": "KEEP IN TOUCH",
+  "hello": "SAY HELLO",
+  "email": "Write your email address",
+  "name": "Whats your name?",
+  "message": "What do you want to tell me?",
+  "send": "Send Email",
+  "loading": "Loading",
+  "error": "Something went wrong",
+  "send_it": "Send",
+  "valid_mail": "Write a valid email please",
+  "valid_mail_1": "I need your email so i can talk to you!",
+  "valid_name_1": "what can i call you if i dont know your name?",
+  "valid_name_3": "Is your name that short?",
+  "valid_name_2": "Does your name have numbers?",
+  "valid_message": "No shame! tell me something :D",
+  "exist_error": "Complete all inputs",
+  "or": "Or write me by"
+}

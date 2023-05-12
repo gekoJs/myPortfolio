@@ -1,0 +1,19 @@
+{
+  "contact": "CONTACTAME",
+  "hello": "DI HOLA",
+  "email": "Escribe tu correo",
+  "name": "¿Cual es tu nombre?",
+  "message": "¿Que quieres decirme?",
+  "send": "Envia un correo",
+  "loading": "Cargando",
+  "error": "Algo salio mal",
+  "send_it": "Enviado",
+  "valid_mail": "Escribe un email valido",
+  "valid_mail_1": "Necesito tu email para ponernos en contacto!",
+  "valid_name_1": "¿Como podre llamarte si no me dices tu nombre?",
+  "valid_name_3": "¿Tu nombre es tan corto?",
+  "valid_name_2": "¿Tu nombre tiene numeros?",
+  "valid_message": "!Sin pena! dime algo :D",
+  "exist_error": "Completa todos los campos",
+  "or": "O escribeme por"
+}

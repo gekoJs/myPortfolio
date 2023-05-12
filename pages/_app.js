@@ -6,6 +6,7 @@ import { AppLayout } from "@/layout";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { QueryClientProvider, QueryClient } from "react-query";
+// import { appWithTranslation } from "next-i18next";
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
@@ -20,7 +21,7 @@ export default function App({ Component, pageProps }) {
         >
           <AnimatePresence mode="wait" key={router.route}>
             <AppLayout>
-              <Component {...pageProps} />
+                <Component {...pageProps} />
             </AppLayout>
           </AnimatePresence>
         </ThemeProvider>
@@ -28,3 +29,4 @@ export default function App({ Component, pageProps }) {
     </Provider>
   );
 }
+// export default appWithTranslation(App)

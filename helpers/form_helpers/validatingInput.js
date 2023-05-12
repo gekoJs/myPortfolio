@@ -1,20 +1,18 @@
-export default function validatingInput(input) {
+export default function validatingInput(input, lang) {
   const err = {};
-  if (!input.name)
-    err.name = "How could i know who you are if you dont tell me? :c";
-  else if (!/(.*[a-z]){3}/i.test(input.name))
-    err.name = "Is your name that short??";
+  if (!input.name) err.name = lang.valid_name_1;
+  else if (!/(.*[a-z]){3}/i.test(input.name)) err.name = lang.valid_name_3;
   else if (
     !/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(
       input.name
     )
   )
-    err.name = "So your name has numbers...";
+    err.name = lang.valid_name_2;
 
-  if (!input.email) err.email = "I need your email so i can reach you";
+  if (!input.email) err.email = lang.valid_mail_1;
   else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.email))
-    err.email = "Write a valid email please c:";
+    err.email = lang.valid_mail;
 
-  if (!input.message) err.message = "Come on dont be shy, i dont bite :D";
+  if (!input.message) err.message = lang.valid_message;
   return err;
 }

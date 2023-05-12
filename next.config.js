@@ -4,6 +4,10 @@ const nextConfig = {
   images: {
     domains: ["ichef.bbci.co.uk"],
   },
+  i18n:{
+    locales: ["en", "es"],
+    defaultLocale: "en"
+  }
 };
 
 module.exports = nextConfig;

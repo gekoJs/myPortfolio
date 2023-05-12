@@ -4,8 +4,12 @@ import { motion as m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
-
-export default function Home(props) {
+import { useRouter } from "next/router";
+import en from "../../data/locales/en/home.json";
+import es from "../../data/locales/es/home.json";
+export default function Home() {
+  const { locale } = useRouter();
+  const t = locale === "en" ? en : es;
   //--------------------------
   //--------------------------
   const dispatch = useDispatch();
@@ -62,7 +66,11 @@ export default function Home(props) {
             position: "relative",
           }}
         >
-          <h1>H<div className={style.largeLetter}>e</div>y i'm&nbsp;</h1>
+          <h1>
+            {t.greeting_1.h}
+            <div className={style.largeLetter}>{t.greeting_1.e}</div>
+            {t.greeting_1.y} {t.greeting_1.im}&nbsp;
+          </h1>
           <div
             className={style.nameWrapper}
             onMouseEnter={() => {
@@ -74,7 +82,13 @@ export default function Home(props) {
               handleHoverWave();
             }}
           >
-            <h1 className={style.homeName}>Jes<div className={style.largeLetter}>u</div>s R<div className={style.largeLetter}>o</div>a</h1>
+            <h1 className={style.homeName}>
+              {t.greeting_1_name.jes}
+              <div className={style.largeLetter}>{t.greeting_1_name.u}</div>
+              {t.greeting_1_name.s} {t.greeting_1_name.r}
+              <div className={style.largeLetter}>{t.greeting_1_name.o}</div>
+              {t.greeting_1_name.a}
+            </h1>
             <div className={style.waveWrapper}>
               <div
                 className={classWave}
@@ -97,7 +111,11 @@ export default function Home(props) {
           }}
           className={`${style.greeting} ${style.greeting_2}`}
         >
-          <h2>I buil<div className={style.largeLetter}>d</div> thi<div className={style.largeLetter}>n</div>gs for t<div className={style.largeLetter}>h</div>e web</h2>
+          <h2>
+            {t.greeting_2.i_buil}<div className={style.largeLetter}>{t.greeting_2.d}</div> {t.greeting_2.thi}
+            <div className={style.largeLetter}>{t.greeting_2.n}</div>{t.greeting_2.gs} {t.greeting_2.for_t}
+            <div className={style.largeLetter}>{t.greeting_2.h}</div>{t.greeting_2.e} {t.greeting_2.web}
+          </h2>
         </m.div>
       </div>
 
@@ -117,7 +135,10 @@ export default function Home(props) {
             position: "relative",
           }}
         >
-          <h3>Ful<div className={style.largeLetter}>l</div> s<div className={style.largeLetter}>t</div>ack&nbsp;</h3>
+          <h3>
+            {t.degree.ful}<div className={style.largeLetter}>{t.degree.l}</div> {t.degree.s}
+            <div className={style.largeLetter}>{t.degree.t}</div>{t.degree.ack}&nbsp;
+          </h3>
           <div
             className={style.nameWrapper}
             onMouseEnter={() => {
@@ -129,7 +150,11 @@ export default function Home(props) {
               handleHoverWave();
             }}
           >
-            <h3 className={style.homeDegree}><div className={style.largeLetter_2}>W</div>EB D<div className={style.largeLetter}>E</div>VELO<div className={style.largeLetter}>P</div>ER</h3>
+            <h3 className={style.homeDegree}>
+              <div className={style.largeLetter_2}>{t.degree.w}</div>{t.degree.eb_d}
+              <div className={style.largeLetter}>{t.degree.e}</div>{t.degree.velo}
+              <div className={style.largeLetter}>{t.degree.p}</div>{t.degree.er}
+            </h3>
             <div className={style.waveWrapper}>
               <div
                 className={classWave}

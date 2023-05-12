@@ -1,0 +1,40 @@
+{
+    "greeting_1": {
+      "h":"H",
+      "e":"e",
+      "y":"y",
+      "im": "soy"
+    },
+    "greeting_1_name":{
+      "jes":"Jes",
+      "u":"u",
+      "s":"s",
+      "r":"R",
+      "o":"o",
+      "a": "a"
+    },
+    "greeting_2":{
+      "i_buil": "Construy",
+      "d": "o",
+      "thi": "cos",
+      "n":"a",
+      "gs": "s",
+      "for_t": "para l",
+      "h": "a",
+      "web": "web"
+    } ,
+    "degree": {
+        "ful": "Ful",
+        "l": "l",
+        "s":"s",
+        "t":"t",
+        "ack": "ack",
+        "w": "W",
+        "eb_d": "EB D",
+        "e": "E",
+        "velo": "VELO",
+        "p": "P",
+        "er": "ER"
+    }
+  }
+  
