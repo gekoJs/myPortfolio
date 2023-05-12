@@ -7,8 +7,12 @@ import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import { useRouter } from "next/router";
 import tecnologiesData from "../../data/tecnologiesData.json";
 import Image from "next/image";
+import en from "../../data/locales/en/about.json"
+import es from "../../data/locales/es/about.json"
 
 export default function About() {
+  const {locale} = useRouter()
+  const lang = locale === "en" ? en : es
   //-----------------------------
   //-----------------------------
   const dispatch = useDispatch();
@@ -114,7 +118,7 @@ export default function About() {
             }}
             className={style.title}
           >
-            ABOUT&nbsp;<span>ME</span>
+            {lang.about}&nbsp;<span>{lang.me}</span>
             <hr className={style.hr} />
           </m.h1>
           <m.p
@@ -129,9 +133,7 @@ export default function About() {
             }}
             className={style.description}
           >
-            Hello! my name is Jesús Daniel Roa Morales, im a full Stack Web
-            developer from Venezuela. I'm always curious to learn more when it
-            comes to new technologies and creative coding
+            {lang.description}
           </m.p>
         </section>
 
@@ -151,7 +153,7 @@ export default function About() {
             }}
             className={style.titleTec}
           >
-            TECNOLOGIES <hr className={style.hr} />
+            {lang.tecnologies} <hr className={style.hr} />
           </m.h2>
           <div className={style.iconContainer}>
             {tecnologiesData.map((e, i) => {

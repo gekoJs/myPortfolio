@@ -6,8 +6,13 @@ import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { contactFormTemplate, postEmail, validatingInput } from "@/helpers";
 import { useMutation } from "react-query";
+import { useRouter } from "next/router";
+import en from "../../data/locales/en/contact.json"
+import es from "../../data/locales/es/contact.json"
 ////////////////////////////////////////////////
 export default function Contact() {
+  const {locale} = useRouter()
+  const lang = locale === "en" ? en : es
   //-----------------------------
   //-----------------------------
   const dispatch = useDispatch();
@@ -94,19 +99,19 @@ export default function Contact() {
   };
   const inputs = [
     {
-      inputTitle: "Write your email adress",
+      inputTitle: lang.email,
       inputPlaceHolder: "ramoncarlos@gmail.com",
       inputName: "email",
       inputErr: inputErrors.email,
     },
     {
-      inputTitle: "Whats your name?",
+      inputTitle: lang.name,
       inputPlaceHolder: "Ramon Carlos Boyer Garcia Sanchez Santa Maria...",
       inputName: "name",
       inputErr: inputErrors.name,
     },
     {
-      inputTitle: "What do you want to tell me?",
+      inputTitle: lang.message,
       inputPlaceHolder: "CAAARMEEEEN",
       inputName: "message",
       inputErr: inputErrors.message,
@@ -129,7 +134,7 @@ export default function Contact() {
   const handleInputChange = (e) => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
     setInputErrors(
-      validatingInput({ ...inputValues, [e.target.name]: e.target.value })
+      validatingInput({ ...inputValues, [e.target.name]: e.target.value }, lang)
     );
   };
   const handleSubmit = (e) => {
@@ -184,7 +189,7 @@ export default function Contact() {
           overflow: "hidden",
         }}
       >
-        KEEP IN TOUCH
+        {lang.contact}
         <hr
           style={{
             display: isSmallerThan505 && "none",
@@ -236,7 +241,7 @@ export default function Contact() {
           >
             <path d="M1500 0c828 0 1500 672 1500 1500s-672 1500-1500 1500S0 2328 0 1500 672 0 1500 0zm751 902l-1456-4 728 578zm-900 735l-636-500v950h1573v-930l-590 482c-200 163-140 160-347-2zM723 716h1569c127 0 230 104 230 230v1100c0 127-104 230-230 230H723c-127 0-230-104-230-230V946c0-127 104-230 230-230z" />
           </svg>
-          SAY HELLO<span className={style.letterStyled}>!</span>
+          {lang.hello}<span className={style.letterStyled}>!</span>
         </h2>
 
         <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
@@ -303,14 +308,14 @@ export default function Contact() {
             onMouseLeave={() => dispatch(hoverCursor(false))}
           >
             {emailLoading
-              ? "LOADING"
+              ? lang.loading
               : emailError
-              ? "ERROR"
+              ? lang.error
               : existError
-              ? "Complete all inputs"
+              ? lang.exist_error
               : isSuccess
-              ? "Email Sent"
-              : "Send email"}
+              ? lang.send_it
+              : lang.send}
           </button>
         </form>
       </m.div>
@@ -341,7 +346,7 @@ export default function Contact() {
             src="/svg/icons/arrow.svg"
             alt=""
           />
-          Or write me by<span className={style.letterStyled}>:</span>
+          {lang.or}<span className={style.letterStyled}>:</span>
         </h2>
         <div
           className={style.otherWrapper}
