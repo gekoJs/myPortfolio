@@ -1,7 +1,7 @@
 import MyLogo from "@/public/svg/jesusRoaLogo";
 import Link from "next/link";
 import style from "./Nav.module.scss";
-import { BurguerMenu, ThemeButton } from "..";
+import { BurguerMenu, ThemeButton, Translate } from "..";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 export default function Nav() {
   const {locale, locales, pathname} = useRouter()
-  console.log(locales)
   const [isLargerThan600] = useMediaQuery("(max-width: 600px)");
   const [isLargerThan990] = useMediaQuery("(max-width: 990px)");
   const isMenuOpen = useSelector((state) => state.animations.menu);
@@ -38,7 +37,6 @@ export default function Nav() {
     >
       <nav
         style={{
-          // padding: isLargerThan990 && "0 40px",
           mixBlendMode: "difference",
         }}
       >
@@ -53,13 +51,7 @@ export default function Nav() {
         </m.div>
         <div className={style.wrapper} style={{ gap: isLargerThan600 && "0" }}>
 
-          <div>
-            {locales.map(e=> (
-              <Link href={pathname} locale={e}>
-                <button>{e}&nbsp;</button>
-              </Link>
-            ))}
-          </div>
+          <Translate/>
 
           <m.div
             variants={variants}
