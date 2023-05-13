@@ -35,6 +35,10 @@ export default function Work() {
     hideCard: {
       opacity: 0,
       y: "100%",
+      transition: {
+        delay: 0.4,
+        type: "spring",
+      },
     },
     widthLarge: {
       opacity: 1,
@@ -46,6 +50,9 @@ export default function Work() {
     },
     widthNull: {
       width: "0",
+      transition: {
+        delay: 0.4,
+      },
     },
   };
   //----------------------------
@@ -56,6 +63,7 @@ export default function Work() {
         className={style.mainTitle}
         variants={variants}
         animate={isMenuOpen ? "widthNull" : "widthLarge"}
+        initial={"widthNull"}
       >
         <div>
           {lang.work}<label className={"transitionColor"}>{lang.s}</label>
@@ -78,8 +86,7 @@ export default function Work() {
                   onMouseLeave={() => dispatch(hoverCursor(false))}
                   variants={variants}
                   animate={isMenuOpen ? "hideCard" : "showCard"}
-                  initial={"showCard"}
-                  exit={"hideCard"}
+                  initial={"hideCard"}
                   transition={{
                     type: "spring",
                     duration: 0.8,

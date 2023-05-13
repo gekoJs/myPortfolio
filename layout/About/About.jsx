@@ -7,12 +7,12 @@ import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import { useRouter } from "next/router";
 import tecnologiesData from "../../data/tecnologiesData.json";
 import Image from "next/image";
-import en from "../../data/locales/en/about.json"
-import es from "../../data/locales/es/about.json"
+import en from "../../data/locales/en/about.json";
+import es from "../../data/locales/es/about.json";
 
 export default function About() {
-  const {locale} = useRouter()
-  const lang = locale === "en" ? en : es
+  const { locale } = useRouter();
+  const lang = locale === "en" ? en : es;
   //-----------------------------
   //-----------------------------
   const dispatch = useDispatch();
@@ -31,13 +31,41 @@ export default function About() {
   //-----------------------------
   const variants = {
     openImgL: { y: "0", opacity: 1 },
-    closeImgL: { opacity: 0, y: "100%" },
+    closeImgL: {
+      opacity: 0,
+      y: "100%",
+      transition: {
+        delay: 0.4,
+        type: "spring",
+      },
+    },
     openImgR: { y: "0", opacity: 1 },
-    closeImgR: { opacity: 0, y: "-100%" },
-    openAbout: { x: "0" },
-    closeAbout: { x: "-100%" },
-    opacityOff: { opacity: 0 },
-    opacityOn: { opacity: 1 },
+    closeImgR: {
+      opacity: 0,
+      y: "-100%",
+      transition: {
+        delay: 0.4,
+        type: "spring",
+      },
+    },
+    openAbout: {
+      opacity: 1,
+      x: "0",
+    },
+    closeAbout: {
+      x: "-100%",
+      opacity: 0,
+      transition: {
+        delay: 0.4,
+        type: "spring",
+      },
+    },
+    opacityOff: {
+      opacity: 0,
+    },
+    opacityOn: {
+      opacity: 1,
+    },
   };
   //-----------------------------
   //-----------------------------
@@ -45,14 +73,14 @@ export default function About() {
     <div
       className={style.container}
       style={{
-        flexDirection: isShorterThan700 && "column"
+        flexDirection: isShorterThan700 && "column",
       }}
     >
       <div
         className={style.overflow}
         style={{
           alignSelf: isShorterThan700 ? "center" : "flex-start",
-          borderRadius: isShorterThan700 && "0 0 2em 2em"
+          borderRadius: isShorterThan700 && "0 0 2em 2em",
         }}
       >
         <div className={style.imgContainer}>
@@ -60,8 +88,7 @@ export default function About() {
             style={{ width: "50%" }}
             variants={variants}
             animate={isMenuOpen ? "closeImgL" : "openImgL"}
-            initial="openImgL"
-            exit={"closeImgL"}
+            initial="closeImgL"
             transition={{
               type: "spring",
               duration: 0.8,
@@ -74,19 +101,17 @@ export default function About() {
           </m.div>
 
           <m.div
-          style={{width: "50%"}}
-              variants={variants}
-              animate={isMenuOpen ? "closeImgR" : "openImgR"}
-              initial="openImgR"
-              exit={"closeImgR"}
-              transition={{
-                type: "spring",
-                duration: 0.8,
-                delay: isMenuOpen ? 0 : 0.4,
-              }}>
-            <div
-              className={style.imgRightContainer}
-            >
+            style={{ width: "50%" }}
+            variants={variants}
+            animate={isMenuOpen ? "closeImgR" : "openImgR"}
+            initial={"closeImgR"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0 : 0.4,
+            }}
+          >
+            <div className={style.imgRightContainer}>
               <Image src={"/png/AboutMeRight.png"} fill={true} />
             </div>
           </m.div>
@@ -107,8 +132,7 @@ export default function About() {
           <m.h1
             variants={variants}
             animate={isMenuOpen ? "closeAbout" : "openAbout"}
-            initial="openAbout"
-            exit={"closeAbout"}
+            initial={"closeAbout"}
             transition={{
               type: "spring",
               duration: 0.8,
@@ -122,8 +146,7 @@ export default function About() {
           <m.p
             variants={variants}
             animate={isMenuOpen ? "opacityOff" : "opacityOn"}
-            initial="opacityOn"
-            exit={"opacityOff"}
+            initial={"opacityOff"}
             transition={{
               type: "spring",
               duration: 0.8,
@@ -142,8 +165,7 @@ export default function About() {
           <m.h2
             variants={variants}
             animate={isMenuOpen ? "closeAbout" : "openAbout"}
-            initial="openAbout"
-            exit={"closeAbout"}
+            initial="closeAbout"
             transition={{
               type: "spring",
               duration: 0.8,
@@ -159,12 +181,11 @@ export default function About() {
                 <m.div
                   variants={variants}
                   animate={isMenuOpen ? "opacityOff" : "opacityOn"}
-                  initial="opacityOn"
-                  exit={"opacityOff"}
+                  initial={"opacityOff"}
                   transition={{
                     type: "spring",
                     duration: 0.8,
-                    delay: isMenuOpen ? 0 : i * 0.1,
+                    delay: isMenuOpen ? .4 : .6 + i * 0.1,
                   }}
                   className={style.iconWrapper}
                   key={i}
