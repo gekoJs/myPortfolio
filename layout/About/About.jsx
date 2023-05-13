@@ -153,9 +153,10 @@ export default function About() {
               delay: isMenuOpen ? 0 : 0.4,
             }}
             className={style.description}
-          >
-            {lang.description}
-          </m.p>
+            dangerouslySetInnerHTML={{__html:lang.description}}
+          />
+            {/* {lang.description}
+          </m.p> */}
         </section>
 
         <section
@@ -185,7 +186,7 @@ export default function About() {
                   transition={{
                     type: "spring",
                     duration: 0.8,
-                    delay: isMenuOpen ? .4 : .6 + i * 0.1,
+                    delay: isMenuOpen ? .2 : .6 + i * 0.1,
                   }}
                   className={style.iconWrapper}
                   key={i}
