@@ -2,12 +2,11 @@ import style from "./Menu.module.scss";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { hoverCursor } from "@/Redux/animateTrigger";
+import { hoverCursor, showMenu } from "@/Redux/animateTrigger";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import en from "../../data/locales/en/menu.json";
 import es from "../../data/locales/es/menu.json";
-
 export default function Menu() {
   const { locale, pathname } = useRouter();
 
@@ -75,6 +74,7 @@ export default function Menu() {
                     duration: 0.4,
                     delay: 0.1 * i,
                   }}
+                  onClick={()=>pathname === e.link && dispatch(showMenu(false))}
                   onMouseEnter={() => dispatch(hoverCursor(true))}
                   onMouseLeave={() => dispatch(hoverCursor(false))}
                   style={{ display: "flex" }}
