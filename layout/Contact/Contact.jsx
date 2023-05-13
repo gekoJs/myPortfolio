@@ -177,12 +177,11 @@ export default function Contact() {
       <m.h1
         variants={variants}
         animate={isMenuOpen ? "hide" : "showTitle"}
-        initial="showTitle"
-        exit={"hide"}
+        initial={"hide"}
         transition={{
           type: "spring",
           duration: 0.8,
-          delay: isMenuOpen ? 0 : 0.2,
+          delay: isMenuOpen ? 0.2 : 0.6,
         }}
         className={style.titleContainer}
         style={{
@@ -202,12 +201,11 @@ export default function Contact() {
       <m.div
         variants={variants}
         animate={isMenuOpen ? "opacityOff" : "opacityOn"}
-        initial="opacityOn"
-        exit={"opacityOff"}
+        initial={"opacityOff"}
         transition={{
           type: "spring",
           duration: 0.8,
-          delay: isMenuOpen ? 0.8 : 0.2,
+          delay: isMenuOpen ? 0.2 : 0.6,
         }}
         className={style.formWrapper}
         style={{
@@ -252,12 +250,11 @@ export default function Contact() {
               <m.label
                 variants={variants}
                 animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-                initial="showInputLabel"
-                exit={"hideInputLabel"}
+                initial={"hideInputLabel"}
                 transition={{
                   type: "spring",
                   duration: 0.8,
-                  delay: isMenuOpen && i * 0.2,
+                  delay: isMenuOpen ? 0.2 : 0.8 + i * 0.1,
                 }}
               >
                 {e.inputTitle}
@@ -265,12 +262,11 @@ export default function Contact() {
               <m.input
                 variants={variants}
                 animate={isMenuOpen ? "hide" : "showInput"}
-                initial="showInput"
-                exit={"hide"}
+                initial={"hide"}
                 transition={{
                   type: "spring",
                   duration: 0.8,
-                  delay: isMenuOpen ? 0.6 : i * 0.2,
+                  delay: isMenuOpen ? 0.2 : 0.8 + i * 0.2,
                 }}
                 type="text"
                 name={e.inputName}
@@ -285,12 +281,11 @@ export default function Contact() {
                 <m.p
                   variants={variants}
                   animate={isMenuOpen ? "hideInputLabel" : "showInputLabel"}
-                  initial="showInputLabel"
-                  exit={"hideInputLabel"}
+                  initial={"hideInputLabel"}
                   transition={{
                     type: "spring",
                     duration: 0.8,
-                    delay: isMenuOpen ? 0.6 : i * 0.2,
+                    delay: isMenuOpen ? 0.2 : 0.8 + i * 0.2,
                   }}
                   className={style.error}
                 >
@@ -325,12 +320,11 @@ export default function Contact() {
       <m.div
         variants={variants}
         animate={isMenuOpen ? "opacityOff" : "opacityOn"}
-        initial="opacityOn"
-        exit={"opacityOff"}
+        initial={"opacityOff"}
         transition={{
           type: "spring",
           duration: 0.8,
-          delay: isMenuOpen ? 0.8 : 0.2,
+          delay: isMenuOpen ? 0.2 : 0.6,
         }}
         className={style.otherMethodsWrapper}
       >
@@ -365,12 +359,11 @@ export default function Contact() {
               <m.a
                 variants={variants}
                 animate={isMenuOpen ? "hideSMI" : "showSMI"}
-                initial="showSMI"
-                exit={"hideSMI"}
+                initial={"hideSMI"}
                 transition={{
                   type: "spring",
                   duration: 0.8,
-                  delay: isMenuOpen ? 0 : i * 0.1,
+                  delay: isMenuOpen ? 0.2 : 0.4 + i * 0.1,
                 }}
                 href={e.href}
                 target="_blank"

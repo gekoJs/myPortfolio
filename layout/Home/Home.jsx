@@ -67,10 +67,18 @@ export default function Home() {
     offWidth: {
       opacity: 0,
       x: "-50%",
+      transition: {
+        delay: 0.4,
+        type: "spring",
+      },
     },
     offWidthR: {
       opacity: 0,
       x: "50%",
+      transition: {
+        delay: 0.4,
+        type: "spring",
+      },
     },
   };
   //--------------------------
@@ -189,6 +197,7 @@ export default function Home() {
               className={style.link}
               variants={variants}
               animate={textAnimation ? "offWidth" : "openWidth"}
+              initial={"offWidth"}
               onMouseEnter={() => dispatch(hoverCursor(true))}
               onMouseLeave={() => dispatch(hoverCursor(false))}
             >
@@ -213,6 +222,7 @@ export default function Home() {
             <m.div
               variants={variants}
               animate={textAnimation ? "offWidthR" : "openWidth"}
+              initial={"offWidthR"}
               onMouseEnter={() => dispatch(hoverCursor(true))}
               onMouseLeave={() => dispatch(hoverCursor(false))}
             >

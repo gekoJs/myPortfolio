@@ -1,7 +1,7 @@
 import MyLogo from "@/public/svg/jesusRoaLogo";
 import Link from "next/link";
 import style from "./Nav.module.scss";
-import { BurguerMenu, ThemeButton, Translate } from "..";
+import { BurguerMenu, ThemeButton, Translate, BackButton } from "..";
 import { useMediaQuery } from "@chakra-ui/react";
 import { motion as m } from "framer-motion";
 import { useSelector } from "react-redux";
@@ -14,22 +14,23 @@ export default function Nav() {
   const isMenuOpen = useSelector((state) => state.animations.menu);
   const variants = {
     toTop: {
-      opacity: 0,
       y: "-100%",
+      opacity: 0,
       transition: {
-        duration: 0.6,
+        duration: isMenuOpen ? 0.2 : 0.6,
         type: "spring",
       },
     },
     toBottom: {
-      opacity: 1,
       y: "0",
+      opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: isMenuOpen ? 0.2 : 0.6,
         type: "spring",
       },
     },
   };
+  console.log(pathname);
   return (
     <header
       className={style.container}
@@ -43,17 +44,26 @@ export default function Nav() {
           className={style.logo}
           variants={variants}
           animate={isMenuOpen ? "toTop" : "toBottom"}
+          initial={"toTop"}
         >
           <Link href={"/"}>
             <MyLogo />
           </Link>
+          {pathname === `/work/[idWork]` && <BackButton />}
         </m.div>
         <div className={style.wrapper} style={{ gap: isLargerThan600 && "0" }}>
-          <Translate />
+          <m.div
+            variants={variants}
+            animate={isMenuOpen ? "toTop" : "toBottom"}
+            initial={"toTop"}
+          >
+            <Translate />
+          </m.div>
 
           <m.div
             variants={variants}
             animate={isMenuOpen ? "toTop" : "toBottom"}
+            initial={"toTop"}
           >
             <ThemeButton />
           </m.div>

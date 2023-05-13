@@ -11,13 +11,11 @@ import { useMediaQuery } from "@chakra-ui/react";
 
 export default function DetailWork() {
   const dispatch = useDispatch();
-  const position = useSelector((state) => state.animations.position);
   const menuOpen = useSelector((state) => state.animations.menu);
   const route = useRouter();
   const { idWork } = route.query;
   const work = worksData.filter((e) => e.id === parseInt(idWork));
   const {
-    id,
     title,
     mainImage,
     year,
@@ -38,11 +36,6 @@ export default function DetailWork() {
     toBottom: {
       opacity: 1,
       y: "-3%",
-      transition: {
-        type: "spring",
-        duration: 0.6,
-        delay: 0.6,
-      },
     },
     toTop: {
       opacity: 0,
@@ -56,11 +49,6 @@ export default function DetailWork() {
     toLeft: {
       opacity: 0,
       x: "-100%",
-      transition: {
-        type: "spring",
-        duration: 0.6,
-        delay: 0.2,
-      },
     },
     toRight: {
       opacity: 1,
@@ -83,18 +71,9 @@ export default function DetailWork() {
     toRightInitial: {
       opacity: 0,
       x: "100%",
-      transition: {
-        type: "spring",
-        duration: 0.6,
-        delay: 0.2,
-      },
     },
     opacityOn: {
       opacity: 0,
-      transition: {
-        duration: 0.6,
-        delay: 0.3,
-      },
     },
     opacityOff: {
       opacity: 1,
@@ -122,7 +101,7 @@ export default function DetailWork() {
               <div
                 style={{
                   backgroundColor: bgColor,
-                  transform: `rotate(50deg) translateX(${position.x / 20}px)`,
+                  transform: `rotate(50deg)`,
                 }}
               ></div>
             </div>
@@ -140,6 +119,11 @@ export default function DetailWork() {
                   variants={variants}
                   animate={menuOpen ? "toTop" : "toBottom"}
                   initial={"toTop"}
+                  transition={{
+                    type: "spring",
+                    duration: 0.6,
+                    delay: menuOpen ? 0.2 : 0.4,
+                  }}
                 >
                   <Image src={mainImage} alt={title} fill={true} />
                 </m.div>
@@ -150,13 +134,23 @@ export default function DetailWork() {
                   style={{ color: bgColor }}
                   variants={variants}
                   animate={menuOpen ? "opacityOn" : "opacityOff"}
+                  initial={"opacityOn"}
+                  transition={{
+                    duration: 0.6,
+                    delay: menuOpen ? 0.2 : 0.4,
+                  }}
                 >
                   {title}
                 </m.h1>
                 <m.hr
                   variants={variants}
                   animate={menuOpen ? "toLeft" : "toRight"}
-                  initial={"toRight"}
+                  initial={"toLeft"}
+                  transition={{
+                    type: "spring",
+                    duration: 0.6,
+                    delay: menuOpen ? 0.2 : 0.4,
+                  }}
                 />
               </div>
 
@@ -172,7 +166,12 @@ export default function DetailWork() {
                     className={style.aboutSection}
                     variants={variants}
                     animate={menuOpen ? "toLeft" : "toRight"}
-                    initial={"toRight"}
+                    initial={"toLeft"}
+                    transition={{
+                      type: "spring",
+                      duration: 0.6,
+                      delay: menuOpen ? 0.2 : 0.4,
+                    }}
                   >
                     <div className={style.aboutElement}>
                       <p
@@ -226,6 +225,11 @@ export default function DetailWork() {
                     variants={variants}
                     animate={menuOpen ? "toRightInitial" : "toLeftInitial"}
                     initial={"toRightInitial"}
+                    transition={{
+                      type: "spring",
+                      duration: 0.6,
+                      delay: menuOpen ? 0.2 : 0.4,
+                    }}
                   >
                     <p>{description}</p>
                     <Link href={url}>
@@ -260,7 +264,11 @@ export default function DetailWork() {
                     style={{ color: bgColor }}
                     variants={variants}
                     animate={menuOpen ? "opacityOn" : "opacityOff"}
-                    initial={"opacityOff"}
+                    initial={"opacityOn"}
+                    transition={{
+                      duration: 0.6,
+                      delay: menuOpen ? 0.2 : 0.4,
+                    }}
                   >
                     {e.pageTitle}
                   </m.h3>

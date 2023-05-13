@@ -5,3 +5,4 @@ export { default as Cursor } from "./cursor/Cursor";
 export { default as BurguerMenu } from "./burguerMenu/BurguerMenu";
 export { default as AnimatedPillar } from "./animatedPillar/AnimatedPillar";
 export { default as Translate } from "./translate/Translate";
+export {default as BackButton} from "./backButton/BackButton"

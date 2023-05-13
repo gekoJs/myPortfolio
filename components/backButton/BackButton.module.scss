@@ -1,0 +1,10 @@
+.container{
+    transition: transform .2s ease;
+    &:hover{
+        transform: translateY(-4px);
+    }
+    svg{
+        transition: fill 1s ease;
+        fill: var(--highlight);
+    }
+}
