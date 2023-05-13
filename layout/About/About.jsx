@@ -153,10 +153,37 @@ export default function About() {
               delay: isMenuOpen ? 0 : 0.4,
             }}
             className={style.description}
-            dangerouslySetInnerHTML={{__html:lang.description}}
+            dangerouslySetInnerHTML={{ __html: lang.description }}
           />
-            {/* {lang.description}
-          </m.p> */}
+
+          <m.a href={"/pdf/jesus_roa_resume.pdf"} target={"_blank"}
+            className={style.resumeContainer}
+            variants={variants}
+            animate={isMenuOpen ? "opacityOff" : "opacityOn"}
+            initial={"opacityOff"}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+              delay: isMenuOpen ? 0 : 0.4,
+            }}
+            onMouseEnter={()=> dispatch(hoverCursor(true))}
+            onMouseLeave={()=> dispatch(hoverCursor(false))}
+          >
+            <div className={style.resumeWrapper}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 96 960 960"
+                width="48"
+              >
+                <path d="m248 810-42-42 412-412H240v-60h480v480h-60V398L248 810Z" />
+              </svg>
+              <p>
+                Resume
+              </p>
+            </div>
+            <hr />
+          </m.a>
         </section>
 
         <section
@@ -186,7 +213,7 @@ export default function About() {
                   transition={{
                     type: "spring",
                     duration: 0.8,
-                    delay: isMenuOpen ? .2 : .6 + i * 0.1,
+                    delay: isMenuOpen ? 0.2 : 0.6 + i * 0.1,
                   }}
                   className={style.iconWrapper}
                   key={i}
