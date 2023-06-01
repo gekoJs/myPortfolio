@@ -173,49 +173,55 @@ export default function DetailWork() {
                       delay: menuOpen ? 0.2 : 0.4,
                     }}
                   >
-                    <div className={style.aboutElement}>
-                      <p
-                        className={`${style.aboutElementTitle} ${
-                          isSmaller620 && style.aboutElementTitle620
-                        }`}
-                        style={{ color: bgColor }}
-                      >
-                        Year
-                      </p>
-                      <p className={style.aboutElementDesc}>{year}</p>
-                    </div>
+                    {year && (
+                      <div className={style.aboutElement}>
+                        <p
+                          className={`${style.aboutElementTitle} ${
+                            isSmaller620 && style.aboutElementTitle620
+                          }`}
+                          style={{ color: bgColor }}
+                        >
+                          Year
+                        </p>
+                        <p className={style.aboutElementDesc}>{year}</p>
+                      </div>
+                    )}
 
-                    <div className={style.aboutElement}>
-                      <h2
-                        className={`${style.aboutElementTitle} ${
-                          isSmaller620 && style.aboutElementTitle620
-                        }`}
-                        style={{ color: bgColor }}
-                      >
-                        Team
-                      </h2>
-                      <ul>
-                        {team.map((e, i) => (
-                          <li
-                            className={`${style.aboutElementDesc} ${style.aboutElementDesc_2}`}
-                          >
-                            {i + 1}. {e}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {team && (
+                      <div className={style.aboutElement}>
+                        <h2
+                          className={`${style.aboutElementTitle} ${
+                            isSmaller620 && style.aboutElementTitle620
+                          }`}
+                          style={{ color: bgColor }}
+                        >
+                          Team
+                        </h2>
+                        <ul>
+                          {team.map((e, i) => (
+                            <li
+                              className={`${style.aboutElementDesc} ${style.aboutElementDesc_2}`}
+                            >
+                              {i + 1}. {e}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
-                    <div className={style.aboutElement}>
-                      <p
-                        className={`${style.aboutElementTitle} ${
-                          isSmaller620 && style.aboutElementTitle620
-                        }`}
-                        style={{ color: bgColor }}
-                      >
-                        Client
-                      </p>
-                      <p className={style.aboutElementDesc}>{client}</p>
-                    </div>
+                    {client && (
+                      <div className={style.aboutElement}>
+                        <p
+                          className={`${style.aboutElementTitle} ${
+                            isSmaller620 && style.aboutElementTitle620
+                          }`}
+                          style={{ color: bgColor }}
+                        >
+                          Client
+                        </p>
+                        <p className={style.aboutElementDesc}>{client}</p>
+                      </div>
+                    )}
                   </m.div>
                 </div>
 

@@ -13,7 +13,7 @@
       "Jesús Daniel Roa Morales"
     ],
     "client": "Soy Henry",
-    "url": "https://lotus-git-development-armax7.vercel.app/",
+    "url": "https://lotus-git-development-armax7.vercel.app",
     "pageImages": [
       {
         "pageTitle": "Home",
@@ -21,27 +21,30 @@
       },
       {
         "pageTitle": "Filters",
-        "images":["/png/lotus/filtersLotus.jpg"]
+        "images": ["/png/lotus/filtersLotus.jpg"]
       },
       {
         "pageTitle": "Car",
-        "images":["/png/lotus/carLotus.jpg","/png/lotus/carLotus2.jpg"]
+        "images": ["/png/lotus/carLotus.jpg", "/png/lotus/carLotus2.jpg"]
       },
       {
         "pageTitle": "Favorites",
-        "images":["/png/lotus/favoritesLotus.jpg"]
+        "images": ["/png/lotus/favoritesLotus.jpg"]
       },
       {
         "pageTitle": "Details",
-        "images":["/png/lotus/detailLotus.jpg"]
+        "images": ["/png/lotus/detailLotus.jpg"]
       },
       {
         "pageTitle": "Sign In & Sign Up",
-        "images":["/png/lotus/signInLotus.jpg","/png/lotus/signUpLotus.jpg"]
+        "images": ["/png/lotus/signInLotus.jpg", "/png/lotus/signUpLotus.jpg"]
       },
       {
         "pageTitle": "Footer",
-        "images":["/png/lotus/aboutUsLotus.jpg","/png/lotus/contactUsLotus.jpg"]
+        "images": [
+          "/png/lotus/aboutUsLotus.jpg",
+          "/png/lotus/contactUsLotus.jpg"
+        ]
       }
     ],
     "bgColor": "#ffd9d4",
@@ -52,18 +55,40 @@
     "title": "PAWIS",
     "mainImage": "/png/pawis/pawisLogo.svg",
     "year": "2022",
-    "team": [
-      "Jesús Daniel Roa Morales"
-    ],
+    "team": ["Jesús Daniel Roa Morales"],
     "client": "Soy Henry",
-    "url": "https://lotus-git-development-armax7.vercel.app/",
+    "url": "https://lotus-git-development-armax7.vercel.app",
     "pageImages": [
       {
         "pageTitle": "Landing Page",
         "images": ["/png/pawis/landingPage.jpeg"]
       }
     ],
-    "bgColor": "#9e5cbd",
+    "bgColor": "#E96479",
     "description": "Pawis es el nombre que decidi para el proyecto individual, fue la culminacion de una etapa en el bootcamp de Soy Henry, puse en practica tecnologias como React, Redux, SQL, Express, etc... Tuvo una duracion de 30 dias"
+  },
+  {
+    "id": 3,
+    "title": "PROMPTOPIA",
+    "mainImage": "/png/promptopia/promptopia.svg",
+    "year": "2023",
+    "team": ["Jesús Daniel Roa Morales"],
+    "url": "https://promptpedia-app.vercel.app",
+    "pageImages": [
+      {
+        "pageTitle": "Main Page",
+        "images": ["/png/promptopia/promptopia_main.png"]
+      },
+      {
+        "pageTitle": "Create Prompt Page",
+        "images": ["/png/promptopia/promptopia_create.png"]
+      },
+      {
+        "pageTitle": "Perfil Page",
+        "images": ["/png/promptopia/promptopia_profile.png"]
+      }
+    ],
+    "bgColor": "#28aee2",
+    "description": "Promptopia tiene como objetivo brindar al publico prompts interesantes para ingresar a las AI disponibles, en esta aplicacion web puedes iniciar sesion crear tus prompts editarlas y eliminarlas segun desees ademas de poder buscar por usuario prompt o tag"
   }
 ]
