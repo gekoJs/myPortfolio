@@ -22,6 +22,7 @@ export default function DetailWork() {
     team,
     client,
     url,
+    responsive,
     pageImages,
     description,
     bgColor,
@@ -208,6 +209,19 @@ export default function DetailWork() {
                         </ul>
                       </div>
                     )}
+                    {responsive && (
+                      <div className={style.aboutElement}>
+                        <h2
+                          className={`${style.aboutElementTitle} ${
+                            isSmaller620 && style.aboutElementTitle620
+                          }`}
+                          style={{ color: bgColor }}
+                        >
+                          mobile
+                        </h2>
+                        <p>{responsive}</p>
+                      </div>
+                    )}
 
                     {client && (
                       <div className={style.aboutElement}>
@@ -238,7 +252,7 @@ export default function DetailWork() {
                     }}
                   >
                     <p>{description}</p>
-                    <Link href={url}>
+                    <a href={url} target="_blank">
                       <button
                         onMouseEnter={() => dispatch(hoverCursor(true))}
                         onMouseLeave={() => dispatch(hoverCursor(false))}
@@ -259,7 +273,7 @@ export default function DetailWork() {
                         </div>
                         <hr />
                       </button>
-                    </Link>
+                    </a>
                   </m.div>
                 </div>
               </div>

@@ -13,6 +13,7 @@
       "Jesús Daniel Roa Morales"
     ],
     "client": "Soy Henry",
+    "responsive": "Si",
     "url": "https://lotus-git-development-armax7.vercel.app",
     "pageImages": [
       {
@@ -57,11 +58,24 @@
     "year": "2022",
     "team": ["Jesús Daniel Roa Morales"],
     "client": "Soy Henry",
-    "url": "https://lotus-git-development-armax7.vercel.app",
+    "responsive": "Si",
+    "url": "https://pawis.vercel.app",
     "pageImages": [
       {
         "pageTitle": "Landing Page",
-        "images": ["/png/pawis/landingPage.jpeg"]
+        "images": ["/png/pawis/pawis_landing.png"]
+      },
+      {
+        "pageTitle": "Home Page",
+        "images": ["/png/pawis/pawis_home.jpeg","/png/pawis/pawis_create.jpeg"]
+      },
+      {
+        "pageTitle": "Detail Page",
+        "images": ["/png/pawis/pawis_detail.jpeg"]
+      },
+      {
+        "pageTitle": "Profile Page",
+        "images": ["/png/pawis/pawis_profile.jpeg","/png/pawis/pawis_edit.jpeg","/png/pawis/pawis_delete.jpeg"]
       }
     ],
     "bgColor": "#E96479",
@@ -74,6 +88,7 @@
     "year": "2023",
     "team": ["Jesús Daniel Roa Morales"],
     "url": "https://promptpedia-app.vercel.app",
+    "responsive": "Si",
     "pageImages": [
       {
         "pageTitle": "Main Page",
