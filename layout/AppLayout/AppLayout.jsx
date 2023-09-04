@@ -33,9 +33,9 @@ export default function AppLayout({ children }) {
         <Nav />
         <Menu />
         {children}
-        <Noise />
-        <AnimatedPillar/>
-        <Cursor />
+        {/* <Noise /> */}
+        {/* <AnimatedPillar/> */}
+        {/* <Cursor /> */}
       </div>
     </div>
   );
