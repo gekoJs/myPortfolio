@@ -30,7 +30,6 @@ export default function Nav() {
       },
     },
   };
-  console.log(pathname);
   return (
     <header
       className={style.container}

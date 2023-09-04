@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import en from "../../data/locales/en/home.json";
 import es from "../../data/locales/es/home.json";
+
 export default function Home() {
   const { locale } = useRouter();
   const t = locale === "en" ? en : es;
@@ -41,6 +42,7 @@ export default function Home() {
       return () => clearInterval(intervalId);
     }
   }, [isHoverWave1, isHoverWave2]);
+
   useEffect(() => {
     dispatch(showMenu(false));
   }, []);

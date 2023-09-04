@@ -15,7 +15,6 @@ export default function ThemeButton() {
   useEffect(() => {
     dispatch(changeTheme(theme === "system" ? "dark" : theme));
   }, [theme]);
-  console.log("theme", theme, "System", systemTheme )
   const handleClick = () => {
     themeDisplayed === "light" ? setTheme("dark") : setTheme("light");
   };
