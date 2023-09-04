@@ -1,4 +1,4 @@
-import { sendMail, sendMail_resend } from "@/lib";
+import { sendMail_resend } from "@/lib";
 
 const handleSendMail = async (req, res) => {
   try {
