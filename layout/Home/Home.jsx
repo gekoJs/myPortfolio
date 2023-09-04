@@ -76,7 +76,7 @@ export default function Home() {
     },
     offWidthR: {
       opacity: 0,
-      x: "50%",
+      x: "-50%",
       transition: {
         delay: 0.4,
         type: "spring",

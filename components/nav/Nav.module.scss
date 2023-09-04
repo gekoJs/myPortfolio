@@ -10,33 +10,34 @@
   gap: 1em;
 }
 
-.logo{
+.logo {
   left: 4em;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
 }
-.wrapper, .logo{
+.wrapper,
+.logo {
   position: fixed;
   top: 4em;
 }
 @media screen and (max-width: 570px) {
-  .logo{
+  .logo {
     top: 2em;
     left: 2em;
   }
-  .wrapper{
+  .wrapper {
     top: 2em;
     right: 2em;
   }
 }
 @media screen and (max-width: 450px) {
-  .logo{
+  .logo {
     top: 1em;
     left: 1em;
   }
-  .wrapper{
+  .wrapper {
     top: 1em;
     right: 1em;
   }

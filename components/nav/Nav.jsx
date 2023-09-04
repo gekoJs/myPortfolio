@@ -50,6 +50,7 @@ export default function Nav() {
           </Link>
           {pathname === `/work/[idWork]` && <BackButton />}
         </m.div>
+        
         <div className={style.wrapper} style={{ gap: isLargerThan600 && "0" }}>
           <m.div
             variants={variants}
